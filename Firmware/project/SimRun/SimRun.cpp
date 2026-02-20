@@ -29,7 +29,7 @@ int main(int argc, char *argv[])
 	fprintf(DebugFile, "SV#  Cycle       Hz      Chip     Cycle       Hz       Chip      Cycle     Hz        m   \n");
 
 	AttachDebugFunc(DebugOutput);
-	FirmwareInitialize(ColdStart, &InitTime, &InitPosition);
+	FirmwareInitialize(HotStart, &InitTime, &InitPosition);
 	EnableRF();
 	if (DebugFile)
 		fclose(DebugFile);
@@ -42,7 +42,7 @@ void DebugOutput(void *DebugParam, int DebugValue)
 	unsigned int EnableMask;
 	CGnssTop *GnssTop = (CGnssTop *)DebugParam;
 	CTrackingEngine *TrackingEngine = &(GnssTop->TrackingEngine);
-	SATELLITE_PARAM *pSatParam;
+	CSatelliteParam *pSatParam;
 	int PrnCount2x;
 	double CarrierPhase, Doppler, PeakPosition;
 	double LocalPhase, LocalDoppler, CodePhase;
@@ -66,11 +66,11 @@ void DebugOutput(void *DebugParam, int DebugValue)
 		if (pSatParam)
 		{
 			TrackingChannel = &(TrackingEngine->LogicChannel[i]);
-			CarrierPhase = GetCarrierPhase(pSatParam, 0);
+			CarrierPhase = pSatParam->GetCarrierPhase(0);
 			CarrierPhase -= (int)CarrierPhase;
 			CarrierPhase = 1 - CarrierPhase;
-			Doppler = GetDoppler(pSatParam, 0);
-			TransmitTime = GetTransmitTime(GnssTop->CurTime, GetTravelTime(pSatParam, 0));
+			Doppler = pSatParam->GetDoppler(0);
+			TransmitTime = GetTransmitTime(GnssTop->CurTime, pSatParam->GetTravelTime(0));
 			PeakPosition = TransmitTime.SubMilliSeconds * 1023;
 			if (TrackingChannel->SystemSel == SignalE1)	// Galileo E1
 				PeakPosition += (TransmitTime.MilliSeconds % 4) * 1023;

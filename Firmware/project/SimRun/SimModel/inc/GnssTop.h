@@ -55,12 +55,13 @@ public:
 	BCNav1Bit BdsBits;
 	INavBit GalBits;
 	NavBit *NavBitArray[4];
+	CIonoKlobuchar8 IonoModel;
 
 	PGPS_EPHEMERIS GpsEph[TOTAL_GPS_SAT], GpsEphVisible[TOTAL_GPS_SAT];
 	PGPS_EPHEMERIS BdsEph[TOTAL_BDS_SAT], BdsEphVisible[TOTAL_BDS_SAT];
 	PGPS_EPHEMERIS GalEph[TOTAL_GAL_SAT], GalEphVisible[TOTAL_GAL_SAT];
-	SATELLITE_PARAM GpsSatParam[TOTAL_GPS_SAT], BdsSatParam[TOTAL_BDS_SAT], GalSatParam[TOTAL_GAL_SAT];	// satellite parameter array at CurTime
-	PSATELLITE_PARAM SatParamList[TOTAL_GPS_SAT+TOTAL_BDS_SAT+TOTAL_GAL_SAT];
+	CSatelliteParam GpsSatParam[TOTAL_GPS_SAT], BdsSatParam[TOTAL_BDS_SAT], GalSatParam[TOTAL_GAL_SAT];	// satellite parameter array at CurTime
+	CSatelliteParam *SatParamList[TOTAL_GPS_SAT+TOTAL_BDS_SAT+TOTAL_GAL_SAT];
 	int GpsSatNumber, BdsSatNumber, GalSatNumber;	// number of visible GPS satellite
 	int TotalSatNumber;	// total number of visible GPS satellite
 

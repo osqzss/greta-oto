@@ -81,7 +81,7 @@ CTrackingChannel::~CTrackingChannel()
 {
 }
 
-void CTrackingChannel::Initial(GNSS_TIME CurTime, PSATELLITE_PARAM pSatParam, NavBit *pNavData)
+void CTrackingChannel::Initial(GNSS_TIME CurTime, CSatelliteParam *pSatParam, NavBit *pNavData)
 {
 	GNSS_TIME TransmitTime;
 	int FrameLength = (SystemSel == SignalL1CA) ? 6000 : ((SystemSel == SignalE1) ? 2000 : 18000);
@@ -90,10 +90,10 @@ void CTrackingChannel::Initial(GNSS_TIME CurTime, PSATELLITE_PARAM pSatParam, Na
 		CurTime.MilliSeconds -= 14000;	// compensate BDS leap second difference
 
 	// initial structure to calculate FreqDiff and PhaseDiff
-	CarrierParam.DopplerPrev2 = CarrierParam.DopplerPrev = CarrierParam.DopplerCur = GetDoppler(pSatParam, 0);
+	CarrierParam.DopplerPrev2 = CarrierParam.DopplerPrev = CarrierParam.DopplerCur = pSatParam->GetDoppler(0);
 	CarrierParam.LocalFreqPrev2 = CarrierParam.LocalFreqPrev = CarrierFreq - (((SystemSel == SignalL1CA) || EnableBOC) ? IF_FREQ : (IF_FREQ + 1023000));
 	// initial modulation bit and counter
-	TransmitTime = GetTransmitTime(CurTime, GetTravelTime(pSatParam, 0));
+	TransmitTime = GetTransmitTime(CurTime, pSatParam->GetTravelTime(0));
 	TransmitTime.MilliSeconds ++;	// correlation result will be calculated from next millisecond
 	if (!SatelliteSignal.SetSignalAttribute(pSatParam->system, 0, pNavData, pSatParam->svid))
 		SatelliteSignal.NavData = (NavBit *)0;	// if system/frequency and navigation data not match, set pointer to NULL
@@ -237,7 +237,7 @@ int CTrackingChannel::FindSvid(unsigned int ConfigArray[], int ArraySize, U32 Pr
 	return 0;	// not found
 }
 
-void CTrackingChannel::GetCorrelationResult(GNSS_TIME CurTime, SATELLITE_PARAM *pSatParam, int DumpDataI[], int DumpDataQ[], int CorIndex[], int CorPos[], int NHCode[], int DataLength)
+void CTrackingChannel::GetCorrelationResult(GNSS_TIME CurTime, CSatelliteParam *pSatParam, int DumpDataI[], int DumpDataQ[], int CorIndex[], int CorPos[], int NHCode[], int DataLength)
 {
 	int i;
 	double Alpha;
@@ -278,10 +278,10 @@ void CTrackingChannel::GetCorrelationResult(GNSS_TIME CurTime, SATELLITE_PARAM *
 
 		// calculate frequency difference
 		NominalIF = Sideband ? (IF_FREQ + 1023000) : IF_FREQ;
-		FreqDiff = CarrierParam.GetFreqDiff(GetDoppler(pSatParam, 0), CarrierFreq - NominalIF, Alpha) / 1000. * PI;
+		FreqDiff = CarrierParam.GetFreqDiff(pSatParam->GetDoppler(0), CarrierFreq - NominalIF, Alpha) / 1000. * PI;
 
 		// calculate carrier phase of source signal
-		SourceCarrierPhase = GetCarrierPhase(pSatParam, 0);
+		SourceCarrierPhase = pSatParam->GetCarrierPhase(0);
 		if (Sideband)
 			SourceCarrierPhase += 0.25;
 		SourceCarrierPhase -= (int)SourceCarrierPhase;
@@ -294,7 +294,7 @@ void CTrackingChannel::GetCorrelationResult(GNSS_TIME CurTime, SATELLITE_PARAM *
 		// calculate signal amplitude
 		Amplitude = pow(10, (pSatParam->CN0 - 3000) / 2000.) * NOISE_AMP;
 		Amplitude *= (fabs(FreqDiff) > 1e-3) ? (sin(FreqDiff) / FreqDiff) : 1.0;
-		TransmitTime = GetTransmitTime(CurTime, GetTravelTime(pSatParam, 0) + 0.001);	// add one extra millisecond to get previous finished millisecond
+		TransmitTime = GetTransmitTime(CurTime, pSatParam->GetTravelTime(0) + 0.001);	// add one extra millisecond to get previous finished millisecond
 		Milliseconds = TransmitTime.MilliSeconds % BitLength;
 		PeakPosition = (((SystemSel == SignalL1CA) ? 0 : Milliseconds) + TransmitTime.SubMilliSeconds) * 2046;
 		NcoPhase = (double)CodePhase / 4294967296.;

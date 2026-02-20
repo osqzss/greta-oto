@@ -49,7 +49,7 @@ void CGnssTop::SetRegValue(int Address, U32 Value)
 {
 	int AddressOffset = Address & 0xfff;
 	int ChannelNumber;
-	SATELLITE_PARAM *pSatParam;
+	CSatelliteParam *pSatParam;
 
 	switch (Address & 0xf000)
 	{
@@ -183,13 +183,6 @@ void CGnssTop::SetInputFile(char *FileName)
 	SpeedLocalToEcef(StartPos, StartVel, CurPos);
 	BdsTime = UtcToBdsTime(UtcTime);
 
-	for (i = 0; i < TOTAL_GPS_SAT; i ++)
-		GpsSatParam[i].CN0 = (int)(PowerControl.InitCN0 * 100 + 0.5);
-	for (i = 0; i < TOTAL_BDS_SAT; i ++)
-		BdsSatParam[i].CN0 = (int)(PowerControl.InitCN0 * 100 + 0.5);
-	for (i = 0; i < TOTAL_GAL_SAT; i ++)
-		GalSatParam[i].CN0 = (int)(PowerControl.InitCN0 * 100 + 0.5);
-
 	// Find ephemeris match current time and fill in data to generate bit stream
 	for (i = 1; i <= TOTAL_GPS_SAT; i ++)
 	{
@@ -218,6 +211,14 @@ void CGnssTop::SetInputFile(char *FileName)
 	GpsSatNumber = (OutputParam.FreqSelect[GpsSystem]) ? GetVisibleSatellite(CurPos, CurTime, OutputParam, GpsSystem, GpsEph, 32, GpsEphVisible) : 0;
 	BdsSatNumber = (OutputParam.FreqSelect[BdsSystem]) ? GetVisibleSatellite(CurPos, CurTime, OutputParam, BdsSystem, BdsEph, TOTAL_BDS_SAT, BdsEphVisible) : 0;
 	GalSatNumber = (OutputParam.FreqSelect[GalileoSystem]) ? GetVisibleSatellite(CurPos, CurTime, OutputParam, GalileoSystem, GalEph, TOTAL_GAL_SAT, GalEphVisible) : 0;
+
+	IonoModel.SetIonoParam(NavData.GetGpsIono());
+	for (i = 0; i < TOTAL_GPS_SAT; i ++)
+		GpsSatParam[i].Initialize(GpsSystem, GpsEph[i], &IonoModel, PowerControl.InitCN0, PowerControl.Adjust);
+	for (i = 0; i < TOTAL_BDS_SAT; i ++)
+		BdsSatParam[i].Initialize(BdsSystem, BdsEph[i], &IonoModel, PowerControl.InitCN0, PowerControl.Adjust);
+	for (i = 0; i < TOTAL_GAL_SAT; i ++)
+		GalSatParam[i].Initialize(GalileoSystem, GalEph[i], &IonoModel, PowerControl.InitCN0, PowerControl.Adjust);
 	UpdateSatParamList();
 }
 
@@ -243,7 +244,7 @@ int CGnssTop::Process(int BlockSize)
 			InterruptFlag |= (1 << 10);
 	}
 	if (AeProcessCount)
-	{
+{
 		if (--AeProcessCount == 0)
 			InterruptFlag |= (1 << 11);
 	}
@@ -288,22 +289,22 @@ void CGnssTop::UpdateSatParamList()
 	for (i = 0; i < GpsSatNumber; i ++)
 	{
 		index = GpsEphVisible[i]->svid - 1;
-		GetSatelliteParam(CurPos, PosLLA, CurTime, GpsSystem, GpsEphVisible[i], NavData.GetGpsIono(), &GpsSatParam[index]);
-		GetSatelliteCN0(ListCount, PowerList, PowerControl.InitCN0, PowerControl.Adjust, &GpsSatParam[index]);
+		GpsSatParam[index].CalculateParam(CurPos, PosLLA, CurTime);
+		GpsSatParam[index].UpdateCN0(ListCount, PowerList);
 		SatParamList[TotalSatNumber ++] = &GpsSatParam[index];
 	}
 	for (i = 0; i < BdsSatNumber; i ++)
 	{
 		index = BdsEphVisible[i]->svid - 1;
-		GetSatelliteParam(CurPos, PosLLA, CurTime, BdsSystem, BdsEphVisible[i], NavData.GetGpsIono(), &BdsSatParam[index]);
-		GetSatelliteCN0(ListCount, PowerList, PowerControl.InitCN0, PowerControl.Adjust, &BdsSatParam[index]);
+		BdsSatParam[index].CalculateParam(CurPos, PosLLA, CurTime);
+		BdsSatParam[index].UpdateCN0(ListCount, PowerList);
 		SatParamList[TotalSatNumber ++] = &BdsSatParam[index];
 	}
 	for (i = 0; i < GalSatNumber; i ++)
 	{
 		index = GalEphVisible[i]->svid - 1;
-		GetSatelliteParam(CurPos, PosLLA, CurTime, GalileoSystem, GalEphVisible[i], NavData.GetGpsIono(), &GalSatParam[index]);
-		GetSatelliteCN0(ListCount, PowerList, PowerControl.InitCN0, PowerControl.Adjust, &GalSatParam[index]);
+		GalSatParam[index].CalculateParam(CurPos, PosLLA, CurTime);
+		GalSatParam[index].UpdateCN0(ListCount, PowerList);
 		SatParamList[TotalSatNumber ++] = &GalSatParam[index];
 	}
 }

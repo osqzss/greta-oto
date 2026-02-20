@@ -69,8 +69,8 @@ public:
 	void SetRegValue(int Address, U32 Value);
 	U32 GetRegValue(int Address);
 	void DoAcquisition();
-	void SetBufferParam(PSATELLITE_PARAM SatelliteParam[], int SatVisible, GNSS_TIME Time, NavBit *NavData[]);
-	void AssignChannelParam(PSATELLITE_PARAM SatelliteParam, GNSS_TIME Time, NavBit *NavData, int PrnSelect, AeBufferSatParam *SatParam);
+	void SetBufferParam(CSatelliteParam *SatelliteParam[], int SatVisible, GNSS_TIME Time, NavBit *NavData[]);
+	void AssignChannelParam(CSatelliteParam *SatelliteParam, GNSS_TIME Time, NavBit *NavData, int PrnSelect, AeBufferSatParam *SatParam);
 
 	static const double Bpsk2PeakValues[160];
 	static const double Boc2PeakValues[160];

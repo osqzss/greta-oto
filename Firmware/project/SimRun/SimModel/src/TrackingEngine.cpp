@@ -139,11 +139,11 @@ U32 CTrackingEngine::GetTEBuffer(unsigned int Address)
 // process one system
 // input parameter specify the system index
 // return 1 if any correlator in any channel has data ready
-int CTrackingEngine::ProcessData(int BlockSize, GNSS_TIME CurTime, PSATELLITE_PARAM SatParam[], int SatNumber)
+int CTrackingEngine::ProcessData(int BlockSize, GNSS_TIME CurTime, CSatelliteParam *SatParam[], int SatNumber)
 {
 	unsigned int EnableMask;
 	int i, j;
-	SATELLITE_PARAM *pSatParam;
+	CSatelliteParam *pSatParam;
 	int DumpDataI[16], DumpDataQ[16];
 	int CorIndex[16], CorPos[16];
 	int NHCode[16];
@@ -216,7 +216,7 @@ int CTrackingEngine::ProcessData(int BlockSize, GNSS_TIME CurTime, PSATELLITE_PA
 	return (CohDataReady != 0);
 }
 
-SATELLITE_PARAM* CTrackingEngine::FindSatParam(int ChannelId, PSATELLITE_PARAM SatParam[], int SatNumber)
+CSatelliteParam* CTrackingEngine::FindSatParam(int ChannelId, CSatelliteParam *SatParam[], int SatNumber)
 {
 	int i;
 	SignalSystem SystemSel = LogicChannel[ChannelId].SystemSel;
@@ -229,7 +229,7 @@ SATELLITE_PARAM* CTrackingEngine::FindSatParam(int ChannelId, PSATELLITE_PARAM S
 	case SignalB1C : system = BdsSystem; break;
 	case SignalL1C : system = GpsSystem; break;
 	default:
-		return (SATELLITE_PARAM *)0;
+		return (CSatelliteParam *)0;
 	}
 
 	for (i = 0; i < SatNumber; i ++)
@@ -237,5 +237,5 @@ SATELLITE_PARAM* CTrackingEngine::FindSatParam(int ChannelId, PSATELLITE_PARAM S
 		if (system == SatParam[i]->system && Svid == SatParam[i]->svid)
 			return SatParam[i];
 	}
-	return (SATELLITE_PARAM *)0;
+	return (CSatelliteParam *)0;
 }

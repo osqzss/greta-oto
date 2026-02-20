@@ -502,7 +502,7 @@ void CAcqEngine::DoAcquisition()
 	}
 }
 
-void CAcqEngine::SetBufferParam(PSATELLITE_PARAM SatelliteParam[], int SatVisible, GNSS_TIME Time, NavBit *NavData[])
+void CAcqEngine::SetBufferParam(CSatelliteParam *SatelliteParam[], int SatVisible, GNSS_TIME Time, NavBit *NavData[])
 {
 	int i;
 
@@ -521,7 +521,7 @@ void CAcqEngine::SetBufferParam(PSATELLITE_PARAM SatelliteParam[], int SatVisibl
 	}
 }
 
-void CAcqEngine::AssignChannelParam(PSATELLITE_PARAM pSatelliteParam, GNSS_TIME Time, NavBit *NavData, int PrnSelect, AeBufferSatParam *pSatAcqParam)
+void CAcqEngine::AssignChannelParam(CSatelliteParam *pSatelliteParam, GNSS_TIME Time, NavBit *NavData, int PrnSelect, AeBufferSatParam *pSatAcqParam)
 {
 	int i;
 	int FrameLength, BitLength, SecondaryLength;
@@ -562,7 +562,7 @@ void CAcqEngine::AssignChannelParam(PSATELLITE_PARAM pSatelliteParam, GNSS_TIME 
 		break;
 	}
 	// calculate TransmitTimeMs, TransmitTime as Time - TravelTime
-	TransmitTime = GetTransmitTime(Time, GetTravelTime(pSatelliteParam, 0));
+	TransmitTime = GetTransmitTime(Time, pSatelliteParam->GetTravelTime(0));
 	// calculate frame count and bit count
 //	if (PrnSelect == 0)
 		TransmitTime.MilliSeconds ++;	// time of NEXT code round
@@ -581,7 +581,7 @@ void CAcqEngine::AssignChannelParam(PSATELLITE_PARAM pSatelliteParam, GNSS_TIME 
 	if (PrnSelect != 0 && MilliSeconds != 0)
 		Time2CodeEnd += (BitLength - MilliSeconds);
 	pSatAcqParam->Time2CodeEnd = (Time2CodeEnd + 2.5 / SAMPLES_1MS) * 2046;	// convert to unit of 1/2 code chip with compensation of filter delay (2.5 samples)
-	pSatAcqParam->Doppler = GetDoppler(pSatelliteParam, 0);
+	pSatAcqParam->Doppler = pSatelliteParam->GetDoppler(0);
 	pSatAcqParam->Amplitude = pow(10, (pSatelliteParam->CN0 - 3000) / 2000.) * SIGMA0;
 	// generate bits
 	if (PrnSelect == 0)	// L1C/A, get one subframe data, to simplify, if bit passed end of subframe, round back to beginning

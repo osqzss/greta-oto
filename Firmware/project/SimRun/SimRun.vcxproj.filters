@@ -207,9 +207,6 @@
     <ClInclude Include="..\..\Baseband\inc\ChannelManager.h">
       <Filter>Baseband\inc</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Baseband\inc\ComposeOutput.h">
-      <Filter>Baseband\inc</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\common\ConstTable.h">
       <Filter>common</Filter>
     </ClInclude>
@@ -247,6 +244,15 @@
       <Filter>PVT\frontend\inc</Filter>
     </ClInclude>
     <ClInclude Include="SystemConfig.h" />
+    <ClInclude Include="..\..\PVT\inc\NmeaEncode.h">
+      <Filter>PVT\inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\PVT\inc\ComposeOutput.h">
+      <Filter>PVT\inc</Filter>
+    </ClInclude>
+    <ClInclude Include="SignalSim\inc\DelayModel.h">
+      <Filter>SignalSim\inc</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SignalSim\src\FNavBit.cpp">
@@ -375,9 +381,6 @@
     <ClCompile Include="..\..\Baseband\src\ChannelManager.c">
       <Filter>Baseband\src</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Baseband\src\ComposeOutput.c">
-      <Filter>Baseband\src</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Baseband\src\FirmwarePortal.c">
       <Filter>Baseband\src</Filter>
     </ClCompile>
@@ -437,6 +440,15 @@
       <Filter>PVT\frontend\src</Filter>
     </ClCompile>
     <ClCompile Include="SignalSim\src\MessageOutput.cpp">
+      <Filter>SignalSim\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\PVT\src\NmeaEncode.c">
+      <Filter>PVT\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\PVT\src\ComposeOutput.c">
+      <Filter>PVT\src</Filter>
+    </ClCompile>
+    <ClCompile Include="SignalSim\src\DelayModel.cpp">
       <Filter>SignalSim\src</Filter>
     </ClCompile>
   </ItemGroup>

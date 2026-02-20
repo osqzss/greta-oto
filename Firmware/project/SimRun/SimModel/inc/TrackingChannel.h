@@ -36,11 +36,11 @@ class CTrackingChannel
 public:
 	CTrackingChannel();
 	~CTrackingChannel();
-	void Initial(GNSS_TIME CurTime, PSATELLITE_PARAM pSatParam, NavBit *pNavData);
+	void Initial(GNSS_TIME CurTime, CSatelliteParam *pSatParam, NavBit *pNavData);
 	void SetChannelStates(unsigned int AddressOffset, U32 Value);
 	U32 GetChannelStates(unsigned int AddressOffset);
 	int FindSvid(unsigned int ConfigArray[], int ArraySize, U32 PrnConfig);
-	void GetCorrelationResult(GNSS_TIME CurTime, SATELLITE_PARAM *pSatParam, int DumpDataI[], int DumpDataQ[], int CorIndex[], int CorPos[], int NHCode[], int DataLength);
+	void GetCorrelationResult(GNSS_TIME CurTime, CSatelliteParam *pSatParam, int DumpDataI[], int DumpDataQ[], int CorIndex[], int CorPos[], int NHCode[], int DataLength);
 	int CalculateCounter(int BlockSize, int CorIndex[], int CorPos[], int NHCode[], int &DataLength);
 	void DecodeDataAcc(int DataValue);
 	double NarrowCompensation(int CorIndex, int NarrowFactor);

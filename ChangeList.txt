@@ -290,3 +290,6 @@
 		ComposeOutput.c and ComposeOutput.h moved to PVT directory
 	Bug fix
 		Change to single sideband tracking in HOLD3 state to prevent lock to side peak after signal recover
+2/19/2026
+	Function and feature change
+		Update behavior model following the latest change in SignalSim

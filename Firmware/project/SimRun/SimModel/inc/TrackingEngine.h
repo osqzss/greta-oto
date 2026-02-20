@@ -36,9 +36,9 @@ public:
 
 	void SetTEBuffer(unsigned int Address, U32 Value);
 	U32 GetTEBuffer(unsigned int Address);
-	int ProcessData(int BlockSize, GNSS_TIME CurTime, PSATELLITE_PARAM SatParam[], int SatNumber);
+	int ProcessData(int BlockSize, GNSS_TIME CurTime, CSatelliteParam *SatParam[], int SatNumber);
 
-	SATELLITE_PARAM* FindSatParam(int ChannelId, PSATELLITE_PARAM SatParam[], int SatNumber);
+	CSatelliteParam* FindSatParam(int ChannelId, CSatelliteParam *SatParam[], int SatNumber);
 
 	unsigned int TEBuffer[TE_BUFFER_SIZE/4];
 	CTrackingChannel LogicChannel[LOGICAL_CHANNEL_NUMBER];

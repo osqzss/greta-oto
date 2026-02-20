@@ -135,7 +135,6 @@
     <ClInclude Include="..\..\Baseband\inc\BBCommonFunc.h" />
     <ClInclude Include="..\..\Baseband\inc\BBDefines.h" />
     <ClInclude Include="..\..\Baseband\inc\ChannelManager.h" />
-    <ClInclude Include="..\..\Baseband\inc\ComposeOutput.h" />
     <ClInclude Include="..\..\Baseband\inc\FirmwarePortal.h" />
     <ClInclude Include="..\..\Baseband\inc\TaskManager.h" />
     <ClInclude Include="..\..\Baseband\inc\TaskQueue.h" />
@@ -147,8 +146,10 @@
     <ClInclude Include="..\..\PVT\frontend\inc\GalFrame.h" />
     <ClInclude Include="..\..\PVT\frontend\inc\GpsFrame.h" />
     <ClInclude Include="..\..\PVT\frontend\inc\TimeManager.h" />
+    <ClInclude Include="..\..\PVT\inc\ComposeOutput.h" />
     <ClInclude Include="..\..\PVT\inc\DataTypes.h" />
     <ClInclude Include="..\..\PVT\inc\GlobalVar.h" />
+    <ClInclude Include="..\..\PVT\inc\NmeaEncode.h" />
     <ClInclude Include="..\..\PVT\inc\PvtConst.h" />
     <ClInclude Include="..\..\PVT\inc\PvtEntry.h" />
     <ClInclude Include="..\..\PVT\inc\SupportPackage.h" />
@@ -164,6 +165,7 @@
     <ClInclude Include="SignalSim\inc\ConstVal.h" />
     <ClInclude Include="SignalSim\inc\Coordinate.h" />
     <ClInclude Include="SignalSim\inc\D1D2NavBit.h" />
+    <ClInclude Include="SignalSim\inc\DelayModel.h" />
     <ClInclude Include="SignalSim\inc\FNavBit.h" />
     <ClInclude Include="SignalSim\inc\GNavBit.h" />
     <ClInclude Include="SignalSim\inc\GnssTime.h" />
@@ -198,7 +200,6 @@
     <ClCompile Include="..\..\Baseband\src\AEManager.c" />
     <ClCompile Include="..\..\Baseband\src\BBCommonFunc.c" />
     <ClCompile Include="..\..\Baseband\src\ChannelManager.c" />
-    <ClCompile Include="..\..\Baseband\src\ComposeOutput.c" />
     <ClCompile Include="..\..\Baseband\src\FirmwarePortal.c" />
     <ClCompile Include="..\..\Baseband\src\TaskManager.c" />
     <ClCompile Include="..\..\Baseband\src\TaskQueue.c" />
@@ -219,7 +220,9 @@
     <ClCompile Include="..\..\PVT\frontend\src\GpsFrame.c" />
     <ClCompile Include="..\..\PVT\frontend\src\MsrProc.c" />
     <ClCompile Include="..\..\PVT\frontend\src\TimeManager.c" />
+    <ClCompile Include="..\..\PVT\src\ComposeOutput.c" />
     <ClCompile Include="..\..\PVT\src\GlobalVar.c" />
+    <ClCompile Include="..\..\PVT\src\NmeaEncode.c" />
     <ClCompile Include="..\..\PVT\src\PvtBasicFunc.c" />
     <ClCompile Include="SignalSim\src\Almanac.cpp" />
     <ClCompile Include="SignalSim\src\BCNav1Bit.cpp" />
@@ -231,6 +234,7 @@
     <ClCompile Include="SignalSim\src\ComplexNumber.cpp" />
     <ClCompile Include="SignalSim\src\Coordinate.cpp" />
     <ClCompile Include="SignalSim\src\D1D2NavBit.cpp" />
+    <ClCompile Include="SignalSim\src\DelayModel.cpp" />
     <ClCompile Include="SignalSim\src\FNavBit.cpp" />
     <ClCompile Include="SignalSim\src\GNavBit.cpp" />
     <ClCompile Include="SignalSim\src\GnssTime.cpp" />
