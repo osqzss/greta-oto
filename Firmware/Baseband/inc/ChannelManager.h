@@ -154,7 +154,6 @@ typedef struct
 
 #pragma pack(pop)	//restore original alignment
 
-extern CHANNEL_STATE ChannelStateArray[TOTAL_CHANNEL_NUMBER];
 void InitChannel(PCHANNEL_STATE pChannel);
 void ConfigChannel(PCHANNEL_STATE pChannel, int Doppler, int CodePhase16x);
 void SyncCacheWrite(PCHANNEL_STATE ChannelState);

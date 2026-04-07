@@ -293,3 +293,8 @@
 2/19/2026
 	Function and feature change
 		Update behavior model following the latest change in SignalSim
+4/6/2026
+	Function and feature change
+		An elegant way to enumerate channels
+	Bug fix
+		Add missing SystemConfig.h

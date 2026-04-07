@@ -21,7 +21,6 @@
 #include "BBCommonFunc.h"
 #include "PvtEntry.h"
 
-CHANNEL_STATE ChannelStateArray[TOTAL_CHANNEL_NUMBER];
 extern PTRACKING_CONFIG TrackingConfig[][4];
 extern int DoDataDecode(void* Param);
 
@@ -212,7 +211,7 @@ void SyncCacheRead(PCHANNEL_STATE ChannelState, int ReadContent)
 //   none
 void ProcessCohSum(int ChannelID, unsigned int OverwriteProtect)
 {
-	PCHANNEL_STATE ChannelState = &ChannelStateArray[ChannelID];
+	PCHANNEL_STATE ChannelState = GetChannelState(ChannelID);
 	int CurrentCor, CohCount;
 	int CompleteData;
 	unsigned int StateValue;
@@ -329,7 +328,7 @@ void ProcessCohData(PCHANNEL_STATE ChannelState)
 //   0
 int ComposeMeasurement(int ChannelID, PBB_MEASUREMENT Measurement)
 {
-	PCHANNEL_STATE ChannelState = &ChannelStateArray[ChannelID];
+	PCHANNEL_STATE ChannelState = GetChannelState(ChannelID);
 	PSTATE_BUFFER StateBuffer = &(ChannelState->StateBufferCache);
 	int CohCount, CurrentCor, CodeCount;
 	int MsCount, DataAccTime;

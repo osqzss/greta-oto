@@ -21,11 +21,16 @@ extern BB_MEASUREMENT BasebandMeasurement[TOTAL_CHANNEL_NUMBER];
 void TEInitialize();
 PCHANNEL_STATE IterateChannel(int First);
 U32 GetChannelEnable();
+PCHANNEL_STATE GetChannelState(int ch);
 void UpdateChannels();
 PCHANNEL_STATE GetAvailableChannel();
 void ReleaseChannel(int ChannelID);
 void CohSumInterruptProc();
 void MeasurementProc();
 int AdjustMeasInterval(void* Param);
+
+#define ENUMERATE_CHANNEL(ChannelMask, ch) \
+	for (ChannelMask = GetChannelEnable(); ch = __builtin_ctz(ChannelMask), ChannelMask; ChannelMask &= ~(1 << ch))
+
 
 #endif // __TE_MANAGER_H__

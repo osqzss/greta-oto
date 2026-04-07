@@ -6,6 +6,7 @@
 //
 //----------------------------------------------------------------------
 #include <string.h>
+#include "PlatformCtrl.h"
 #include "RegAddress.h"
 #include "BBDefines.h"
 #include "HWCtrl.h"
@@ -23,6 +24,7 @@ U32 ChannelOccupation;
 BB_MEASUREMENT BasebandMeasurement[TOTAL_CHANNEL_NUMBER];
 BB_MEAS_PARAM MeasurementParam;
 
+static CHANNEL_STATE ChannelStateArray[TOTAL_CHANNEL_NUMBER];
 static unsigned int NextInterval;	// interval in tick count to be used once (set by request task and reset to NominalMeasInterval by measurement ISR)
 static int ClockAdjustment;	// extra receiver clock adjustment in ms to real interval (set by request task and clear to 0 by measurement ISR)
 
@@ -50,29 +52,6 @@ void TEInitialize()
 	}
 }
 
-//*************** Interate each active TE Channel ****************
-//* this function will iterate each TE channel and return next active channel
-// Parameters:
-//   First: whether this is first iteration
-// Return value:
-//   Next active channel
-PCHANNEL_STATE IterateChannel(int First)
-{
-	static int ch = 0;
-	PCHANNEL_STATE ChannelState = NULL;
-
-	if (First)
-		ch = 0;
-	for (; ch < TOTAL_CHANNEL_NUMBER; ch ++)
-		if (ChannelOccupation & (1 << ch))
-		{
-			ChannelState = ChannelStateArray + ch;
-			ch ++;
-			break;
-		}
-	return ChannelState;
-}
-
 //*************** Get channel enable mask ****************
 // Parameters:
 //   none
@@ -83,6 +62,16 @@ U32 GetChannelEnable()
 	return ChannelOccupation;
 }
 
+//*************** Get pointer to channel state structure ****************
+// Parameters:
+//   ch: channel index
+// Return value:
+//   pointer to corresponding channel
+PCHANNEL_STATE GetChannelState(int ch)
+{
+	return ChannelStateArray + ch;
+}
+
 //*************** Update all channel state in hardware synchronized from cache ****************
 // Parameters:
 //   none
@@ -90,13 +79,12 @@ U32 GetChannelEnable()
 //   none
 void UpdateChannels()
 {
-	int i;
+	int ch;
 	U32 ChannelMask;
 
-	for (i = 0, ChannelMask = 1; i < TOTAL_CHANNEL_NUMBER; i ++, ChannelMask <<= 1)
+	ENUMERATE_CHANNEL(ChannelMask, ch)
 	{
-		if (ChannelOccupation & ChannelMask)
-			SyncCacheWrite(ChannelStateArray + i);
+		SyncCacheWrite(GetChannelState(ch));
 	}
 }
 
@@ -107,17 +95,13 @@ void UpdateChannels()
 //   pointer to corresponding channel state structure, or null pointer if no available channel
 PCHANNEL_STATE GetAvailableChannel()
 {
-	int i;
+	int ch;
 
-	for (i = 0; i < TOTAL_CHANNEL_NUMBER; i ++)
-	{
-		if ((ChannelOccupation & (1 << i)) == 0)
-		{
-			ChannelOccupation |= (1 << i);
-			return ChannelStateArray + i;
-		}
-	}
-	return (PCHANNEL_STATE)0;
+	if (ChannelOccupation == 0xffffffff)
+		return (PCHANNEL_STATE)0;
+	ch = __builtin_ctz(~ChannelOccupation);
+	ChannelOccupation |= (1 << ch);
+	return ChannelStateArray + ch;
 }
 
 //*************** Release a channel and stop track ****************
@@ -162,17 +146,14 @@ void CohSumInterruptProc()
 //   none
 void MeasurementProc()
 {
-	int i, ch_num = 0;
+	int ch;
 	U32 ChannelMask;
 	PBB_MEASUREMENT Msr;
 
-	for (i = 0, ChannelMask = 1; i < TOTAL_CHANNEL_NUMBER; i ++, ChannelMask <<= 1)
+	ENUMERATE_CHANNEL(ChannelMask, ch)
 	{
-		if (ChannelOccupation & ChannelMask)
-		{
-			Msr = &BasebandMeasurement[i];
-			ComposeMeasurement(i, Msr);
-		}
+		Msr = &BasebandMeasurement[ch];
+		ComposeMeasurement(ch, Msr);
 	}
 
 	// assign measurement parameter structure and add process task to PostMeasTask queue

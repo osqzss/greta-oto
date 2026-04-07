@@ -38,6 +38,7 @@ void MutexGive(U32 Mutex);
 
 int __builtin_popcount(unsigned int data);
 int __builtin_clz(unsigned int data);
+int __builtin_ctz(unsigned int data);
 
 // saved parameter read/write
 int LoadParameters(int Offset, void *Buffer, int Size);

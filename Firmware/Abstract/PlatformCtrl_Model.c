@@ -48,6 +48,18 @@ int __builtin_clz(unsigned int data)
 	return 32 - __builtin_popcount(data);
 }
 
+int __builtin_ctz(unsigned int data)
+{
+	if (data == 0)
+		return 32;
+	data |= data << 1;
+	data |= data << 2;
+	data |= data << 4;
+	data |= data << 8;
+	data |= data << 16;
+	return 32 - __builtin_popcount(data);
+}
+
 #endif
 
 //*************** Load parameter (ephemeris/almanac, receiver position etc.) ****************

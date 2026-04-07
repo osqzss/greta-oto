@@ -388,7 +388,8 @@ PositionType GetPosMethod(PCHANNEL_STATUS ObservationList[], int *Count, Positio
 
 void UpdateSatellitesStates()
 {
-	int i;
+	int i, ch;
+	unsigned int ChannelMask;
 	PCHANNEL_STATE ChannelState;
 
 	for (i = 0; i < TOTAL_GPS_SAT_NUMBER; i ++)
@@ -398,16 +399,15 @@ void UpdateSatellitesStates()
 	for (i = 0; i < TOTAL_GAL_SAT_NUMBER; i ++)
 		g_GalileoSatelliteInfo[i].CN0 = 0;
 
-	ChannelState = IterateChannel(1);
-	while (ChannelState)
+	ENUMERATE_CHANNEL(ChannelMask, ch)
 	{
+		ChannelState = GetChannelState(ch);
 		if (SIGNAL_IS_L1CA(ChannelState->Signal))
 			g_GpsSatelliteInfo[ChannelState->Svid-1].CN0 = ChannelState->CN0;
 		else if (SIGNAL_IS_B1C(ChannelState->Signal))
 			g_BdsSatelliteInfo[ChannelState->Svid-1].CN0 = ChannelState->CN0;
 		else if (SIGNAL_IS_E1(ChannelState->Signal))
 			g_GalileoSatelliteInfo[ChannelState->Svid-1].CN0 = ChannelState->CN0;
-		ChannelState = IterateChannel(0);
 	}
 }
 
