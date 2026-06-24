@@ -27,10 +27,16 @@ set_property target_language Verilog [current_project]
 # -----------------------------------------------------------------------
 # Add all Verilog RTL sources
 # RTL source directories (recursive glob picks up sub-directories)
+#
+# NOTE: backend_wrapper is intentionally NOT glob-added. Its generic wrappers
+# clock_gating.v (gated_clock_wrapper) and rom_wrapper.v (the three ROM wrappers)
+# are REPLACED by the Xilinx versions in rtl/xilinx/ (xilinx_clk_gate.v /
+# xilinx_rom_wrapper.v). Adding the generic ones would create duplicate design
+# units (HDL 9-3756 / filemgmt 20-1318). Only mem_wrapper.v (the RAM wrappers,
+# which have no Xilinx-specific replacement) is added explicitly below.
 # -----------------------------------------------------------------------
 set rtl_dirs [list \
     "$repo_root/BB_HW/rtl/acquire_engine"   \
-    "$repo_root/BB_HW/rtl/backend_wrapper"  \
     "$repo_root/BB_HW/rtl/correlation"      \
     "$repo_root/BB_HW/rtl/gnss_top"         \
     "$repo_root/BB_HW/rtl/mem_arbiter"      \
@@ -42,6 +48,10 @@ set rtl_dirs [list \
 foreach d $rtl_dirs {
     add_files -norecurse [glob -directory $d *.v]
 }
+
+# RAM wrappers only from backend_wrapper (ROM/clock-gating wrappers excluded --
+# see note above; clock_gating.v and rom_wrapper.v are left out of the project).
+add_files -norecurse "$repo_root/BB_HW/rtl/backend_wrapper/mem_wrapper.v"
 
 # Top-level address defines (`define macros used across all RTL modules).
 # The core RTL files do NOT `include "address.v" individually; they rely on
@@ -60,9 +70,17 @@ set_property include_dirs "$repo_root/BB_HW/rtl" [current_fileset]
 set_property top gnss_top_axi [current_fileset]
 
 # -----------------------------------------------------------------------
-# ROM initialisation files (.coe)
+# ROM initialisation files
+#   .mem  -> used by xpm_memory_sprom MEMORY_INIT_FILE (synthesis $readmem).
+#           Adding them to the project puts rom_init/ on the search path so
+#           synthesis can resolve the relative "*.mem" names (otherwise:
+#           CRITICAL WARNING [Synth 8-4445] could not open $readmem data file).
+#   .coe  -> kept for the Block Memory Generator fallback (not used by xpm).
 # -----------------------------------------------------------------------
 add_files -norecurse [list \
+    "$repo_root/BB_HW/rom_init/b1c_legendre.mem"  \
+    "$repo_root/BB_HW/rom_init/l1c_legendre.mem"  \
+    "$repo_root/BB_HW/rom_init/memory_code.mem"   \
     "$repo_root/BB_HW/rom_init/b1c_legendre.coe"  \
     "$repo_root/BB_HW/rom_init/l1c_legendre.coe"  \
     "$repo_root/BB_HW/rom_init/memory_code.coe"   \
@@ -76,9 +94,19 @@ set_property used_in_simulation false \
 
 # -----------------------------------------------------------------------
 # XDC constraints
+#   - constraints_zybo_z7.xdc       : pins + create_clock (synthesis + impl)
+#   - constraints_zybo_z7_impl.xdc  : adc_clk<->clk_fpga_0 async clock group.
+#       Implementation-ONLY (USED_IN_SYNTHESIS false): clk_fpga_0 does not exist
+#       during synthesis (PS7 is a black box), so applying it at synthesis emits
+#       [Vivado 12-4739], and a Tcl guard is illegal in an XDC ([Designutils
+#       20-1307]). Restricting it to implementation avoids both.
 # -----------------------------------------------------------------------
 add_files -fileset constrs_1 -norecurse \
     "$repo_root/BB_HW/rtl/xilinx/constraints_zybo_z7.xdc"
+add_files -fileset constrs_1 -norecurse \
+    "$repo_root/BB_HW/rtl/xilinx/constraints_zybo_z7_impl.xdc"
+set_property used_in_synthesis false \
+    [get_files "$repo_root/BB_HW/rtl/xilinx/constraints_zybo_z7_impl.xdc"]
 
 # -----------------------------------------------------------------------
 # Create block design (IP Integrator)

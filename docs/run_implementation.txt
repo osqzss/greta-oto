@@ -1,0 +1,30 @@
+Implementation
+Place Design
+[Place 30-120] Sub-optimal placement for a BUFG-BUFG cascade pair. If this sub optimal condition is acceptable for this design, you may use the CLOCK_DEDICATED_ROUTE constraint in the .xdc file to demote this message to a WARNING. However, the use of this override is highly discouraged. These examples can be used directly in the .xdc file to override this clock rule.
+	< set_property CLOCK_DEDICATED_ROUTE FALSE [get_nets gnss_zynq_i/processing_system7_0/inst/FCLK_CLK0] >
+
+	Clock Rule: rule_cascaded_bufg
+	Status: FAILED
+	Rule Description: Cascaded bufg (bufg->bufg) must be adjacent and cyclic
+
+	gnss_zynq_i/processing_system7_0/inst/buffer_fclk_clk_0.FCLK_CLK_0_BUFG (BUFG.O) is provisionally placed by clockplacer on BUFGCTRL_X0Y31
+	gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_ae_top/u_ae_core/u_gated_clock/u_bufgce (BUFGCTRL.I0) is provisionally placed by clockplacer on BUFGCTRL_X0Y30
+	gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/gated_clock_u1/u_bufgce (BUFGCTRL.I0) is provisionally placed by clockplacer on BUFGCTRL_X0Y29
+	gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/gated_clock_u2/u_bufgce (BUFGCTRL.I0) is provisionally placed by clockplacer on BUFGCTRL_X0Y28
+	gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/gated_clock_u3/u_bufgce (BUFGCTRL.I0) is provisionally placed by clockplacer on BUFGCTRL_X0Y27
+	gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/gated_clock_u4/u_bufgce (BUFGCTRL.I0) is provisionally placed by clockplacer on BUFGCTRL_X0Y26
+
+	The above error could possibly be related to other connected instances. Following is a list of 
+	all the related clock rules and their respective instances.
+
+	Clock Rule: rule_ps7_bufg
+	Status: PASS 
+	Rule Description: A PS7 driving a BUFG must be placed on the same half side (top/bottom) of the device
+	gnss_zynq_i/processing_system7_0/inst/PS7_i (PS7.FCLKCLK[0]) is locked to PS7_X0Y0
+	gnss_zynq_i/processing_system7_0/inst/buffer_fclk_clk_0.FCLK_CLK_0_BUFG (BUFG.I) is provisionally placed by clockplacer on BUFGCTRL_X0Y31
+
+
+[Place 30-99] Placer failed with error: 'IO Clock Placer failed'
+Please review all ERROR, CRITICAL WARNING, and WARNING messages during placement to understand the cause for failure.
+
+[Common 17-69] Command failed: Placer could not place all instances

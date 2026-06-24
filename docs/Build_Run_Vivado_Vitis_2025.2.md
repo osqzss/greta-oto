@@ -10,6 +10,33 @@
 
 ---
 
+## 現在の進捗（2026-06-24 時点）
+
+| フェーズ | 状態 |
+|---|---|
+| §1 Vivado プロジェクト生成 | ✅ 完了（BD・SmartConnect・TTC0・アドレス 0x43C00000） |
+| §2 Run Synthesis | ✅ 完了（警告のみ。§7-9 で分類・対処済み） |
+| §2 Run Implementation | ⏳ **次回再開ポイント**。BUFG カスケード対処（§7-10）を入れて再実装する |
+| §2.1 タイミング確認 | ⏳ 実装後に WNS/WHS を確認（特に Hold） |
+| §3 ハードウェアエクスポート | 未 |
+| §4 Vitis プラットフォーム＋アプリ | 未 |
+| §5 実機動作確認 | 未 |
+
+### 次回セッションの再開手順
+1. **このファイル（`Build_Run_Vivado_Vitis_2025.2.md`）を読み込む** ← 最新の作業状態・全トラブル対処が
+   ここに集約されている。まずこれ。
+2. 補足が必要なら [`Session_Handoff_Vivado.md`](Session_Handoff_Vivado.md)（引継ぎ）と
+   [`Design_Document.md`](Design_Document.md)（設計・レジスタマップ）を参照。
+3. プロジェクトを再生成して再実装:
+   ```tcl
+   close_project -quiet
+   source D:/FPGA/greta-oto/vivado/create_project.tcl
+   ```
+   → Run Synthesis → **Run Implementation** → §2.1 のタイミング確認。
+4. 直近の実装ログは `docs/run_implementation.txt`、合成ログは `docs/run_synthesis.txt`。
+
+---
+
 ## 0. 前提・事前確認
 
 | 項目 | 内容 |
@@ -138,6 +165,39 @@ vivado gnss_zynq\gnss_zynq.xpr
 - タイミング違反が出たら、レポート上の実クロック名が `clk_fpga_0` と一致しているか確認
   （不一致なら `constraints_zybo_z7.xdc` を実名に合わせる。Handoff トラブル3）。
 - `gnss_top.v` の `wire ae_ram_en;` 未使用警告は無害（§9.1）。
+
+### 2.1 実装後のタイミング確認手順（重要）
+
+§7-10 の `CLOCK_DEDICATED_ROUTE FALSE` 緩和でクロックスキューが増えるため、**実装後に必ずタイミングを
+確認**する。エクスポート（§3）に進む前のゲート。
+
+**GUI で確認:**
+1. 左パネル **Implementation → Open Implemented Design** を開く。
+2. **Reports → Timing → Report Timing Summary**（または `Window → Timing Summary`）。
+3. **Design Timing Summary** の以下が**すべて正（または "met"）**であること:
+   - **WNS**（Worst Negative Slack, セットアップ）≥ 0
+   - **WHS**（Worst Hold Slack, ホールド）≥ 0 ← 今回の緩和で特に注意
+   - **TNS / THS**（合計負スラック）= 0
+   - **WPWS**（Pulse Width Slack）≥ 0
+4. 上部に **"All user specified timing constraints are met"** と出れば合格。
+
+**Tcl で確認（コンソール）:**
+```tcl
+open_run impl_1
+report_timing_summary -delay_type min_max -report_unconstrained \
+    -max_paths 10 -file impl_timing_summary.rpt
+# 主要数値だけ素早く見る:
+puts "WNS=[get_property SLACK [get_timing_paths -setup -max_paths 1]]"
+puts "WHS=[get_property SLACK [get_timing_paths -hold  -max_paths 1]]"
+```
+
+**判定と対処:**
+- すべて met → §3 ハードウェアエクスポートへ進む。
+- **Hold(WHS) 違反** → クロック緩和の副作用の可能性大。§7-10 の代替案（`BUFGCE→BUFHCE`、または
+  クロックイネーブル方式）を検討。まず違反パスが gated clock 由来か `report_timing -hold` で確認。
+- **Setup(WNS) 違反** → 100MHz に対する論理段数の問題。違反パスを `report_timing -setup` で特定。
+- **adc_clk ↔ clk_fpga_0 のパスが違反** → §2 確認ポイントの通り `set_clock_groups` の async 除外が
+  効いているか（クロック名一致）を確認（§7-8(c) / §8.2）。
 
 ---
 
@@ -324,7 +384,113 @@ vivado gnss_zynq\gnss_zynq.xpr
   告知はない。SSIN/MISO の Tie-off 用途はこのまま `xlconstant` を使用（置き換え不要）。AMD は
   サンプルでインライン HDL 定数へ移行しつつあるが、BD のドロップイン代替IPではなく RTL 直書きの方式。
 
+### 7-8. 合成（Run Synthesis）の CRITICAL WARNING 3種
+
+初回 Run Synthesis で出た3種。いずれもスクリプト／RTL 側で対処済み。
+
+**(a) モジュール二重定義（合成 `[Synth 8-9873]` / プロジェクト `[HDL 9-3756]` `[filemgmt 20-1318]`）**
+- **原因:** 汎用版 `backend_wrapper/mem_wrapper.v`・`clock_gating.v` と、Xilinx版
+  `xilinx/xilinx_rom_wrapper.v`・`xilinx_clk_gate.v` が**同名モジュールを二重定義**。両ディレクトリを
+  glob していたため。compile 順で Xilinx 版が `(Active)` になるが非決定的。
+- **`ifdef` ガードでは不十分:** 当初 `` `ifndef XILINX_BACKEND `` ＋ `verilog_define XILINX_BACKEND` で
+  対処したが、これは**合成**にしか効かない。プロジェクトのソース階層解析（`filemgmt`）は `ifdef` を
+  評価せずモジュール宣言を構文的に拾うため、`[HDL 9-3756]` / `[filemgmt 20-1318]` が**プロジェクト
+  作成時点で**残ってしまう。
+- **対処（最終）— 物理的に重複を排除:** 汎用版をプロジェクトに含めない構成へ変更（ファイル自体は
+  ディスク上に温存）。
+  - `clock_gating.v`: Vivado プロジェクトに追加しない（`xilinx_clk_gate.v` が `gated_clock_wrapper` を提供）。
+  - `mem_wrapper.v`: 3つの汎用 ROM ラッパーを別ファイル `backend_wrapper/rom_wrapper.v` へ**移設**し、
+    `mem_wrapper.v` には RAM ラッパーのみ残す。`rom_wrapper.v` はプロジェクトに追加しない
+    （`xilinx_rom_wrapper.v` が xpm 版を提供）。
+  - `create_project.tcl`: `backend_wrapper` を一括 glob から外し、`mem_wrapper.v` だけ明示 `add_files`。
+    `verilog_define XILINX_BACKEND` は不要になり削除。
+  - これで合成・プロジェクト階層の双方で重複が消える。汎用版（`clock_gating.v` / `rom_wrapper.v`）は
+    非Xilinx／RTLシミュレーション用にディスク上へ残置。
+
+**(b) `[Synth 8-4445] could not open $readmem data file '*.mem'`**
+- **原因:** `create_project.tcl` が `.coe` のみ追加し、**`.mem` を未追加**だった。xpm_memory_sprom の
+  `MEMORY_INIT_FILE` は `.mem`（相対名）を参照するため、探索パスに無く読めなかった。
+- **対処:** `create_project.tcl` に `b1c_legendre.mem` / `l1c_legendre.mem` / `memory_code.mem` を
+  `add_files` で追加し、`rom_init/` を探索パスに乗せた。なお GPS L1CA は C/A コード（LFSR生成）を使い
+  これらの ROM（L1C/B1C/Galileo/BDS用）に依存しないため、L1CA 確認だけなら未ロードでも基本動作は可能。
+- **補足:** それでも解決しない場合は §1 の通り `.mem` を `vivado/gnss_zynq/` へコピー、または
+  `xilinx_rom_wrapper.v` の `MEMORY_INIT_FILE` を絶対パスにする。
+
+**(c) `[Vivado 12-4739] set_clock_groups: No valid object(s) found for ... clk_fpga_0`**
+- **原因:** 合成時は PS7 がブラックボックスで `clk_fpga_0`(FCLK_CLK0) が未定義。`get_clocks` が空を返し
+  `set_clock_groups` が空振り。実装時には存在するので、合成時のみの警告。
+- **対処（最終）:** この async clock-group 制約を**実装専用の別ファイル
+  `constraints_zybo_z7_impl.xdc`** に分離し、`create_project.tcl` で `used_in_synthesis false` を設定。
+  合成では処理されず、`clk_fpga_0` が存在する実装時のみ適用される。
+  - **※ Tcl の `if` ガードは XDC では使えない**（`[Designutils 20-1307] Command 'if' is not
+    supported in the xdc constraint file`）。当初 `if {[llength ...]}` でガードしたがこのエラーになり、
+    最終的にファイル分離方式へ変更した。
+  - `adc_clk` の `create_clock` は本体 `constraints_zybo_z7.xdc`（合成＋実装）側に残す。
+- **要確認:** 実装後のタイミングレポートで `clk_fpga_0` が実際に存在し、async 除外が効いているか確認
+  （クロック名が異なる場合は impl 用 XDC の名前を実名に合わせる。§2 確認ポイント / Handoff トラブル3）。
+
 > 修正後は `close_project -quiet` してから再度 `source create_project.tcl` を実行する（§1 の再生成メモ参照）。
+
+### 7-9. Run Synthesis の警告（合格・分類）
+
+合成は **警告のみで完走**。内容を3分類で整理。
+
+**(1) 移植ファイル側 — 修正済み**
+- `[Synth 8-6901] identifier 'host_d4rd' is used before its declaration`（`gnss_top_axi.v`）
+  → `host_d4rd` の `wire [31:0]` 宣言を read FSM の前へ移動。機能影響なし（元々32bitで正しく解決
+  されていたが、宣言順を直し警告解消）。
+- `[Netlist 29-345] SIM_DEVICE on BUFGCE ... 'ULTRASCALE' ... changed to '7SERIES'`（`xilinx_clk_gate.v`）
+  → BUFGCE に `#(.SIM_DEVICE("7SERIES"))` を明示。合成は元々自動補正されていたが、機能シミュレーションを
+  ハードと一致させるため明示。
+
+**(2) 意図した設計／IP内部 — 対処不要**
+- `port 'pps_irq' ... unconnected` / `gnss_top_axi_0 ... 30 connections declared, but only 29 given`
+  → `pps_irq`（PPS割り込み）は未接続のままにしている。`irq`→`IRQ_F2P[0]` のみ使用。PPS割り込みを
+  使うなら将来 `IRQ_F2P[1]` 等へ接続（Design_Document §4.2）。現状は無害。
+- `Port spi0_ss_o[2] ... unconnected or has no load` → `spi0_ss_o[2:0]` のうち `[0]=CS_A` のみ使用
+  （Design_Document §9.6）。想定どおり。
+- `xpm_memory_sprom ... 'injectsbiterra' unconnected` / `11 connections declared, but only 7 given`
+  → xpm のオプション ECC ポート未接続。xpm の通常動作。
+- SmartConnect 内部（`psr_aclk ... mb_reset unconnected`、`aresetn_out ... no driver`、
+  `FDRE_inst is unused and will be removed`）→ 自動生成IPの内部。無害。
+- `Auto Incremental Compile: No reference checkpoint`（初回実行）、
+  `Unused sequential element sample_in_r2_reg was removed`（最適化）→ 情報。
+
+**(3) コア RTL の既存警告（今回の移植由来ではない・要監視）**
+これらは上流 greta-oto のコア RTL（未変更）に元からあるもの。参照設計で動作実績がある前提では
+基本的に無害だが、実機検証時に挙動を確認する。
+- `[Synth 8-3848] Net te_rd_buffer ... does not have driver`（`tracking_engine.v:37`）
+  → 駆動なしネット。TE バッファ読み出し（§5-3 / レジスタ 0x2000〜）の挙動を実機で確認。
+- `[Synth 8-327] inferring latch for 'FSM_sequential_next_state_reg'`（`coherent_sum.v:60`）
+  → FSM 次状態ロジックのラッチ推論。コヒーレント積算の動作を実機/シミュレーションで確認。
+- `[Synth 8-7137] te_noise_config_reg has both Set and reset with same priority`
+  （`tracking_engine.v:102`）→ シミュレーション不一致の可能性の注意喚起。HW では通常無害。
+
+> いずれもエラーなし。(1) を修正のうえ再合成し、Run Implementation → Generate Bitstream に進んで問題ない。
+
+### 7-10. Run Implementation の配置エラー（BUFG→BUFGCE カスケード）
+
+- **症状:** `[Place 30-120] ... rule_cascaded_bufg ... FAILED`（`Cascaded bufg (bufg->bufg) must be
+  adjacent and cyclic`）→ `[Place 30-99] IO Clock Placer failed` → `[Common 17-69] Placer could not
+  place all instances` で実装が停止。
+- **原因:** PS7 `FCLK_CLK0` が **BUFG** でバッファされ、その出力が ae_top / tracking_engine の
+  **5つの BUFGCE**（クロックゲーティング `xilinx_clk_gate.v`）入力に入る → **BUFG→BUFGCE カスケード**。
+  7-series は「カスケードした BUFG は隣接配置必須」で、1つの FCLK BUFG に 5つの BUFGCE を隣接させられず失敗。
+  ASIC 流クロックゲーティングを FPGA に移植する際の典型的摩擦。
+- **対処:** `constraints_zybo_z7_impl.xdc` に下記を追加し、BUFGCE のクロック入力を専用ルート要件から
+  外して一般ルーティングを許可（実装専用。ネット名は placer メッセージが提示する階層名）:
+  ```tcl
+  set_property CLOCK_DEDICATED_ROUTE FALSE \
+      [get_nets gnss_zynq_i/processing_system7_0/inst/FCLK_CLK0]
+  ```
+  全ゲーテッドクロックは同一 100MHz FCLK 由来のイネーブル的用途のため、この緩和は妥当。
+- **要確認:** 緩和は一般ルーティングを使うためクロックスキューが増える。**実装後のタイミングレポートで
+  WNS/WHS（特に保持時間）が満たされているか必ず確認**すること。
+- **代替案（タイミング/スキューが問題化した場合）:**
+  - `BUFGCE` を **`BUFHCE`（リージョナルクロックバッファ＋CE）** に変更（BUFG→BUFH は正規トポロジで
+    カスケード扱いにならない）。ただしゲーテッド論理が単一クロックリージョンに収まる必要あり。
+  - クロックゲーティングを廃し**クロックイネーブル（CE）方式**へ書き換え（FPGA 本来の手法。コア RTL の
+    広範な改修が必要）。
 
 ---
 

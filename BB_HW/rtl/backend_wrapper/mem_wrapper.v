@@ -188,59 +188,9 @@ spram #(.RAM_SIZE(6144), .ADDR_WIDTH(13), .DATA_WIDTH(32)) u_ram
 
 endmodule
 
-// single port ROM for B1C Legendre code
-module b1c_legendre_rom_640x16_wrapper
-(
-	input clk,
-	input rd,
-	input [9:0] addr,
-	output [15:0] rdata
-);
-
-sprom #(.ROM_SIZE(640), .ADDR_WIDTH(10), .DATA_WIDTH(16)) u_rom
-(
-	.clk   (clk    ),
-	.rd    (rd     ),
-	.addr  (addr   ),
-	.rdata (rdata  )
-);
-
-endmodule
-
-// single port ROM for L1C Legendre code
-module l1c_legendre_rom_640x16_wrapper
-(
-	input clk,
-	input rd,
-	input [9:0] addr,
-	output [15:0] rdata
-);
-
-sprom #(.ROM_SIZE(640), .ADDR_WIDTH(10), .DATA_WIDTH(16)) u_rom
-(
-	.clk   (clk    ),
-	.rd    (rd     ),
-	.addr  (addr   ),
-	.rdata (rdata  )
-);
-
-endmodule
-
-// single port ROM for Galileo memory code
-module memory_code_rom_12800x32_wrapper
-(
-	input clk,
-	input rd,
-	input [13:0] addr,
-	output [31:0] rdata
-);
-
-sprom #(.ROM_SIZE(12800), .ADDR_WIDTH(14), .DATA_WIDTH(32)) u_rom
-(
-	.clk   (clk    ),
-	.rd    (rd     ),
-	.addr  (addr   ),
-	.rdata (rdata  )
-);
-
-endmodule
+// NOTE: the three single-port ROM wrappers (b1c_legendre / l1c_legendre /
+// memory_code) used to live here. For the Vivado flow they are replaced by the
+// xpm versions in rtl/xilinx/xilinx_rom_wrapper.v. To keep the generic versions
+// available for non-Xilinx targets WITHOUT creating duplicate design units in
+// the Vivado project, they were moved to rtl/backend_wrapper/rom_wrapper.v
+// (that file is simply not added to the Vivado project; see create_project.tcl).

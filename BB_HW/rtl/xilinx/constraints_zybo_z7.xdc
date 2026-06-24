@@ -29,11 +29,12 @@ set_property PACKAGE_PIN Y7        [get_ports adc_clk]
 set_property IOSTANDARD  LVCMOS33  [get_ports adc_clk]
 create_clock -period 83.333 -name adc_clk [get_ports adc_clk]
 
-# Declare adc_clk asynchronous to the Zynq FCLK.
-# clk_fpga_0 is the name Vivado assigns to FCLK_CLK0 in the PS7 block design.
-set_clock_groups -asynchronous \
-    -group [get_clocks clk_fpga_0] \
-    -group [get_clocks adc_clk]
+# NOTE: the adc_clk <-> clk_fpga_0 asynchronous clock-group constraint lives in
+# a separate, implementation-only file: constraints_zybo_z7_impl.xdc.
+# Reason: clk_fpga_0 (PS7 FCLK_CLK0) does not exist during synthesis of this top
+# (PS7 is a black box), so applying it here would emit [Vivado 12-4739]. A Tcl
+# guard (if/llength) is not allowed in an XDC either ([Designutils 20-1307]).
+# Keeping it impl-only is the clean way to avoid both.
 
 # -----------------------------------------------------------------------
 # MAX2771 chip A I/Q data  (JC)

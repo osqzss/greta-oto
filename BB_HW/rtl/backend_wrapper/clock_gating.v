@@ -9,7 +9,10 @@
 // this file contains wrappers of clock gating model
 // the wrapper implements the behavior model of clock gating
 // back-end may replace this wrappers with gated clock unit
-
+//
+// REPLACED by rtl/xilinx/xilinx_clk_gate.v (BUFGCE) for the Vivado flow; this
+// generic file is intentionally NOT added to the Vivado project (see
+// vivado/create_project.tcl) to avoid a duplicate gated_clock_wrapper.
 module gated_clock_wrapper
 (
 output clk_out,	// output of gated clock

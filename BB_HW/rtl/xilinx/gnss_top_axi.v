@@ -154,6 +154,11 @@ localparam RD_IDLE = 2'd0, RD_EXEC = 2'd1, RD_WAIT = 2'd2, RD_RESP = 2'd3;
 reg [1:0]  rd_state;
 reg [13:0] rd_addr_reg;
 
+// gnss_top read data (driven by the gnss_top instance below). Declared here,
+// ahead of the read FSM that consumes it, to avoid [Synth 8-6901]
+// "used before its declaration".
+wire [31:0] host_d4rd;
+
 always @(posedge clk or negedge rst_b) begin
     if (!rst_b) begin
         rd_state      <= RD_IDLE;
@@ -201,7 +206,7 @@ wire host_wr  = wr_fire;
 wire host_rd  = (rd_state == RD_EXEC);
 wire [13:0] host_addr = wr_fire ? wr_addr : rd_addr_reg;
 wire [31:0] host_d4wt = wr_data;
-wire [31:0] host_d4rd;
+// host_d4rd is declared earlier (before the read FSM); driven by u_gnss_top below.
 
 //----------------------------------------------------------
 // gnss_top instance

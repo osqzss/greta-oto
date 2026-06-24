@@ -25,8 +25,12 @@ INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/AMDDesignTools/2025.2/Vi
 # set_property file_type        "Verilog Header" [get_files "$repo_root/BB_HW/rtl/address.v"]
 # set_property is_global_include true             [get_files "$repo_root/BB_HW/rtl/address.v"]
 # set_property include_dirs "$repo_root/BB_HW/rtl" [current_fileset]
+# set_property verilog_define {XILINX_BACKEND} [current_fileset]
 # set_property top gnss_top_axi [current_fileset]
 # add_files -norecurse [list \
+#     "$repo_root/BB_HW/rom_init/b1c_legendre.mem"  \
+#     "$repo_root/BB_HW/rom_init/l1c_legendre.mem"  \
+#     "$repo_root/BB_HW/rom_init/memory_code.mem"   \
 #     "$repo_root/BB_HW/rom_init/b1c_legendre.coe"  \
 #     "$repo_root/BB_HW/rom_init/l1c_legendre.coe"  \
 #     "$repo_root/BB_HW/rom_init/memory_code.coe"   \
@@ -84,26 +88,6 @@ INFO: [Ipptcl 7-1463] No Compatible Board Interface found. Board Tab not created
 ## connect_bd_net \
 ##     [get_bd_pins proc_sys_reset_0/peripheral_aresetn] \
 ##     [get_bd_pins axi_smc_0/aresetn]
-## connect_bd_intf_net \
-##     [get_bd_intf_pins processing_system7_0/M_AXI_GP0] \
-##     [get_bd_intf_pins axi_smc_0/S00_AXI]
-## connect_bd_net \
-##     [get_bd_pins processing_system7_0/FCLK_CLK0] \
-##     [get_bd_pins processing_system7_0/M_AXI_GP0_ACLK]
-## create_bd_cell -type module -reference gnss_top_axi gnss_top_axi_0
-WARNING: [IP_Flow 19-587] [HDL Parser] HDL port or parameter 'host_cs' has a dependency on the module local parameter or undefined parameter 'RD_EXEC'.
-WARNING: [IP_Flow 19-587] [HDL Parser] HDL port or parameter 'host_rd' has a dependency on the module local parameter or undefined parameter 'RD_EXEC'.
-INFO: [IP_Flow 19-5107] Inferred bus interface 'S_AXI' of definition 'xilinx.com:interface:aximm:1.0' (from Xilinx Repository).
-INFO: [IP_Flow 19-5107] Inferred bus interface 'S_AXI_ARESETN' of definition 'xilinx.com:signal:reset:1.0' (from Xilinx Repository).
-INFO: [IP_Flow 19-5107] Inferred bus interface 'S_AXI_ACLK' of definition 'xilinx.com:signal:clock:1.0' (from Xilinx Repository).
-INFO: [IP_Flow 19-5107] Inferred bus interface 'adc_clk' of definition 'xilinx.com:signal:clock:1.0' (from Xilinx Repository).
-INFO: [IP_Flow 19-5107] Inferred bus interface 'irq' of definition 'xilinx.com:signal:interrupt:1.0' (from Xilinx Repository).
-INFO: [IP_Flow 19-5107] Inferred bus interface 'pps_irq' of definition 'xilinx.com:signal:interrupt:1.0' (from Xilinx Repository).
-INFO: [IP_Flow 19-4728] Bus Interface 'S_AXI_ARESETN': Added interface parameter 'POLARITY' with value 'ACTIVE_LOW'.
-INFO: [IP_Flow 19-4728] Bus Interface 'irq': Added interface parameter 'SENSITIVITY' with value 'LEVEL_HIGH'.
-INFO: [IP_Flow 19-4728] Bus Interface 'pps_irq': Added interface parameter 'SENSITIVITY' with value 'LEVEL_HIGH'.
-INFO: [IP_Flow 19-4728] Bus Interface 'S_AXI_ACLK': Added interface parameter 'ASSOCIATED_BUSIF' with value 'S_AXI'.
-INFO: [IP_Flow 19-4728] Bus Interface 'S_AXI_ACLK': Added interface parameter 'ASSOCIATED_RESET' with value 'S_AXI_ARESETN'.
 ## connect_bd_intf_net \
 ##     [get_bd_intf_pins processing_system7_0/M_AXI_GP0] \
 ##     [get_bd_intf_pins axi_smc_0/S00_AXI]
@@ -198,14 +182,9 @@ Next steps:
   3. Generate bitstream
 # puts "  4. Export hardware (.xsa) for Vitis / FreeRTOS BSP generation"
   4. Export hardware (.xsa) for Vitis / FreeRTOS BSP generation
-regenerate_bd_layout
-update_compile_order -fileset sources_1
-CRITICAL WARNING: [PSU-1]  Parameter : PCW_UIPARAM_DDR_DQS_TO_CLK_DELAY_0 has negative value -0.050 . PS DDR interfaces might fail when entering negative DQS skew values. 
-CRITICAL WARNING: [PSU-2]  Parameter : PCW_UIPARAM_DDR_DQS_TO_CLK_DELAY_1 has negative value -0.044 . PS DDR interfaces might fail when entering negative DQS skew values. 
-CRITICAL WARNING: [PSU-3]  Parameter : PCW_UIPARAM_DDR_DQS_TO_CLK_DELAY_2 has negative value -0.035 . PS DDR interfaces might fail when entering negative DQS skew values. 
-CRITICAL WARNING: [PSU-4]  Parameter : PCW_UIPARAM_DDR_DQS_TO_CLK_DELAY_3 has negative value -0.100 . PS DDR interfaces might fail when entering negative DQS skew values. 
 INFO: [BD 5-943] Reserving offset range <0x43C0_0000 [ 64K ]> from slave interface '/axi_smc_0/S00_AXI' to master interface '/axi_smc_0/M00_AXI'. This will be used by smartconnect on path for routing.
 INFO: [xilinx.com:ip:smartconnect:1.0-1] gnss_zynq_axi_smc_0_0: SmartConnect gnss_zynq_axi_smc_0_0 is in Low-Area Mode.
 INFO: [Ipptcl 7-1463] No Compatible Board Interface found. Board Tab not created in customize GUI
 validate_bd_design -force
 WARNING: [#UNDEF] When using EMIO pins for SPI_0 tie SSIN High in the PL bitstream
+update_compile_order -fileset sources_1
