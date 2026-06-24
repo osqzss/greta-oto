@@ -1,0 +1,211 @@
+source D:/FPGA/greta-oto/vivado/create_project.tcl
+# set script_dir [file normalize [file dirname [info script]]]
+# set repo_root  [file normalize "$script_dir/.."]
+# create_project -force gnss_zynq "$script_dir/gnss_zynq" -part xc7z020clg400-1
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/AMDDesignTools/2025.2/Vivado/data/ip'.
+# set_property board_part digilentinc.com:zybo-z7-20:part0:1.2 \
+#     [current_project]
+# set_property target_language Verilog [current_project]
+# set rtl_dirs [list \
+#     "$repo_root/BB_HW/rtl/acquire_engine"   \
+#     "$repo_root/BB_HW/rtl/backend_wrapper"  \
+#     "$repo_root/BB_HW/rtl/correlation"      \
+#     "$repo_root/BB_HW/rtl/gnss_top"         \
+#     "$repo_root/BB_HW/rtl/mem_arbiter"      \
+#     "$repo_root/BB_HW/rtl/mem_model"        \
+#     "$repo_root/BB_HW/rtl/tracking_engine"  \
+#     "$repo_root/BB_HW/rtl/xilinx"           \
+# ]
+# foreach d $rtl_dirs {
+#     add_files -norecurse [glob -directory $d *.v]
+# }
+# add_files -norecurse "$repo_root/BB_HW/rtl/address.v"
+# set_property file_type        "Verilog Header" [get_files "$repo_root/BB_HW/rtl/address.v"]
+# set_property is_global_include true             [get_files "$repo_root/BB_HW/rtl/address.v"]
+# set_property include_dirs "$repo_root/BB_HW/rtl" [current_fileset]
+# set_property top gnss_top_axi [current_fileset]
+# add_files -norecurse [list \
+#     "$repo_root/BB_HW/rom_init/b1c_legendre.coe"  \
+#     "$repo_root/BB_HW/rom_init/l1c_legendre.coe"  \
+#     "$repo_root/BB_HW/rom_init/memory_code.coe"   \
+# ]
+# set_property used_in_simulation false \
+#     [get_files "$repo_root/BB_HW/rom_init/b1c_legendre.coe"]
+# set_property used_in_simulation false \
+#     [get_files "$repo_root/BB_HW/rom_init/l1c_legendre.coe"]
+# set_property used_in_simulation false \
+#     [get_files "$repo_root/BB_HW/rom_init/memory_code.coe"]
+# add_files -fileset constrs_1 -norecurse \
+#     "$repo_root/BB_HW/rtl/xilinx/constraints_zybo_z7.xdc"
+# source "$script_dir/bd_gnss_zynq.tcl"
+## create_bd_design "gnss_zynq"
+Wrote  : <D:\FPGA\greta-oto\vivado\gnss_zynq\gnss_zynq.srcs\sources_1\bd\gnss_zynq\gnss_zynq.bd> 
+## create_bd_cell -type ip -vlnv xilinx.com:ip:processing_system7:5.5 \
+##     processing_system7_0
+## apply_bd_automation \
+##     -rule xilinx.com:bd_rule:processing_system7 \
+##     -config {
+##         apply_board_preset "1"
+##         make_external "FIXED_IO, DDR"
+##         Master "Disable"
+##         Slave  "Disable"
+##     } [get_bd_cells processing_system7_0]
+## set_property -dict [list \
+##     CONFIG.PCW_FPGA0_PERIPHERAL_FREQMHZ  {100}  \
+##     CONFIG.PCW_USE_M_AXI_GP0             {1}    \
+##     CONFIG.PCW_USE_FABRIC_INTERRUPT      {1}    \
+##     CONFIG.PCW_IRQ_F2P_INTR              {1}    \
+##     CONFIG.PCW_SPI0_PERIPHERAL_ENABLE    {1}    \
+##     CONFIG.PCW_SPI0_SPI0_IO              {EMIO} \
+##     CONFIG.PCW_TTC0_PERIPHERAL_ENABLE    {1}    \
+## ] [get_bd_cells processing_system7_0]
+CRITICAL WARNING: [PSU-1]  Parameter : PCW_UIPARAM_DDR_DQS_TO_CLK_DELAY_0 has negative value -0.050 . PS DDR interfaces might fail when entering negative DQS skew values. 
+CRITICAL WARNING: [PSU-2]  Parameter : PCW_UIPARAM_DDR_DQS_TO_CLK_DELAY_1 has negative value -0.044 . PS DDR interfaces might fail when entering negative DQS skew values. 
+CRITICAL WARNING: [PSU-3]  Parameter : PCW_UIPARAM_DDR_DQS_TO_CLK_DELAY_2 has negative value -0.035 . PS DDR interfaces might fail when entering negative DQS skew values. 
+CRITICAL WARNING: [PSU-4]  Parameter : PCW_UIPARAM_DDR_DQS_TO_CLK_DELAY_3 has negative value -0.100 . PS DDR interfaces might fail when entering negative DQS skew values. 
+## create_bd_cell -type ip -vlnv xilinx.com:ip:proc_sys_reset:5.0 \
+##     proc_sys_reset_0
+INFO: [Ipptcl 7-1463] No Compatible Board Interface found. Board Tab not created in customize GUI
+## connect_bd_net \
+##     [get_bd_pins processing_system7_0/FCLK_CLK0] \
+##     [get_bd_pins proc_sys_reset_0/slowest_sync_clk]
+## connect_bd_net \
+##     [get_bd_pins processing_system7_0/FCLK_RESET0_N] \
+##     [get_bd_pins proc_sys_reset_0/ext_reset_in]
+## create_bd_cell -type ip -vlnv xilinx.com:ip:smartconnect:1.0 \
+##     axi_smc_0
+## set_property -dict [list CONFIG.NUM_SI {1} CONFIG.NUM_MI {1}] \
+##     [get_bd_cells axi_smc_0]
+## connect_bd_net \
+##     [get_bd_pins processing_system7_0/FCLK_CLK0] \
+##     [get_bd_pins axi_smc_0/aclk]
+## connect_bd_net \
+##     [get_bd_pins proc_sys_reset_0/peripheral_aresetn] \
+##     [get_bd_pins axi_smc_0/aresetn]
+## connect_bd_intf_net \
+##     [get_bd_intf_pins processing_system7_0/M_AXI_GP0] \
+##     [get_bd_intf_pins axi_smc_0/S00_AXI]
+## connect_bd_net \
+##     [get_bd_pins processing_system7_0/FCLK_CLK0] \
+##     [get_bd_pins processing_system7_0/M_AXI_GP0_ACLK]
+## create_bd_cell -type module -reference gnss_top_axi gnss_top_axi_0
+WARNING: [IP_Flow 19-587] [HDL Parser] HDL port or parameter 'host_cs' has a dependency on the module local parameter or undefined parameter 'RD_EXEC'.
+WARNING: [IP_Flow 19-587] [HDL Parser] HDL port or parameter 'host_rd' has a dependency on the module local parameter or undefined parameter 'RD_EXEC'.
+INFO: [IP_Flow 19-5107] Inferred bus interface 'S_AXI' of definition 'xilinx.com:interface:aximm:1.0' (from Xilinx Repository).
+INFO: [IP_Flow 19-5107] Inferred bus interface 'S_AXI_ARESETN' of definition 'xilinx.com:signal:reset:1.0' (from Xilinx Repository).
+INFO: [IP_Flow 19-5107] Inferred bus interface 'S_AXI_ACLK' of definition 'xilinx.com:signal:clock:1.0' (from Xilinx Repository).
+INFO: [IP_Flow 19-5107] Inferred bus interface 'adc_clk' of definition 'xilinx.com:signal:clock:1.0' (from Xilinx Repository).
+INFO: [IP_Flow 19-5107] Inferred bus interface 'irq' of definition 'xilinx.com:signal:interrupt:1.0' (from Xilinx Repository).
+INFO: [IP_Flow 19-5107] Inferred bus interface 'pps_irq' of definition 'xilinx.com:signal:interrupt:1.0' (from Xilinx Repository).
+INFO: [IP_Flow 19-4728] Bus Interface 'S_AXI_ARESETN': Added interface parameter 'POLARITY' with value 'ACTIVE_LOW'.
+INFO: [IP_Flow 19-4728] Bus Interface 'irq': Added interface parameter 'SENSITIVITY' with value 'LEVEL_HIGH'.
+INFO: [IP_Flow 19-4728] Bus Interface 'pps_irq': Added interface parameter 'SENSITIVITY' with value 'LEVEL_HIGH'.
+INFO: [IP_Flow 19-4728] Bus Interface 'S_AXI_ACLK': Added interface parameter 'ASSOCIATED_BUSIF' with value 'S_AXI'.
+INFO: [IP_Flow 19-4728] Bus Interface 'S_AXI_ACLK': Added interface parameter 'ASSOCIATED_RESET' with value 'S_AXI_ARESETN'.
+## connect_bd_intf_net \
+##     [get_bd_intf_pins processing_system7_0/M_AXI_GP0] \
+##     [get_bd_intf_pins axi_smc_0/S00_AXI]
+## connect_bd_net \
+##     [get_bd_pins processing_system7_0/FCLK_CLK0] \
+##     [get_bd_pins processing_system7_0/M_AXI_GP0_ACLK]
+## create_bd_cell -type module -reference gnss_top_axi gnss_top_axi_0
+## connect_bd_net \
+##     [get_bd_pins processing_system7_0/FCLK_CLK0] \
+##     [get_bd_pins gnss_top_axi_0/S_AXI_ACLK]
+## connect_bd_net \
+##     [get_bd_pins proc_sys_reset_0/peripheral_aresetn] \
+##     [get_bd_pins gnss_top_axi_0/S_AXI_ARESETN]
+## connect_bd_intf_net \
+##     [get_bd_intf_pins axi_smc_0/M00_AXI] \
+##     [get_bd_intf_pins gnss_top_axi_0/S_AXI]
+## connect_bd_net \
+##     [get_bd_pins gnss_top_axi_0/irq] \
+##     [get_bd_pins processing_system7_0/IRQ_F2P]
+## assign_bd_address -offset 0x43C00000 -range 64K \
+##     -target_address_space [get_bd_addr_spaces processing_system7_0/Data] \
+##     [get_bd_addr_segs gnss_top_axi_0/S_AXI/reg0] -force
+Slave segment '/gnss_top_axi_0/S_AXI/reg0' is being assigned into address space '/processing_system7_0/Data' at <0x43C0_0000 [ 64K ]>.
+## create_bd_port -dir I          adc_clk
+## create_bd_port -dir I -from 1 -to 0 max_i
+## create_bd_port -dir I -from 1 -to 0 max_q
+## connect_bd_net [get_bd_ports adc_clk] [get_bd_pins gnss_top_axi_0/adc_clk]
+## connect_bd_net [get_bd_ports max_i]   [get_bd_pins gnss_top_axi_0/max_i]
+## connect_bd_net [get_bd_ports max_q]   [get_bd_pins gnss_top_axi_0/max_q]
+## create_bd_port -dir O          spi0_sclk_o
+## create_bd_port -dir O          spi0_mosi_o
+## create_bd_port -dir O -from 2 -to 0 spi0_ss_o
+## connect_bd_net \
+##     [get_bd_ports spi0_sclk_o] \
+##     [get_bd_pins processing_system7_0/SPI0_SCLK_O]
+## connect_bd_net \
+##     [get_bd_ports spi0_mosi_o] \
+##     [get_bd_pins processing_system7_0/SPI0_MOSI_O]
+## connect_bd_net \
+##     [get_bd_ports spi0_ss_o] \
+##     [get_bd_pins processing_system7_0/SPI0_SS_O]
+## set_property -dict [list CONFIG.CONST_VAL {0} CONFIG.CONST_WIDTH {1}] \
+##     [create_bd_cell -type ip -vlnv xilinx.com:ip:xlconstant:1.1 xlconstant_miso]
+## connect_bd_net \
+##     [get_bd_pins xlconstant_miso/dout] \
+##     [get_bd_pins processing_system7_0/SPI0_MISO_I]
+## set_property -dict [list CONFIG.CONST_VAL {1} CONFIG.CONST_WIDTH {1}] \
+##     [create_bd_cell -type ip -vlnv xilinx.com:ip:xlconstant:1.1 xlconstant_ssin]
+## connect_bd_net \
+##     [get_bd_pins xlconstant_ssin/dout] \
+##     [get_bd_pins processing_system7_0/SPI0_SS_I]
+## create_bd_port -dir O  pps_pulse1
+## create_bd_port -dir O  pps_pulse2
+## create_bd_port -dir O  pps_pulse3
+## create_bd_port -dir I  event_mark
+## connect_bd_net [get_bd_ports pps_pulse1]  [get_bd_pins gnss_top_axi_0/pps_pulse1]
+## connect_bd_net [get_bd_ports pps_pulse2]  [get_bd_pins gnss_top_axi_0/pps_pulse2]
+## connect_bd_net [get_bd_ports pps_pulse3]  [get_bd_pins gnss_top_axi_0/pps_pulse3]
+## connect_bd_net [get_bd_ports event_mark]  [get_bd_pins gnss_top_axi_0/event_mark]
+## validate_bd_design
+CRITICAL WARNING: [PSU-1]  Parameter : PCW_UIPARAM_DDR_DQS_TO_CLK_DELAY_0 has negative value -0.050 . PS DDR interfaces might fail when entering negative DQS skew values. 
+CRITICAL WARNING: [PSU-2]  Parameter : PCW_UIPARAM_DDR_DQS_TO_CLK_DELAY_1 has negative value -0.044 . PS DDR interfaces might fail when entering negative DQS skew values. 
+CRITICAL WARNING: [PSU-3]  Parameter : PCW_UIPARAM_DDR_DQS_TO_CLK_DELAY_2 has negative value -0.035 . PS DDR interfaces might fail when entering negative DQS skew values. 
+CRITICAL WARNING: [PSU-4]  Parameter : PCW_UIPARAM_DDR_DQS_TO_CLK_DELAY_3 has negative value -0.100 . PS DDR interfaces might fail when entering negative DQS skew values. 
+WARNING: [#UNDEF] When using EMIO pins for SPI_0 tie SSIN High in the PL bitstream
+INFO: [BD 5-943] Reserving offset range <0x43C0_0000 [ 64K ]> from slave interface '/axi_smc_0/S00_AXI' to master interface '/axi_smc_0/M00_AXI'. This will be used by smartconnect on path for routing.
+INFO: [xilinx.com:ip:smartconnect:1.0-1] gnss_zynq_axi_smc_0_0: SmartConnect gnss_zynq_axi_smc_0_0 is in Low-Area Mode.
+INFO: [Ipptcl 7-1463] No Compatible Board Interface found. Board Tab not created in customize GUI
+## save_bd_design
+Wrote  : <D:\FPGA\greta-oto\vivado\gnss_zynq\gnss_zynq.srcs\sources_1\bd\gnss_zynq\gnss_zynq.bd> 
+Wrote  : <D:/FPGA/greta-oto/vivado/gnss_zynq/gnss_zynq.srcs/sources_1/bd/gnss_zynq/ui/bd_ebd4b05a.ui> 
+# make_wrapper -files [get_files gnss_zynq.bd] -top
+INFO: [BD 41-1662] The design 'gnss_zynq.bd' is already validated. Therefore parameter propagation will not be re-run.
+Verilog Output written to : D:/FPGA/greta-oto/vivado/gnss_zynq/gnss_zynq.gen/sources_1/bd/gnss_zynq/synth/gnss_zynq.v
+Verilog Output written to : D:/FPGA/greta-oto/vivado/gnss_zynq/gnss_zynq.gen/sources_1/bd/gnss_zynq/sim/gnss_zynq.v
+Verilog Output written to : D:/FPGA/greta-oto/vivado/gnss_zynq/gnss_zynq.gen/sources_1/bd/gnss_zynq/hdl/gnss_zynq_wrapper.v
+# add_files -norecurse \
+#     "$script_dir/gnss_zynq/gnss_zynq.gen/sources_1/bd/gnss_zynq/hdl/gnss_zynq_wrapper.v"
+# set_property top gnss_zynq_wrapper [current_fileset]
+# update_compile_order -fileset sources_1
+# puts ""
+
+# puts "Project created: $script_dir/gnss_zynq/gnss_zynq.xpr"
+Project created: D:/FPGA/greta-oto/vivado/gnss_zynq/gnss_zynq.xpr
+# puts "Next steps:"
+Next steps:
+# puts "  1. Open the project in Vivado"
+  1. Open the project in Vivado
+# puts "  2. Run synthesis and implementation"
+  2. Run synthesis and implementation
+# puts "  3. Generate bitstream"
+  3. Generate bitstream
+# puts "  4. Export hardware (.xsa) for Vitis / FreeRTOS BSP generation"
+  4. Export hardware (.xsa) for Vitis / FreeRTOS BSP generation
+regenerate_bd_layout
+update_compile_order -fileset sources_1
+CRITICAL WARNING: [PSU-1]  Parameter : PCW_UIPARAM_DDR_DQS_TO_CLK_DELAY_0 has negative value -0.050 . PS DDR interfaces might fail when entering negative DQS skew values. 
+CRITICAL WARNING: [PSU-2]  Parameter : PCW_UIPARAM_DDR_DQS_TO_CLK_DELAY_1 has negative value -0.044 . PS DDR interfaces might fail when entering negative DQS skew values. 
+CRITICAL WARNING: [PSU-3]  Parameter : PCW_UIPARAM_DDR_DQS_TO_CLK_DELAY_2 has negative value -0.035 . PS DDR interfaces might fail when entering negative DQS skew values. 
+CRITICAL WARNING: [PSU-4]  Parameter : PCW_UIPARAM_DDR_DQS_TO_CLK_DELAY_3 has negative value -0.100 . PS DDR interfaces might fail when entering negative DQS skew values. 
+INFO: [BD 5-943] Reserving offset range <0x43C0_0000 [ 64K ]> from slave interface '/axi_smc_0/S00_AXI' to master interface '/axi_smc_0/M00_AXI'. This will be used by smartconnect on path for routing.
+INFO: [xilinx.com:ip:smartconnect:1.0-1] gnss_zynq_axi_smc_0_0: SmartConnect gnss_zynq_axi_smc_0_0 is in Low-Area Mode.
+INFO: [Ipptcl 7-1463] No Compatible Board Interface found. Board Tab not created in customize GUI
+validate_bd_design -force
+WARNING: [#UNDEF] When using EMIO pins for SPI_0 tie SSIN High in the PL bitstream

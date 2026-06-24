@@ -14,7 +14,7 @@
 | Q2 I/Q出力ビット幅 | **2ビット符号/大きさ** (01=+3, 00=+1, 10=−1, 11=−3) |
 | Q3 使用PMODコネクタ | **JB=SPI+CLKOUT、JC=I/Qデータ、チップA使用** |
 | Q4 PSファームウェア環境 | **FreeRTOS** |
-| Q5 Master XDCファイル | Documents/Zybo-Z7-Master.xdc として入手済み |
+| Q5 Master XDCファイル | docs/Zybo-Z7-Master.xdc として入手済み |
 
 ---
 
@@ -26,7 +26,7 @@
 | `vivado/create_project.tcl` | **新規** | Vivadoプロジェクト再現スクリプト |
 | `vivado/bd_gnss_zynq.tcl` | **新規** | IP Integratorブロックデザインスクリプト |
 | `Firmware/Abstract/HWCtrl_Zynq.c` | **更新** | 24MHz対応・48ビットSPI・FreeRTOS ISR修正 |
-| `Documents/Design_Document.md` | **新規** | 本受信機の設計書 (全体仕様) |
+| `docs/Design_Document.md` | **新規** | 本受信機の設計書 (全体仕様) |
 
 ---
 
@@ -214,8 +214,8 @@ XScuGic_Enable(&xInterruptController, GNSS_IRQ_ID);
 
 | ファイル | 内容 |
 |---|---|
-| `Documents/Design_Document.md` | 本受信機の完全な設計書 |
-| `Documents/Zybo_MAX2771_PMOD.md` | PMODボードのピン接続・Q1〜Q5の回答 |
-| `Documents/pocketgnss.c` | MAX2771レジスタ動作確認用サンプルコード (ビットバンSPI) |
-| `Documents/Zybo-Z7-Master.xdc` | Digilent公式マスターXDC |
-| `Documents/Zynq_MAX2771_Port.md` | 前々セッションの作業記録 (RTLファイル新規作成) |
+| `docs/Design_Document.md` | 本受信機の完全な設計書 |
+| `docs/Zybo_MAX2771_PMOD.md` | PMODボードのピン接続・Q1〜Q5の回答 |
+| `docs/pocketgnss.c` | MAX2771レジスタ動作確認用サンプルコード (ビットバンSPI) |
+| `docs/Zybo-Z7-Master.xdc` | Digilent公式マスターXDC |
+| `docs/Zynq_MAX2771_Port.md` | 前々セッションの作業記録 (RTLファイル新規作成) |

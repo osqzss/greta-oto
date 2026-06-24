@@ -390,10 +390,11 @@ processing_system7_0  (Zynq PS7 v5.5)
 │  M_AXI_GP0 有効
 │  SPI0 = EMIO (JBピンに外部ポートとして引き出し)
 │  IRQ_F2P 有効
+│  TTC0 有効 (FreeRTOS OSティックタイマー)
 │
 ├── proc_sys_reset_0  (v5.0)
 │
-├── axi_interconnect_0  (v2.1, 1M/1S)
+├── axi_smc_0  (AXI SmartConnect v1.0, 1M/1S) ※旧 axi_interconnect から置換
 │
 └── gnss_top_axi_0  (モジュール参照)
 
@@ -602,7 +603,7 @@ XDCで `spi0_ss_o[0]` (→ JB Pin4 V7, CS_A) のみ制約している。
 
 | ファイルパス | 説明 |
 |---|---|
-| `Documents/Zybo-Z7-Master.xdc` | Digilent公式マスターXDC |
-| `Documents/Zybo_MAX2771_PMOD.md` | PMODボードのピン接続情報 |
-| `Documents/pocketgnss.c` | MAX2771レジスタ動作確認用ビットバンSPIサンプルコード |
-| `Documents/Zynq_MAX2771_Port.md` | 前セッションの作業記録 |
+| `docs/Zybo-Z7-Master.xdc` | Digilent公式マスターXDC |
+| `docs/Zybo_MAX2771_PMOD.md` | PMODボードのピン接続情報 |
+| `docs/pocketgnss.c` | MAX2771レジスタ動作確認用ビットバンSPIサンプルコード |
+| `docs/Zynq_MAX2771_Port.md` | 前セッションの作業記録 |

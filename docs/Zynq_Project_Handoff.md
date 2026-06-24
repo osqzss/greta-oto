@@ -10,7 +10,7 @@ greta-oto GNSS受信機（Verilog RTL）を **Digilent Zybo Z7-20**（XC7Z020-1C
 
 ### 完了済みの作業
 
-前セッションで以下のファイルをすべて新規作成した。詳細は `Documents/Zynq_MAX2771_Port.md` を参照。
+前セッションで以下のファイルをすべて新規作成した。詳細は `docs/Zynq_MAX2771_Port.md` を参照。
 
 | ファイル | 内容 |
 |---|---|
@@ -114,7 +114,7 @@ URL: https://github.com/Digilent/digilent-xdc/blob/master/Zybo-Z7-Master.xdc
 
 ## 次回セッションの進め方
 
-1. このファイル（`Documents/Zynq_Project_Handoff.md`）を読み込む
+1. このファイル（`docs/Zynq_Project_Handoff.md`）を読み込む
 2. 上記Q1〜Q5の回答を提示する
 3. Vivadoプロジェクト一式（Tclスクリプト3本 + 最終XDC + ファームウェア更新）を一括生成する
 

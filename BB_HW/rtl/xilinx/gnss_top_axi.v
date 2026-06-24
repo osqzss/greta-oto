@@ -17,7 +17,10 @@
 //     MAX2771 I/Q   -> max_i / max_q ports
 //----------------------------------------------------------------------
 
-`include "address.v"
+// address.v is added as a global-include header in create_project.tcl
+// (set_property is_global_include true), so it must NOT be `include-d here
+// again -- doing so would re-define all macros and emit redefinition warnings.
+// `include "address.v"
 
 module gnss_top_axi
 #(

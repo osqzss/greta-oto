@@ -16,9 +16,10 @@ set repo_root  [file normalize "$script_dir/.."]
 # -----------------------------------------------------------------------
 # Create project
 # -----------------------------------------------------------------------
-create_project gnss_zynq "$script_dir/gnss_zynq" -part xc7z020clg400-1
+# -force: 既存の gnss_zynq/ プロジェクトがあれば削除して作り直す（再構成を繰り返せるように）
+create_project -force gnss_zynq "$script_dir/gnss_zynq" -part xc7z020clg400-1
 
-set_property board_part digilentinc.com:zybo-z7:part0:1.0 \
+set_property board_part digilentinc.com:zybo-z7-20:part0:1.2 \
     [current_project]
 
 set_property target_language Verilog [current_project]
@@ -42,8 +43,14 @@ foreach d $rtl_dirs {
     add_files -norecurse [glob -directory $d *.v]
 }
 
-# Top-level address defines (included by gnss_top_axi.v and gnss_top.v)
+# Top-level address defines (`define macros used across all RTL modules).
+# The core RTL files do NOT `include "address.v" individually; they rely on
+# the macros being globally visible. Mark address.v as a global include so
+# Vivado prepends it to every file during synthesis AND block-design module
+# reference elaboration (otherwise: CRITICAL WARNING [HDL 9-3952] undefined macro).
 add_files -norecurse "$repo_root/BB_HW/rtl/address.v"
+set_property file_type        "Verilog Header" [get_files "$repo_root/BB_HW/rtl/address.v"]
+set_property is_global_include true             [get_files "$repo_root/BB_HW/rtl/address.v"]
 
 # Vivado include path so `include "address.v" resolves correctly
 set_property include_dirs "$repo_root/BB_HW/rtl" [current_fileset]
