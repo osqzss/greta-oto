@@ -234,9 +234,12 @@ always @(posedge clk or negedge rst_b)
 	else if ((cur_state == LOAD_CHANNEL_PARAM) || (result_state == RESULT_SAVE))
 		channel_param_addr <= channel_param_addr + 1;
 
-// clock gating for each physical correlator
+// clock gating for the acquisition engine core.
+// USE_BUFH(0) => BUFGCE: this gated domain is too large to fit in a single
+// clock region (BUFHCE would hit [Place 30-487]) and is not setup-critical, so
+// it keeps the global BUFGCE (which relies on CLOCK_DEDICATED_ROUTE FALSE).
 wire gated_clk;
-gated_clock_wrapper u_gated_clock (.clk_out(gated_clk), .clk_in(clk), .en(~(cur_state == IDLE)), .te(1'b0));
+gated_clock_wrapper #(.USE_BUFH(0)) u_gated_clock (.clk_out(gated_clk), .clk_in(clk), .en(~(cur_state == IDLE)), .te(1'b0));
 
 //----------------------------------------------------------
 // adjust channel control registers

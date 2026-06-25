@@ -1,30 +1,32 @@
 Implementation
 Place Design
-[Place 30-120] Sub-optimal placement for a BUFG-BUFG cascade pair. If this sub optimal condition is acceptable for this design, you may use the CLOCK_DEDICATED_ROUTE constraint in the .xdc file to demote this message to a WARNING. However, the use of this override is highly discouraged. These examples can be used directly in the .xdc file to override this clock rule.
-	< set_property CLOCK_DEDICATED_ROUTE FALSE [get_nets gnss_zynq_i/processing_system7_0/inst/FCLK_CLK0] >
+[Place 30-87] Partially locked IO Bus is found. Following components of the IO Bus spi0_ss_o are not locked:  'spi0_ss_o[2]'  'spi0_ss_o[1]' 
 
-	Clock Rule: rule_cascaded_bufg
-	Status: FAILED
-	Rule Description: Cascaded bufg (bufg->bufg) must be adjacent and cyclic
+[Place 30-120] Sub-optimal placement for a BUFG-BUFG cascade pair. This is normally an ERROR but the CLOCK_DEDICATED_ROUTE constraint is set to FALSE allowing your design to continue. The use of this override is highly discouraged as it may lead to very poor timing results. It is recommended that this error condition be corrected in the design.
 
-	gnss_zynq_i/processing_system7_0/inst/buffer_fclk_clk_0.FCLK_CLK_0_BUFG (BUFG.O) is provisionally placed by clockplacer on BUFGCTRL_X0Y31
-	gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_ae_top/u_ae_core/u_gated_clock/u_bufgce (BUFGCTRL.I0) is provisionally placed by clockplacer on BUFGCTRL_X0Y30
-	gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/gated_clock_u1/u_bufgce (BUFGCTRL.I0) is provisionally placed by clockplacer on BUFGCTRL_X0Y29
-	gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/gated_clock_u2/u_bufgce (BUFGCTRL.I0) is provisionally placed by clockplacer on BUFGCTRL_X0Y28
-	gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/gated_clock_u3/u_bufgce (BUFGCTRL.I0) is provisionally placed by clockplacer on BUFGCTRL_X0Y27
-	gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/gated_clock_u4/u_bufgce (BUFGCTRL.I0) is provisionally placed by clockplacer on BUFGCTRL_X0Y26
+	gnss_zynq_i/processing_system7_0/inst/buffer_fclk_clk_0.FCLK_CLK_0_BUFG (BUFG.O) is provisionally placed by clockplacer on BUFGCTRL_X0Y16
+	gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_ae_top/u_ae_core/u_gated_clock/u_bufgce (BUFGCTRL.I0) is provisionally placed by clockplacer on BUFGCTRL_X0Y0
+	gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/gated_clock_u1/u_bufgce (BUFGCTRL.I0) is provisionally placed by clockplacer on BUFGCTRL_X0Y1
+	gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/gated_clock_u2/u_bufgce (BUFGCTRL.I0) is provisionally placed by clockplacer on BUFGCTRL_X0Y2
+	gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/gated_clock_u4/u_bufgce (BUFGCTRL.I0) is provisionally placed by clockplacer on BUFGCTRL_X0Y4
+	gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/gated_clock_u3/u_bufgce (BUFGCTRL.I0) is provisionally placed by clockplacer on BUFGCTRL_X0Y3
 
-	The above error could possibly be related to other connected instances. Following is a list of 
-	all the related clock rules and their respective instances.
+Route Design
+[Route 35-468] The router encountered 183 pins that are both setup-critical and hold-critical and tried to fix hold violations at the expense of setup slack. Such pins are:
+	gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[2].u_correlator/u_nh_code_gen/nh_count_o_reg[0]/CE
+	gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[2].u_correlator/u_nh_code_gen/nh_count_o_reg[2]/CE
+	gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[3].u_correlator/u_prn_code/weil_prn1/insert_count[2]_i_4__5/I3
+	gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[3].u_correlator/u_prn_code/weil_prn1/code_index1_init[4]_i_1__5/I1
+	gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[3].u_correlator/u_prn_code/weil_prn1/code_index1[10]_i_2__5/I3
+	gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[3].u_correlator/u_prn_code/weil_prn1/code_index1[11]_i_2__5/I3
+	gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[3].u_correlator/u_prn_code/weil_prn1/code_index1_reg[0]/CE
+	gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[3].u_correlator/u_prn_code/weil_prn1/code_index1_reg[10]/CE
+	gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[3].u_correlator/u_prn_code/weil_prn1/code_index1_reg[11]/CE
+	gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[3].u_correlator/u_prn_code/weil_prn1/code_index1_reg[12]/CE
+	.. and 173 more pins.
 
-	Clock Rule: rule_ps7_bufg
-	Status: PASS 
-	Rule Description: A PS7 driving a BUFG must be placed on the same half side (top/bottom) of the device
-	gnss_zynq_i/processing_system7_0/inst/PS7_i (PS7.FCLKCLK[0]) is locked to PS7_X0Y0
-	gnss_zynq_i/processing_system7_0/inst/buffer_fclk_clk_0.FCLK_CLK_0_BUFG (BUFG.I) is provisionally placed by clockplacer on BUFGCTRL_X0Y31
 
+[Route 35-328] Router estimated timing not met.
+Resolution: For a complete and accurate timing signoff, report_timing_summary must be run after route_design. Alternatively, route_design can be run with the -timing_summary option to enable a complete timing signoff at the end of route_design.
 
-[Place 30-99] Placer failed with error: 'IO Clock Placer failed'
-Please review all ERROR, CRITICAL WARNING, and WARNING messages during placement to understand the cause for failure.
-
-[Common 17-69] Command failed: Placer could not place all instances
+[Timing 38-282] The design failed to meet the timing requirements. Please see the timing summary report for details on the timing violations.

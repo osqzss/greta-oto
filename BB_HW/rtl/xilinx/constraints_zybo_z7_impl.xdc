@@ -23,16 +23,17 @@ set_clock_groups -asynchronous \
     -group [get_clocks adc_clk]
 
 # -----------------------------------------------------------------------
-# BUFG -> BUFGCE cascade relaxation
-#   PS7 FCLK_CLK0 is buffered by a BUFG, whose output feeds the gated-clock
-#   BUFGCE cells (xilinx_clk_gate.v) in ae_top and tracking_engine. That is a
-#   BUFG->BUFGCE cascade; the 7-series placer requires cascaded BUFGs to be
-#   adjacent and cannot place the 5 gated-clock BUFGCEs next to the single FCLK
-#   BUFG -> [Place 30-120] rule_cascaded_bufg FAILED -> [Place 30-99] IO Clock
-#   Placer failed.
-#   All gated clocks are enable-style versions of the same 100 MHz FCLK, so we
-#   relax the dedicated-route rule and let the BUFGCE clock inputs use general
-#   routing. Verify timing closure in the implementation timing report after.
-#   (Net/hierarchy name as reported by the placer message; exists only at impl.)
+# BUFG -> BUFGCE cascade relaxation (AE core gated clock only)
+#   The 4 per-correlator gated clocks now use BUFHCE (xilinx_clk_gate.v,
+#   USE_BUFH=1). BUFG->BUFHCE is a legal dedicated-routing topology and needs no
+#   override; moving those off general routing removed the ~-3 ns skew that
+#   dominated the setup (WNS) violation on the Weil/Legendre correlator paths.
+#
+#   The acquisition-engine core gated clock (ae_core, USE_BUFH=0) keeps BUFGCE
+#   because its gated domain does not fit in a single clock region (BUFHCE ->
+#   [Place 30-487]). That single BUFGCE still forms a BUFG->BUFGCE cascade with
+#   the FCLK BUFG, so the dedicated-route rule is relaxed for it. The resulting
+#   extra clock-net delay is harmless: the AE core is not on any setup-critical
+#   path. (Net/hierarchy name as reported by the placer; exists only at impl.)
 set_property CLOCK_DEDICATED_ROUTE FALSE \
     [get_nets gnss_zynq_i/processing_system7_0/inst/FCLK_CLK0]

@@ -1,0 +1,914 @@
+
+****** Vivado v2025.2 (64-bit)
+  **** SW Build 6299465 on Fri Nov 14 19:35:11 GMT 2025
+  **** IP Build 6300035 on Fri Nov 14 10:48:45 MST 2025
+  **** SharedData Build 6298862 on Thu Nov 13 04:50:51 MST 2025
+  **** Start of session at: Thu Jun 25 19:55:28 2026
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source impl_bufhce_try2.tcl
+# set proj   D:/FPGA/greta-oto/vivado/gnss_zynq/gnss_zynq.xpr
+# set outdir D:/FPGA/greta-oto/vivado/try2
+# file mkdir $outdir
+# open_project $proj
+Scanning sources...
+Finished scanning sources
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:emb-plus-vpr-4616:part0:1.0 available at C:/AMDDesignTools/2025.2/data/xhub/boards\XilinxBoardStore\boards\Xilinx\emb-plus-vpr-4616\1.0\board.xml as part xcve2302-sfva784-2mp-e-s specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:emb-plus-vpr-4616:part0:1.1 available at C:/AMDDesignTools/2025.2/data/xhub/boards\XilinxBoardStore\boards\Xilinx\emb-plus-vpr-4616\1.1\board.xml as part xcve2302-sfva784-2mp-e-s specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:k24c:part0:1.0 available at C:/AMDDesignTools/2025.2/data/xhub/boards\XilinxBoardStore\boards\Xilinx\k24c\1.0\board.xml as part xck24-ubva530-2lv-c specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:k24c:part0:1.1 available at C:/AMDDesignTools/2025.2/data/xhub/boards\XilinxBoardStore\boards\Xilinx\k24c\1.1\board.xml as part xck24-ubva530-2lv-c specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:k24i:part0:1.0 available at C:/AMDDesignTools/2025.2/data/xhub/boards\XilinxBoardStore\boards\Xilinx\k24i\1.0\board.xml as part xck24-ubva530-2lvi-i specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:k26c:part0:1.2 available at C:/AMDDesignTools/2025.2/data/xhub/boards\XilinxBoardStore\boards\Xilinx\k26c\1.2\board.xml as part xck26-sfvc784-2lv-c specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:k26c:part0:1.3 available at C:/AMDDesignTools/2025.2/data/xhub/boards\XilinxBoardStore\boards\Xilinx\k26c\1.3\board.xml as part xck26-sfvc784-2lv-c specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:k26c:part0:1.4 available at C:/AMDDesignTools/2025.2/data/xhub/boards\XilinxBoardStore\boards\Xilinx\k26c\1.4\board.xml as part xck26-sfvc784-2lv-c specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:k26i:part0:1.2 available at C:/AMDDesignTools/2025.2/data/xhub/boards\XilinxBoardStore\boards\Xilinx\k26i\1.2\board.xml as part xck26-sfvc784-2lvi-i specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:k26i:part0:1.3 available at C:/AMDDesignTools/2025.2/data/xhub/boards\XilinxBoardStore\boards\Xilinx\k26i\1.3\board.xml as part xck26-sfvc784-2lvi-i specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:k26i:part0:1.4 available at C:/AMDDesignTools/2025.2/data/xhub/boards\XilinxBoardStore\boards\Xilinx\k26i\1.4\board.xml as part xck26-sfvc784-2lvi-i specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:kc705:part0:1.6 available at C:/AMDDesignTools/2025.2/data/xhub/boards\XilinxBoardStore\boards\Xilinx\kc705\1.6\board.xml as part xc7k325tffg900-2 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:kc705:part0:1.7 available at C:/AMDDesignTools/2025.2/data/xhub/boards\XilinxBoardStore\boards\Xilinx\kc705\1.7\board.xml as part xc7k325tffg900-2 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:kcu105:part0:1.6 available at C:/AMDDesignTools/2025.2/data/xhub/boards\XilinxBoardStore\boards\Xilinx\kcu105\1.6\board.xml as part xcku040-ffva1156-2-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:kcu105:part0:1.7 available at C:/AMDDesignTools/2025.2/data/xhub/boards\XilinxBoardStore\boards\Xilinx\kcu105\1.7\board.xml as part xcku040-ffva1156-2-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:kcu116:part0:1.4 available at C:/AMDDesignTools/2025.2/data/xhub/boards\XilinxBoardStore\boards\Xilinx\kcu116\1.4\board.xml as part xcku5p-ffvb676-2-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:kcu116:part0:1.5 available at C:/AMDDesignTools/2025.2/data/xhub/boards\XilinxBoardStore\boards\Xilinx\kcu116\1.5\board.xml as part xcku5p-ffvb676-2-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:kcu1500:part0:1.2 available at C:/AMDDesignTools/2025.2/data/xhub/boards\XilinxBoardStore\boards\Xilinx\kcu1500\1.2\board.xml as part xcku115-flvb2104-2-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:kd240_som:part0:1.0 available at C:/AMDDesignTools/2025.2/data/xhub/boards\XilinxBoardStore\boards\Xilinx\kd240_som\1.0\board.xml as part xck24-ubva530-2lv-c specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:kd240_som:part0:1.1 available at C:/AMDDesignTools/2025.2/data/xhub/boards\XilinxBoardStore\boards\Xilinx\kd240_som\1.1\board.xml as part xck24-ubva530-2lv-c specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:kr260_som:part0:1.0 available at C:/AMDDesignTools/2025.2/data/xhub/boards\XilinxBoardStore\boards\Xilinx\kr260_som\1.0\board.xml as part xck26-sfvc784-2lv-c specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:kr260_som:part0:1.1 available at C:/AMDDesignTools/2025.2/data/xhub/boards\XilinxBoardStore\boards\Xilinx\kr260_som\1.1\board.xml as part xck26-sfvc784-2lv-c specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:kv260_som:part0:1.2 available at C:/AMDDesignTools/2025.2/data/xhub/boards\XilinxBoardStore\boards\Xilinx\kv260_som\1.2\board.xml as part xck26-sfvc784-2lv-c specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:kv260_som:part0:1.3 available at C:/AMDDesignTools/2025.2/data/xhub/boards\XilinxBoardStore\boards\Xilinx\kv260_som\1.3\board.xml as part xck26-sfvc784-2lv-c specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:kv260_som:part0:1.4 available at C:/AMDDesignTools/2025.2/data/xhub/boards\XilinxBoardStore\boards\Xilinx\kv260_som\1.4\board.xml as part xck26-sfvc784-2lv-c specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:scu35:part0:1.0 available at C:/AMDDesignTools/2025.2/data/xhub/boards\XilinxBoardStore\boards\Xilinx\scu35\1.0\board.xml as part xcsu35p-sbvb625-2-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:sp701:part0:1.0 available at C:/AMDDesignTools/2025.2/data/xhub/boards\XilinxBoardStore\boards\Xilinx\sp701\1.0\board.xml as part xc7s100fgga676-2 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:sp701:part0:1.1 available at C:/AMDDesignTools/2025.2/data/xhub/boards\XilinxBoardStore\boards\Xilinx\sp701\1.1\board.xml as part xc7s100fgga676-2 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:v80:part0:1.0 available at C:/AMDDesignTools/2025.2/data/xhub/boards\XilinxBoardStore\boards\Xilinx\v80\1.0\board.xml as part xcv80-lsva4737-2mhp-e-s specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vc707:part0:1.4 available at C:/AMDDesignTools/2025.2/data/xhub/boards\XilinxBoardStore\boards\Xilinx\vc707\1.4\board.xml as part xc7vx485tffg1761-2 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vc707:part0:1.5 available at C:/AMDDesignTools/2025.2/data/xhub/boards\XilinxBoardStore\boards\Xilinx\vc707\1.5\board.xml as part xc7vx485tffg1761-2 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vc709:part0:1.8 available at C:/AMDDesignTools/2025.2/data/xhub/boards\XilinxBoardStore\boards\Xilinx\vc709\1.8\board.xml as part xc7vx690tffg1761-2 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vck190:part0:2.2 available at C:/AMDDesignTools/2025.2/data/xhub/boards\XilinxBoardStore\boards\Xilinx\vck190\production\2.2\board.xml as part xcvc1902-vsva2197-2mp-e-s specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vck190:part0:3.0 available at C:/AMDDesignTools/2025.2/data/xhub/boards\XilinxBoardStore\boards\Xilinx\vck190\production\3.0\board.xml as part xcvc1902-vsva2197-2mp-e-s specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vck190:part0:3.1 available at C:/AMDDesignTools/2025.2/data/xhub/boards\XilinxBoardStore\boards\Xilinx\vck190\production\3.1\board.xml as part xcvc1902-vsva2197-2mp-e-s specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vck190:part0:3.2 available at C:/AMDDesignTools/2025.2/data/xhub/boards\XilinxBoardStore\boards\Xilinx\vck190\production\3.2\board.xml as part xcvc1902-vsva2197-2mp-e-s specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vck190:part0:3.3 available at C:/AMDDesignTools/2025.2/data/xhub/boards\XilinxBoardStore\boards\Xilinx\vck190\production\3.3\board.xml as part xcvc1902-vsva2197-2mp-e-s specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vck190:part0:3.4 available at C:/AMDDesignTools/2025.2/data/xhub/boards\XilinxBoardStore\boards\Xilinx\vck190\production\3.4\board.xml as part xcvc1902-vsva2197-2mp-e-s specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vck190_newl:part0:1.0 available at C:/AMDDesignTools/2025.2/data/xhub/boards\XilinxBoardStore\boards\Xilinx\vck190_newl\production\1.0\board.xml as part xcvc1902-vsva2197-2mp-e-s specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vck190_newl:part0:1.1 available at C:/AMDDesignTools/2025.2/data/xhub/boards\XilinxBoardStore\boards\Xilinx\vck190_newl\production\1.1\board.xml as part xcvc1902-vsva2197-2mp-e-s specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vck190_newl:part0:1.2 available at C:/AMDDesignTools/2025.2/data/xhub/boards\XilinxBoardStore\boards\Xilinx\vck190_newl\production\1.2\board.xml as part xcvc1902-vsva2197-2mp-e-s specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vck190_newl:part0:1.3 available at C:/AMDDesignTools/2025.2/data/xhub/boards\XilinxBoardStore\boards\Xilinx\vck190_newl\production\1.3\board.xml as part xcvc1902-vsva2197-2mp-e-s specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vcu108:part0:1.6 available at C:/AMDDesignTools/2025.2/data/xhub/boards\XilinxBoardStore\boards\Xilinx\vcu108\1.6\board.xml as part xcvu095-ffva2104-2-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vcu108:part0:1.7 available at C:/AMDDesignTools/2025.2/data/xhub/boards\XilinxBoardStore\boards\Xilinx\vcu108\1.7\board.xml as part xcvu095-ffva2104-2-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vcu110:part0:1.4 available at C:/AMDDesignTools/2025.2/data/xhub/boards\XilinxBoardStore\boards\Xilinx\vcu110\1.4\board.xml as part xcvu190-flgc2104-2-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vcu118:part0:2.0 available at C:/AMDDesignTools/2025.2/data/xhub/boards\XilinxBoardStore\boards\Xilinx\vcu118\2.0\board.xml as part xcvu9p-flga2104-2l-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vcu118:part0:2.3 available at C:/AMDDesignTools/2025.2/data/xhub/boards\XilinxBoardStore\boards\Xilinx\vcu118\2.3\board.xml as part xcvu9p-flga2104-2l-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vcu118:part0:2.4 available at C:/AMDDesignTools/2025.2/data/xhub/boards\XilinxBoardStore\boards\Xilinx\vcu118\2.4\board.xml as part xcvu9p-flga2104-2l-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vcu128:part0:1.0 available at C:/AMDDesignTools/2025.2/data/xhub/boards\XilinxBoardStore\boards\Xilinx\vcu128\production\1.0\board.xml as part xcvu37p-fsvh2892-2l-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vcu129:part0:1.0 available at C:/AMDDesignTools/2025.2/data/xhub/boards\XilinxBoardStore\boards\Xilinx\vcu129\production\1.0\board.xml as part xcvu29p-fsga2577-2l-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vcu1525:part0:1.3 available at C:/AMDDesignTools/2025.2/data/xhub/boards\XilinxBoardStore\boards\Xilinx\vcu1525\1.3\board.xml as part xcvu9p-fsgd2104-2l-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vek280:part0:1.0 available at C:/AMDDesignTools/2025.2/data/xhub/boards\XilinxBoardStore\boards\Xilinx\vek280\production\1.0\board.xml as part xcve2802-vsvh1760-2mp-e-s specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vek280:part0:1.1 available at C:/AMDDesignTools/2025.2/data/xhub/boards\XilinxBoardStore\boards\Xilinx\vek280\production\1.1\board.xml as part xcve2802-vsvh1760-2mp-e-s specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vek280:part0:1.2 available at C:/AMDDesignTools/2025.2/data/xhub/boards\XilinxBoardStore\boards\Xilinx\vek280\production\1.2\board.xml as part xcve2802-vsvh1760-2mp-e-s specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vek385:part0:1.0 available at C:/AMDDesignTools/2025.2/data/xhub/boards\XilinxBoardStore\boards\Xilinx\vek385\1.0\board.xml as part xc2ve3858-ssva2112-2mp-e-s specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vek385:part0:1.1 available at C:/AMDDesignTools/2025.2/data/xhub/boards\XilinxBoardStore\boards\Xilinx\vek385\1.1\board.xml as part xc2ve3858-ssva2112-2mp-e-s specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vek385_1:part0:1.0 available at C:/AMDDesignTools/2025.2/data/xhub/boards\XilinxBoardStore\boards\Xilinx\vek385_2\1.0\board.xml as part xc2ve3858-ssva2112-2mp-e-s specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vermeo_t1_mpsoc:part0:1.0 available at C:/AMDDesignTools/2025.2/data/xhub/boards\XilinxBoardStore\boards\Xilinx\vermeo_t1_mpsoc\1.0\board.xml as part xczu19eg-ffvd1760-2l-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vermeo_t1_rfsoc:part0:1.0 available at C:/AMDDesignTools/2025.2/data/xhub/boards\XilinxBoardStore\boards\Xilinx\vermeo_t1_rfsoc\1.0\board.xml as part xczu21dr-ffvd1156-2l-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vhk158:part0:1.0 available at C:/AMDDesignTools/2025.2/data/xhub/boards\XilinxBoardStore\boards\Xilinx\vhk158\production\1.0\board.xml as part xcvh1582-vsva3697-2mp-e-s specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vhk158:part0:1.1 available at C:/AMDDesignTools/2025.2/data/xhub/boards\XilinxBoardStore\boards\Xilinx\vhk158\production\1.1\board.xml as part xcvh1582-vsva3697-2mp-e-s specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vhk158:part0:1.2 available at C:/AMDDesignTools/2025.2/data/xhub/boards\XilinxBoardStore\boards\Xilinx\vhk158\production\1.2\board.xml as part xcvh1582-vsva3697-2mp-e-s specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vmk180:part0:2.2 available at C:/AMDDesignTools/2025.2/data/xhub/boards\XilinxBoardStore\boards\Xilinx\vmk180\production\2.2\board.xml as part xcvm1802-vsva2197-2mp-e-s specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vmk180:part0:3.0 available at C:/AMDDesignTools/2025.2/data/xhub/boards\XilinxBoardStore\boards\Xilinx\vmk180\production\3.0\board.xml as part xcvm1802-vsva2197-2mp-e-s specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vmk180:part0:3.1 available at C:/AMDDesignTools/2025.2/data/xhub/boards\XilinxBoardStore\boards\Xilinx\vmk180\production\3.1\board.xml as part xcvm1802-vsva2197-2mp-e-s specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vmk180:part0:3.2 available at C:/AMDDesignTools/2025.2/data/xhub/boards\XilinxBoardStore\boards\Xilinx\vmk180\production\3.2\board.xml as part xcvm1802-vsva2197-2mp-e-s specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vmk180:part0:3.3 available at C:/AMDDesignTools/2025.2/data/xhub/boards\XilinxBoardStore\boards\Xilinx\vmk180\production\3.3\board.xml as part xcvm1802-vsva2197-2mp-e-s specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vmk180_newl:part0:1.0 available at C:/AMDDesignTools/2025.2/data/xhub/boards\XilinxBoardStore\boards\Xilinx\vmk180_newl\production\1.0\board.xml as part xcvm1802-vsva2197-2mp-e-s specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vmk180_newl:part0:1.1 available at C:/AMDDesignTools/2025.2/data/xhub/boards\XilinxBoardStore\boards\Xilinx\vmk180_newl\production\1.1\board.xml as part xcvm1802-vsva2197-2mp-e-s specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vpk120:part0:1.0 available at C:/AMDDesignTools/2025.2/data/xhub/boards\XilinxBoardStore\boards\Xilinx\vpk120\production\1.0\board.xml as part xcvp1202-vsva2785-2mp-e-s specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vpk120:part0:1.1 available at C:/AMDDesignTools/2025.2/data/xhub/boards\XilinxBoardStore\boards\Xilinx\vpk120\production\1.1\board.xml as part xcvp1202-vsva2785-2mp-e-s specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vpk120:part0:1.2 available at C:/AMDDesignTools/2025.2/data/xhub/boards\XilinxBoardStore\boards\Xilinx\vpk120\production\1.2\board.xml as part xcvp1202-vsva2785-2mp-e-s specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vpk180:part0:1.0 available at C:/AMDDesignTools/2025.2/data/xhub/boards\XilinxBoardStore\boards\Xilinx\vpk180\production\1.0\board.xml as part xcvp1802-lsvc4072-2mp-e-s specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vpk180:part0:1.1 available at C:/AMDDesignTools/2025.2/data/xhub/boards\XilinxBoardStore\boards\Xilinx\vpk180\production\1.1\board.xml as part xcvp1802-lsvc4072-2mp-e-s specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vpk180:part0:1.2 available at C:/AMDDesignTools/2025.2/data/xhub/boards\XilinxBoardStore\boards\Xilinx\vpk180\production\1.2\board.xml as part xcvp1802-lsvc4072-2mp-e-s specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vrk160:part0:1.0 available at C:/AMDDesignTools/2025.2/data/xhub/boards\XilinxBoardStore\boards\Xilinx\vrk160\1.0\board.xml as part xcvr1602-vsva2488-2mp-e-s-es1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vrk160:part0:1.1 available at C:/AMDDesignTools/2025.2/data/xhub/boards\XilinxBoardStore\boards\Xilinx\vrk160\1.1\board.xml as part xcvr1602-vsva2488-2mp-e-s-es1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu102:part0:3.3 available at C:/AMDDesignTools/2025.2/data/xhub/boards\XilinxBoardStore\boards\Xilinx\zcu102\3.3\board.xml as part xczu9eg-ffvb1156-2-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu102:part0:3.4 available at C:/AMDDesignTools/2025.2/data/xhub/boards\XilinxBoardStore\boards\Xilinx\zcu102\3.4\board.xml as part xczu9eg-ffvb1156-2-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu104:part0:1.1 available at C:/AMDDesignTools/2025.2/data/xhub/boards\XilinxBoardStore\boards\Xilinx\zcu104\1.1\board.xml as part xczu7ev-ffvc1156-2-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu106:part0:2.4 available at C:/AMDDesignTools/2025.2/data/xhub/boards\XilinxBoardStore\boards\Xilinx\zcu106\2.4\board.xml as part xczu7ev-ffvc1156-2-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu106:part0:2.5 available at C:/AMDDesignTools/2025.2/data/xhub/boards\XilinxBoardStore\boards\Xilinx\zcu106\2.5\board.xml as part xczu7ev-ffvc1156-2-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu106:part0:2.6 available at C:/AMDDesignTools/2025.2/data/xhub/boards\XilinxBoardStore\boards\Xilinx\zcu106\2.6\board.xml as part xczu7ev-ffvc1156-2-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu111:part0:1.2 available at C:/AMDDesignTools/2025.2/data/xhub/boards\XilinxBoardStore\boards\Xilinx\zcu111\1.2\board.xml as part xczu28dr-ffvg1517-2-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu111:part0:1.3 available at C:/AMDDesignTools/2025.2/data/xhub/boards\XilinxBoardStore\boards\Xilinx\zcu111\1.3\board.xml as part xczu28dr-ffvg1517-2-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu111:part0:1.4 available at C:/AMDDesignTools/2025.2/data/xhub/boards\XilinxBoardStore\boards\Xilinx\zcu111\1.4\board.xml as part xczu28dr-ffvg1517-2-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu1275:part0:1.0 available at C:/AMDDesignTools/2025.2/data/xhub/boards\XilinxBoardStore\boards\Xilinx\zcu1275\1.0\board.xml as part xczu29dr-ffvf1760-2-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu1285:part0:1.0 available at C:/AMDDesignTools/2025.2/data/xhub/boards\XilinxBoardStore\boards\Xilinx\zcu1285\1.0\board.xml as part xczu39dr-ffvf1760-2-i specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu208:part0:2.0 available at C:/AMDDesignTools/2025.2/data/xhub/boards\XilinxBoardStore\boards\Xilinx\zcu208\production\2.0\board.xml as part xczu48dr-fsvg1517-2-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu208ld:part0:2.0 available at C:/AMDDesignTools/2025.2/data/xhub/boards\XilinxBoardStore\boards\Xilinx\zcu208ld\production\2.0\board.xml as part xczu58dr-fsvg1517-2-i specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu216:part0:2.0 available at C:/AMDDesignTools/2025.2/data/xhub/boards\XilinxBoardStore\boards\Xilinx\zcu216\production\2.0\board.xml as part xczu49dr-ffvf1760-2-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu216ld:part0:2.0 available at C:/AMDDesignTools/2025.2/data/xhub/boards\XilinxBoardStore\boards\Xilinx\zcu216ld\production\2.0\board.xml as part xczu59dr-ffvf1760-2-i specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu670:part0:2.0 available at C:/AMDDesignTools/2025.2/data/xhub/boards\XilinxBoardStore\boards\Xilinx\zcu670\2.0\board.xml as part xczu67dr-fsve1156-2-i specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu670ld:part0:1.0 available at C:/AMDDesignTools/2025.2/data/xhub/boards\XilinxBoardStore\boards\Xilinx\zcu670ld\1.0\board.xml as part xczu57dr-fsve1156-2-i specified in board_part file is either invalid or not available
+WARNING: [Project 1-5713] Board part 'digilentinc.com:zybo-z7-20:part0:1.2' set for the project  is not found. BoardPart property will be unset. Please select board from latest repo build 
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/AMDDesignTools/2025.2/Vivado/data/ip'.
+WARNING: [IP_Flow 19-3664] IP 'gnss_zynq_gnss_top_axi_0_0' generated file not found 'd:/FPGA/greta-oto/vivado/gnss_zynq/gnss_zynq.gen/sources_1/bd/gnss_zynq/ip/gnss_zynq_gnss_top_axi_0_0/gnss_zynq_gnss_top_axi_0_0.dcp'. Please regenerate to continue.
+WARNING: [IP_Flow 19-3664] IP 'gnss_zynq_gnss_top_axi_0_0' generated file not found 'd:/FPGA/greta-oto/vivado/gnss_zynq/gnss_zynq.gen/sources_1/bd/gnss_zynq/ip/gnss_zynq_gnss_top_axi_0_0/gnss_zynq_gnss_top_axi_0_0_sim_netlist.vhdl'. Please regenerate to continue.
+WARNING: [IP_Flow 19-3664] IP 'gnss_zynq_gnss_top_axi_0_0' generated file not found 'd:/FPGA/greta-oto/vivado/gnss_zynq/gnss_zynq.gen/sources_1/bd/gnss_zynq/ip/gnss_zynq_gnss_top_axi_0_0/gnss_zynq_gnss_top_axi_0_0_sim_netlist.v'. Please regenerate to continue.
+WARNING: [IP_Flow 19-3664] IP 'gnss_zynq_gnss_top_axi_0_0' generated file not found 'd:/FPGA/greta-oto/vivado/gnss_zynq/gnss_zynq.gen/sources_1/bd/gnss_zynq/ip/gnss_zynq_gnss_top_axi_0_0/gnss_zynq_gnss_top_axi_0_0_stub.vhdl'. Please regenerate to continue.
+WARNING: [IP_Flow 19-3664] IP 'gnss_zynq_gnss_top_axi_0_0' generated file not found 'd:/FPGA/greta-oto/vivado/gnss_zynq/gnss_zynq.gen/sources_1/bd/gnss_zynq/ip/gnss_zynq_gnss_top_axi_0_0/gnss_zynq_gnss_top_axi_0_0_stub.v'. Please regenerate to continue.
+INFO: [Project 1-5698] Found the below utility IPs instantiated in block design D:/FPGA/greta-oto/vivado/gnss_zynq/gnss_zynq.srcs/sources_1/bd/gnss_zynq/gnss_zynq.bd which have equivalent inline hdl with improved performance and reduced diskspace.
+It is recommended to migrate these utility IPs to inline hdl  using the command upgrade_project -migrate_to_inline_hdl.  The utility IPs may be deprecated in future releases.
+More information on inline hdl is available in UG994.
+Utility IP Component Instances:
+ gnss_zynq_xlconstant_miso_0
+gnss_zynq_xlconstant_ssin_0
+open_project: Time (s): cpu = 00:00:09 ; elapsed = 00:00:06 . Memory (MB): peak = 551.434 ; gain = 243.402
+# catch { reset_run gnss_zynq_gnss_top_axi_0_0_synth_1 }
+WARNING: [Vivado 12-1017] Problems encountered:
+1. Failed to delete one or more files in run directory D:/FPGA/greta-oto/vivado/gnss_zynq/gnss_zynq.runs/gnss_zynq_gnss_top_axi_0_0_synth_1
+
+# reset_run synth_1
+INFO: [Project 1-1160] Copying file D:/FPGA/greta-oto/vivado/gnss_zynq/gnss_zynq.runs/synth_1/gnss_zynq_wrapper.dcp to D:/FPGA/greta-oto/vivado/gnss_zynq/gnss_zynq.srcs/utils_1/imports/synth_1 and adding it to utils fileset
+WARNING: [Vivado 12-1017] Problems encountered:
+1. Failed to delete one or more files in run directory D:/FPGA/greta-oto/vivado/gnss_zynq/gnss_zynq.runs/synth_1
+
+# launch_runs synth_1 -jobs 4
+[Thu Jun 25 19:55:40 2026] Launched gnss_zynq_gnss_top_axi_0_0_synth_1...
+Run output will be captured here: D:/FPGA/greta-oto/vivado/gnss_zynq/gnss_zynq.runs/gnss_zynq_gnss_top_axi_0_0_synth_1/runme.log
+[Thu Jun 25 19:55:40 2026] Launched synth_1...
+Run output will be captured here: D:/FPGA/greta-oto/vivado/gnss_zynq/gnss_zynq.runs/synth_1/runme.log
+# wait_on_run synth_1
+[Thu Jun 25 19:55:40 2026] Waiting for synth_1 to finish...
+
+
+*** Running vivado
+    with args -log gnss_zynq_wrapper.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source gnss_zynq_wrapper.tcl
+
+
+
+****** Vivado v2025.2 (64-bit)
+  **** SW Build 6299465 on Fri Nov 14 19:35:11 GMT 2025
+  **** IP Build 6300035 on Fri Nov 14 10:48:45 MST 2025
+  **** SharedData Build 6298862 on Thu Nov 13 04:50:51 MST 2025
+  **** Start of session at: Thu Jun 25 19:58:07 2026
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source gnss_zynq_wrapper.tcl -notrace
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/AMDDesignTools/2025.2/Vivado/data/ip'.
+INFO: [Project 1-5698] Found the below utility IPs instantiated in block design D:/FPGA/greta-oto/vivado/gnss_zynq/gnss_zynq.srcs/sources_1/bd/gnss_zynq/gnss_zynq.bd which have equivalent inline hdl with improved performance and reduced diskspace.
+It is recommended to migrate these utility IPs to inline hdl  using the command upgrade_project -migrate_to_inline_hdl.  The utility IPs may be deprecated in future releases.
+More information on inline hdl is available in UG994.
+Utility IP Component Instances:
+ gnss_zynq_xlconstant_miso_0
+gnss_zynq_xlconstant_ssin_0
+Command: read_checkpoint -auto_incremental -incremental D:/FPGA/greta-oto/vivado/gnss_zynq/gnss_zynq.srcs/utils_1/imports/synth_1/gnss_zynq_wrapper.dcp
+INFO: [Vivado 12-5825] Read reference checkpoint from D:/FPGA/greta-oto/vivado/gnss_zynq/gnss_zynq.srcs/utils_1/imports/synth_1/gnss_zynq_wrapper.dcp for incremental synthesis
+INFO: [Vivado 12-7989] Please ensure there are no constraint changes
+Command: synth_design -top gnss_zynq_wrapper -part xc7z020clg400-1
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7z020'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7z020'
+INFO: [Device 21-403] Loading part xc7z020clg400-1
+INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
+INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 19016
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 1346.633 ; gain = 545.191
+---------------------------------------------------------------------------------
+INFO: [Synth 8-6157] synthesizing module 'gnss_zynq_wrapper' [D:/FPGA/greta-oto/vivado/gnss_zynq/gnss_zynq.gen/sources_1/bd/gnss_zynq/hdl/gnss_zynq_wrapper.v:13]
+INFO: [Synth 8-6157] synthesizing module 'gnss_zynq' [d:/FPGA/greta-oto/vivado/gnss_zynq/gnss_zynq.gen/sources_1/bd/gnss_zynq/synth/gnss_zynq.v:13]
+INFO: [Synth 8-6157] synthesizing module 'gnss_zynq_axi_smc_0_0' [D:/FPGA/greta-oto/vivado/gnss_zynq/gnss_zynq.runs/synth_1/.Xil/Vivado-24872-GPSLAB/realtime/gnss_zynq_axi_smc_0_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'gnss_zynq_axi_smc_0_0' (0#1) [D:/FPGA/greta-oto/vivado/gnss_zynq/gnss_zynq.runs/synth_1/.Xil/Vivado-24872-GPSLAB/realtime/gnss_zynq_axi_smc_0_0_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'gnss_zynq_gnss_top_axi_0_0' [D:/FPGA/greta-oto/vivado/gnss_zynq/gnss_zynq.runs/synth_1/.Xil/Vivado-24872-GPSLAB/realtime/gnss_zynq_gnss_top_axi_0_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'gnss_zynq_gnss_top_axi_0_0' (0#1) [D:/FPGA/greta-oto/vivado/gnss_zynq/gnss_zynq.runs/synth_1/.Xil/Vivado-24872-GPSLAB/realtime/gnss_zynq_gnss_top_axi_0_0_stub.v:6]
+WARNING: [Synth 8-7071] port 'pps_irq' of module 'gnss_zynq_gnss_top_axi_0_0' is unconnected for instance 'gnss_top_axi_0' [d:/FPGA/greta-oto/vivado/gnss_zynq/gnss_zynq.gen/sources_1/bd/gnss_zynq/synth/gnss_zynq.v:234]
+WARNING: [Synth 8-7023] instance 'gnss_top_axi_0' of module 'gnss_zynq_gnss_top_axi_0_0' has 30 connections declared, but only 29 given [d:/FPGA/greta-oto/vivado/gnss_zynq/gnss_zynq.gen/sources_1/bd/gnss_zynq/synth/gnss_zynq.v:234]
+INFO: [Synth 8-6157] synthesizing module 'gnss_zynq_proc_sys_reset_0_0' [D:/FPGA/greta-oto/vivado/gnss_zynq/gnss_zynq.runs/synth_1/.Xil/Vivado-24872-GPSLAB/realtime/gnss_zynq_proc_sys_reset_0_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'gnss_zynq_proc_sys_reset_0_0' (0#1) [D:/FPGA/greta-oto/vivado/gnss_zynq/gnss_zynq.runs/synth_1/.Xil/Vivado-24872-GPSLAB/realtime/gnss_zynq_proc_sys_reset_0_0_stub.v:6]
+WARNING: [Synth 8-7071] port 'mb_reset' of module 'gnss_zynq_proc_sys_reset_0_0' is unconnected for instance 'proc_sys_reset_0' [d:/FPGA/greta-oto/vivado/gnss_zynq/gnss_zynq.gen/sources_1/bd/gnss_zynq/synth/gnss_zynq.v:264]
+WARNING: [Synth 8-7071] port 'bus_struct_reset' of module 'gnss_zynq_proc_sys_reset_0_0' is unconnected for instance 'proc_sys_reset_0' [d:/FPGA/greta-oto/vivado/gnss_zynq/gnss_zynq.gen/sources_1/bd/gnss_zynq/synth/gnss_zynq.v:264]
+WARNING: [Synth 8-7071] port 'peripheral_reset' of module 'gnss_zynq_proc_sys_reset_0_0' is unconnected for instance 'proc_sys_reset_0' [d:/FPGA/greta-oto/vivado/gnss_zynq/gnss_zynq.gen/sources_1/bd/gnss_zynq/synth/gnss_zynq.v:264]
+WARNING: [Synth 8-7071] port 'interconnect_aresetn' of module 'gnss_zynq_proc_sys_reset_0_0' is unconnected for instance 'proc_sys_reset_0' [d:/FPGA/greta-oto/vivado/gnss_zynq/gnss_zynq.gen/sources_1/bd/gnss_zynq/synth/gnss_zynq.v:264]
+WARNING: [Synth 8-7023] instance 'proc_sys_reset_0' of module 'gnss_zynq_proc_sys_reset_0_0' has 10 connections declared, but only 6 given [d:/FPGA/greta-oto/vivado/gnss_zynq/gnss_zynq.gen/sources_1/bd/gnss_zynq/synth/gnss_zynq.v:264]
+INFO: [Synth 8-6157] synthesizing module 'gnss_zynq_processing_system7_0_0' [D:/FPGA/greta-oto/vivado/gnss_zynq/gnss_zynq.runs/synth_1/.Xil/Vivado-24872-GPSLAB/realtime/gnss_zynq_processing_system7_0_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'gnss_zynq_processing_system7_0_0' (0#1) [D:/FPGA/greta-oto/vivado/gnss_zynq/gnss_zynq.runs/synth_1/.Xil/Vivado-24872-GPSLAB/realtime/gnss_zynq_processing_system7_0_0_stub.v:6]
+WARNING: [Synth 8-7071] port 'SPI0_SCLK_T' of module 'gnss_zynq_processing_system7_0_0' is unconnected for instance 'processing_system7_0' [d:/FPGA/greta-oto/vivado/gnss_zynq/gnss_zynq.gen/sources_1/bd/gnss_zynq/synth/gnss_zynq.v:271]
+WARNING: [Synth 8-7071] port 'SPI0_MOSI_T' of module 'gnss_zynq_processing_system7_0_0' is unconnected for instance 'processing_system7_0' [d:/FPGA/greta-oto/vivado/gnss_zynq/gnss_zynq.gen/sources_1/bd/gnss_zynq/synth/gnss_zynq.v:271]
+WARNING: [Synth 8-7071] port 'SPI0_MISO_O' of module 'gnss_zynq_processing_system7_0_0' is unconnected for instance 'processing_system7_0' [d:/FPGA/greta-oto/vivado/gnss_zynq/gnss_zynq.gen/sources_1/bd/gnss_zynq/synth/gnss_zynq.v:271]
+WARNING: [Synth 8-7071] port 'SPI0_MISO_T' of module 'gnss_zynq_processing_system7_0_0' is unconnected for instance 'processing_system7_0' [d:/FPGA/greta-oto/vivado/gnss_zynq/gnss_zynq.gen/sources_1/bd/gnss_zynq/synth/gnss_zynq.v:271]
+WARNING: [Synth 8-7071] port 'SPI0_SS1_O' of module 'gnss_zynq_processing_system7_0_0' is unconnected for instance 'processing_system7_0' [d:/FPGA/greta-oto/vivado/gnss_zynq/gnss_zynq.gen/sources_1/bd/gnss_zynq/synth/gnss_zynq.v:271]
+WARNING: [Synth 8-7071] port 'SPI0_SS2_O' of module 'gnss_zynq_processing_system7_0_0' is unconnected for instance 'processing_system7_0' [d:/FPGA/greta-oto/vivado/gnss_zynq/gnss_zynq.gen/sources_1/bd/gnss_zynq/synth/gnss_zynq.v:271]
+WARNING: [Synth 8-7071] port 'SPI0_SS_T' of module 'gnss_zynq_processing_system7_0_0' is unconnected for instance 'processing_system7_0' [d:/FPGA/greta-oto/vivado/gnss_zynq/gnss_zynq.gen/sources_1/bd/gnss_zynq/synth/gnss_zynq.v:271]
+WARNING: [Synth 8-7071] port 'TTC0_WAVE0_OUT' of module 'gnss_zynq_processing_system7_0_0' is unconnected for instance 'processing_system7_0' [d:/FPGA/greta-oto/vivado/gnss_zynq/gnss_zynq.gen/sources_1/bd/gnss_zynq/synth/gnss_zynq.v:271]
+WARNING: [Synth 8-7071] port 'TTC0_WAVE1_OUT' of module 'gnss_zynq_processing_system7_0_0' is unconnected for instance 'processing_system7_0' [d:/FPGA/greta-oto/vivado/gnss_zynq/gnss_zynq.gen/sources_1/bd/gnss_zynq/synth/gnss_zynq.v:271]
+WARNING: [Synth 8-7071] port 'TTC0_WAVE2_OUT' of module 'gnss_zynq_processing_system7_0_0' is unconnected for instance 'processing_system7_0' [d:/FPGA/greta-oto/vivado/gnss_zynq/gnss_zynq.gen/sources_1/bd/gnss_zynq/synth/gnss_zynq.v:271]
+WARNING: [Synth 8-7071] port 'USB0_PORT_INDCTL' of module 'gnss_zynq_processing_system7_0_0' is unconnected for instance 'processing_system7_0' [d:/FPGA/greta-oto/vivado/gnss_zynq/gnss_zynq.gen/sources_1/bd/gnss_zynq/synth/gnss_zynq.v:271]
+WARNING: [Synth 8-7071] port 'USB0_VBUS_PWRSELECT' of module 'gnss_zynq_processing_system7_0_0' is unconnected for instance 'processing_system7_0' [d:/FPGA/greta-oto/vivado/gnss_zynq/gnss_zynq.gen/sources_1/bd/gnss_zynq/synth/gnss_zynq.v:271]
+WARNING: [Synth 8-7023] instance 'processing_system7_0' of module 'gnss_zynq_processing_system7_0_0' has 83 connections declared, but only 71 given [d:/FPGA/greta-oto/vivado/gnss_zynq/gnss_zynq.gen/sources_1/bd/gnss_zynq/synth/gnss_zynq.v:271]
+INFO: [Synth 8-6157] synthesizing module 'gnss_zynq_xlconstant_miso_0' [d:/FPGA/greta-oto/vivado/gnss_zynq/gnss_zynq.gen/sources_1/bd/gnss_zynq/ip/gnss_zynq_xlconstant_miso_0/synth/gnss_zynq_xlconstant_miso_0.v:53]
+INFO: [Synth 8-6157] synthesizing module 'xlconstant_v1_1_10_xlconstant' [d:/FPGA/greta-oto/vivado/gnss_zynq/gnss_zynq.gen/sources_1/bd/gnss_zynq/ipshared/a165/hdl/xlconstant_v1_1_vl_rfs.v:68]
+INFO: [Synth 8-6155] done synthesizing module 'xlconstant_v1_1_10_xlconstant' (0#1) [d:/FPGA/greta-oto/vivado/gnss_zynq/gnss_zynq.gen/sources_1/bd/gnss_zynq/ipshared/a165/hdl/xlconstant_v1_1_vl_rfs.v:68]
+INFO: [Synth 8-6155] done synthesizing module 'gnss_zynq_xlconstant_miso_0' (0#1) [d:/FPGA/greta-oto/vivado/gnss_zynq/gnss_zynq.gen/sources_1/bd/gnss_zynq/ip/gnss_zynq_xlconstant_miso_0/synth/gnss_zynq_xlconstant_miso_0.v:53]
+INFO: [Synth 8-6157] synthesizing module 'gnss_zynq_xlconstant_ssin_0' [d:/FPGA/greta-oto/vivado/gnss_zynq/gnss_zynq.gen/sources_1/bd/gnss_zynq/ip/gnss_zynq_xlconstant_ssin_0/synth/gnss_zynq_xlconstant_ssin_0.v:53]
+INFO: [Synth 8-6157] synthesizing module 'xlconstant_v1_1_10_xlconstant__parameterized0' [d:/FPGA/greta-oto/vivado/gnss_zynq/gnss_zynq.gen/sources_1/bd/gnss_zynq/ipshared/a165/hdl/xlconstant_v1_1_vl_rfs.v:68]
+INFO: [Synth 8-6155] done synthesizing module 'xlconstant_v1_1_10_xlconstant__parameterized0' (0#1) [d:/FPGA/greta-oto/vivado/gnss_zynq/gnss_zynq.gen/sources_1/bd/gnss_zynq/ipshared/a165/hdl/xlconstant_v1_1_vl_rfs.v:68]
+INFO: [Synth 8-6155] done synthesizing module 'gnss_zynq_xlconstant_ssin_0' (0#1) [d:/FPGA/greta-oto/vivado/gnss_zynq/gnss_zynq.gen/sources_1/bd/gnss_zynq/ip/gnss_zynq_xlconstant_ssin_0/synth/gnss_zynq_xlconstant_ssin_0.v:53]
+INFO: [Synth 8-6155] done synthesizing module 'gnss_zynq' (0#1) [d:/FPGA/greta-oto/vivado/gnss_zynq/gnss_zynq.gen/sources_1/bd/gnss_zynq/synth/gnss_zynq.v:13]
+INFO: [Synth 8-6155] done synthesizing module 'gnss_zynq_wrapper' (0#1) [D:/FPGA/greta-oto/vivado/gnss_zynq/gnss_zynq.gen/sources_1/bd/gnss_zynq/hdl/gnss_zynq_wrapper.v:13]
+WARNING: [Synth 8-7129] Port spi0_ss_o[2] in module gnss_zynq is either unconnected or has no load
+WARNING: [Synth 8-7129] Port spi0_ss_o[1] in module gnss_zynq is either unconnected or has no load
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 1469.883 ; gain = 668.441
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 1469.883 ; gain = 668.441
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 1469.883 ; gain = 668.441
+---------------------------------------------------------------------------------
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.005 . Memory (MB): peak = 1469.883 ; gain = 0.000
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [d:/FPGA/greta-oto/vivado/gnss_zynq/gnss_zynq.gen/sources_1/bd/gnss_zynq/ip/gnss_zynq_processing_system7_0_0/gnss_zynq_processing_system7_0_0/gnss_zynq_processing_system7_0_0_in_context.xdc] for cell 'gnss_zynq_i/processing_system7_0'
+Finished Parsing XDC File [d:/FPGA/greta-oto/vivado/gnss_zynq/gnss_zynq.gen/sources_1/bd/gnss_zynq/ip/gnss_zynq_processing_system7_0_0/gnss_zynq_processing_system7_0_0/gnss_zynq_processing_system7_0_0_in_context.xdc] for cell 'gnss_zynq_i/processing_system7_0'
+Parsing XDC File [d:/FPGA/greta-oto/vivado/gnss_zynq/gnss_zynq.gen/sources_1/bd/gnss_zynq/ip/gnss_zynq_proc_sys_reset_0_0/gnss_zynq_proc_sys_reset_0_0/gnss_zynq_proc_sys_reset_0_0_in_context.xdc] for cell 'gnss_zynq_i/proc_sys_reset_0'
+Finished Parsing XDC File [d:/FPGA/greta-oto/vivado/gnss_zynq/gnss_zynq.gen/sources_1/bd/gnss_zynq/ip/gnss_zynq_proc_sys_reset_0_0/gnss_zynq_proc_sys_reset_0_0/gnss_zynq_proc_sys_reset_0_0_in_context.xdc] for cell 'gnss_zynq_i/proc_sys_reset_0'
+Parsing XDC File [d:/FPGA/greta-oto/vivado/gnss_zynq/gnss_zynq.gen/sources_1/bd/gnss_zynq/ip/gnss_zynq_axi_smc_0_0/gnss_zynq_axi_smc_0_0/gnss_zynq_axi_smc_0_0_in_context.xdc] for cell 'gnss_zynq_i/axi_smc_0'
+Finished Parsing XDC File [d:/FPGA/greta-oto/vivado/gnss_zynq/gnss_zynq.gen/sources_1/bd/gnss_zynq/ip/gnss_zynq_axi_smc_0_0/gnss_zynq_axi_smc_0_0/gnss_zynq_axi_smc_0_0_in_context.xdc] for cell 'gnss_zynq_i/axi_smc_0'
+Parsing XDC File [d:/FPGA/greta-oto/vivado/gnss_zynq/gnss_zynq.gen/sources_1/bd/gnss_zynq/ip/gnss_zynq_gnss_top_axi_0_0/gnss_zynq_gnss_top_axi_0_0/gnss_zynq_gnss_top_axi_0_0_in_context.xdc] for cell 'gnss_zynq_i/gnss_top_axi_0'
+Finished Parsing XDC File [d:/FPGA/greta-oto/vivado/gnss_zynq/gnss_zynq.gen/sources_1/bd/gnss_zynq/ip/gnss_zynq_gnss_top_axi_0_0/gnss_zynq_gnss_top_axi_0_0/gnss_zynq_gnss_top_axi_0_0_in_context.xdc] for cell 'gnss_zynq_i/gnss_top_axi_0'
+Parsing XDC File [D:/FPGA/greta-oto/BB_HW/rtl/xilinx/constraints_zybo_z7.xdc]
+Finished Parsing XDC File [D:/FPGA/greta-oto/BB_HW/rtl/xilinx/constraints_zybo_z7.xdc]
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [D:/FPGA/greta-oto/BB_HW/rtl/xilinx/constraints_zybo_z7.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/gnss_zynq_wrapper_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/gnss_zynq_wrapper_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+Parsing XDC File [D:/FPGA/greta-oto/vivado/gnss_zynq/gnss_zynq.runs/synth_1/dont_touch.xdc]
+Finished Parsing XDC File [D:/FPGA/greta-oto/vivado/gnss_zynq/gnss_zynq.runs/synth_1/dont_touch.xdc]
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1469.883 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.007 . Memory (MB): peak = 1469.883 ; gain = 0.000
+INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
+INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:10 ; elapsed = 00:00:11 . Memory (MB): peak = 1469.883 ; gain = 668.441
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7z020clg400-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:10 ; elapsed = 00:00:11 . Memory (MB): peak = 1469.883 ; gain = 668.441
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:11 ; elapsed = 00:00:12 . Memory (MB): peak = 1469.883 ; gain = 668.441
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:11 ; elapsed = 00:00:12 . Memory (MB): peak = 1469.883 ; gain = 668.441
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 220 (col length:60)
+BRAMs: 280 (col length: RAMB18 60 RAMB36 30)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-7129] Port spi0_ss_o[2] in module gnss_zynq is either unconnected or has no load
+WARNING: [Synth 8-7129] Port spi0_ss_o[1] in module gnss_zynq is either unconnected or has no load
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:12 ; elapsed = 00:00:13 . Memory (MB): peak = 1469.883 ; gain = 668.441
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:16 ; elapsed = 00:00:17 . Memory (MB): peak = 1640.023 ; gain = 838.582
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:16 ; elapsed = 00:00:17 . Memory (MB): peak = 1640.246 ; gain = 838.805
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:16 ; elapsed = 00:00:17 . Memory (MB): peak = 1650.203 ; gain = 848.762
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:19 ; elapsed = 00:00:20 . Memory (MB): peak = 1899.484 ; gain = 1098.043
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:19 ; elapsed = 00:00:20 . Memory (MB): peak = 1899.484 ; gain = 1098.043
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:19 ; elapsed = 00:00:20 . Memory (MB): peak = 1899.484 ; gain = 1098.043
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:19 ; elapsed = 00:00:20 . Memory (MB): peak = 1899.484 ; gain = 1098.043
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:19 ; elapsed = 00:00:20 . Memory (MB): peak = 1899.484 ; gain = 1098.043
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:19 ; elapsed = 00:00:20 . Memory (MB): peak = 1899.484 ; gain = 1098.043
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++------+---------------------------------+----------+
+|      |BlackBox name                    |Instances |
++------+---------------------------------+----------+
+|1     |gnss_zynq_axi_smc_0_0            |         1|
+|2     |gnss_zynq_gnss_top_axi_0_0       |         1|
+|3     |gnss_zynq_proc_sys_reset_0_0     |         1|
+|4     |gnss_zynq_processing_system7_0_0 |         1|
++------+---------------------------------+----------+
+
+Report Cell Usage: 
++------+-------------------------------+------+
+|      |Cell                           |Count |
++------+-------------------------------+------+
+|1     |gnss_zynq_axi_smc_0            |     1|
+|2     |gnss_zynq_gnss_top_axi_0       |     1|
+|3     |gnss_zynq_proc_sys_reset_0     |     1|
+|4     |gnss_zynq_processing_system7_0 |     1|
+|5     |IBUF                           |     6|
+|6     |OBUF                           |     6|
+|7     |OBUFT                          |     2|
++------+-------------------------------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:19 ; elapsed = 00:00:20 . Memory (MB): peak = 1899.484 ; gain = 1098.043
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 2 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:13 ; elapsed = 00:00:19 . Memory (MB): peak = 1899.484 ; gain = 1098.043
+Synthesis Optimization Complete : Time (s): cpu = 00:00:19 ; elapsed = 00:00:20 . Memory (MB): peak = 1899.484 ; gain = 1098.043
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.005 . Memory (MB): peak = 1902.277 ; gain = 0.000
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1905.938 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Synth Design complete | Checksum: 2b537832
+INFO: [Common 17-83] Releasing license: Synthesis
+43 Infos, 24 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:23 ; elapsed = 00:00:26 . Memory (MB): peak = 1905.938 ; gain = 1334.887
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1905.938 ; gain = 0.000
+INFO: [Common 17-1381] The checkpoint 'D:/FPGA/greta-oto/vivado/gnss_zynq/gnss_zynq.runs/synth_1/gnss_zynq_wrapper.dcp' has been generated.
+INFO: [Vivado 12-24828] Executing command : report_utilization -file gnss_zynq_wrapper_utilization_synth.rpt -pb gnss_zynq_wrapper_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Thu Jun 25 19:58:42 2026...
+[Thu Jun 25 19:58:45 2026] synth_1 finished
+wait_on_runs: Time (s): cpu = 00:00:00 ; elapsed = 00:03:06 . Memory (MB): peak = 575.371 ; gain = 0.000
+# set_property STEPS.PLACE_DESIGN.ARGS.DIRECTIVE ExtraTimingOpt          [get_runs impl_1]
+# set_property STEPS.PHYS_OPT_DESIGN.IS_ENABLED true                     [get_runs impl_1]
+# set_property STEPS.PHYS_OPT_DESIGN.ARGS.DIRECTIVE AggressiveExplore    [get_runs impl_1]
+# set_property STEPS.ROUTE_DESIGN.ARGS.DIRECTIVE Explore                 [get_runs impl_1]
+# set_property STEPS.POST_ROUTE_PHYS_OPT_DESIGN.IS_ENABLED true          [get_runs impl_1]
+# set_property STEPS.POST_ROUTE_PHYS_OPT_DESIGN.ARGS.DIRECTIVE AggressiveExplore [get_runs impl_1]
+# reset_run impl_1
+# launch_runs impl_1 -jobs 4
+[Thu Jun 25 19:58:48 2026] Launched impl_1...
+Run output will be captured here: D:/FPGA/greta-oto/vivado/gnss_zynq/gnss_zynq.runs/impl_1/runme.log
+# wait_on_run impl_1
+[Thu Jun 25 19:58:48 2026] Waiting for impl_1 to finish...
+
+
+*** Running vivado
+    with args -log gnss_zynq_wrapper.vdi -applog -m64 -product Vivado -messageDb vivado.pb -mode batch -source gnss_zynq_wrapper.tcl -notrace
+
+
+
+****** Vivado v2025.2 (64-bit)
+  **** SW Build 6299465 on Fri Nov 14 19:35:11 GMT 2025
+  **** IP Build 6300035 on Fri Nov 14 10:48:45 MST 2025
+  **** SharedData Build 6298862 on Thu Nov 13 04:50:51 MST 2025
+  **** Start of session at: Thu Jun 25 19:58:54 2026
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source gnss_zynq_wrapper.tcl -notrace
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/AMDDesignTools/2025.2/Vivado/data/ip'.
+Command: link_design -top gnss_zynq_wrapper -part xc7z020clg400-1
+Design is defaulting to srcset: sources_1
+Design is defaulting to constrset: constrs_1
+INFO: [Device 21-403] Loading part xc7z020clg400-1
+INFO: [Project 1-5699] Read binary netlist with skipMacroContent - 1
+INFO: [Project 1-454] Reading design checkpoint 'd:/FPGA/greta-oto/vivado/gnss_zynq/gnss_zynq.gen/sources_1/bd/gnss_zynq/ip/gnss_zynq_axi_smc_0_0/gnss_zynq_axi_smc_0_0.dcp' for cell 'gnss_zynq_i/axi_smc_0'
+INFO: [Project 1-454] Reading design checkpoint 'd:/FPGA/greta-oto/vivado/gnss_zynq/gnss_zynq.gen/sources_1/bd/gnss_zynq/ip/gnss_zynq_gnss_top_axi_0_0/gnss_zynq_gnss_top_axi_0_0.dcp' for cell 'gnss_zynq_i/gnss_top_axi_0'
+INFO: [Project 1-454] Reading design checkpoint 'd:/FPGA/greta-oto/vivado/gnss_zynq/gnss_zynq.gen/sources_1/bd/gnss_zynq/ip/gnss_zynq_proc_sys_reset_0_0/gnss_zynq_proc_sys_reset_0_0.dcp' for cell 'gnss_zynq_i/proc_sys_reset_0'
+INFO: [Project 1-454] Reading design checkpoint 'd:/FPGA/greta-oto/vivado/gnss_zynq/gnss_zynq.gen/sources_1/bd/gnss_zynq/ip/gnss_zynq_processing_system7_0_0/gnss_zynq_processing_system7_0_0.dcp' for cell 'gnss_zynq_i/processing_system7_0'
+Netlist sorting complete. Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.478 . Memory (MB): peak = 895.246 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 2070 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-479] Netlist was created with Vivado 2025.2
+INFO: [Project 1-570] Preparing netlist for logic optimization
+Parsing XDC File [d:/FPGA/greta-oto/vivado/gnss_zynq/gnss_zynq.gen/sources_1/bd/gnss_zynq/ip/gnss_zynq_processing_system7_0_0/gnss_zynq_processing_system7_0_0.xdc] for cell 'gnss_zynq_i/processing_system7_0/inst'
+Finished Parsing XDC File [d:/FPGA/greta-oto/vivado/gnss_zynq/gnss_zynq.gen/sources_1/bd/gnss_zynq/ip/gnss_zynq_processing_system7_0_0/gnss_zynq_processing_system7_0_0.xdc] for cell 'gnss_zynq_i/processing_system7_0/inst'
+Parsing XDC File [d:/FPGA/greta-oto/vivado/gnss_zynq/gnss_zynq.gen/sources_1/bd/gnss_zynq/ip/gnss_zynq_proc_sys_reset_0_0/gnss_zynq_proc_sys_reset_0_0_board.xdc] for cell 'gnss_zynq_i/proc_sys_reset_0/U0'
+Finished Parsing XDC File [d:/FPGA/greta-oto/vivado/gnss_zynq/gnss_zynq.gen/sources_1/bd/gnss_zynq/ip/gnss_zynq_proc_sys_reset_0_0/gnss_zynq_proc_sys_reset_0_0_board.xdc] for cell 'gnss_zynq_i/proc_sys_reset_0/U0'
+Parsing XDC File [d:/FPGA/greta-oto/vivado/gnss_zynq/gnss_zynq.gen/sources_1/bd/gnss_zynq/ip/gnss_zynq_axi_smc_0_0/bd_0/ip/ip_1/bd_5145_psr_aclk_0_board.xdc] for cell 'gnss_zynq_i/axi_smc_0/inst/clk_map/psr_aclk/U0'
+Finished Parsing XDC File [d:/FPGA/greta-oto/vivado/gnss_zynq/gnss_zynq.gen/sources_1/bd/gnss_zynq/ip/gnss_zynq_axi_smc_0_0/bd_0/ip/ip_1/bd_5145_psr_aclk_0_board.xdc] for cell 'gnss_zynq_i/axi_smc_0/inst/clk_map/psr_aclk/U0'
+Parsing XDC File [d:/FPGA/greta-oto/vivado/gnss_zynq/gnss_zynq.gen/sources_1/bd/gnss_zynq/ip/gnss_zynq_axi_smc_0_0/smartconnect.xdc] for cell 'gnss_zynq_i/axi_smc_0/inst'
+Finished Parsing XDC File [d:/FPGA/greta-oto/vivado/gnss_zynq/gnss_zynq.gen/sources_1/bd/gnss_zynq/ip/gnss_zynq_axi_smc_0_0/smartconnect.xdc] for cell 'gnss_zynq_i/axi_smc_0/inst'
+Parsing XDC File [D:/FPGA/greta-oto/BB_HW/rtl/xilinx/constraints_zybo_z7.xdc]
+Finished Parsing XDC File [D:/FPGA/greta-oto/BB_HW/rtl/xilinx/constraints_zybo_z7.xdc]
+Parsing XDC File [D:/FPGA/greta-oto/BB_HW/rtl/xilinx/constraints_zybo_z7_impl.xdc]
+Finished Parsing XDC File [D:/FPGA/greta-oto/BB_HW/rtl/xilinx/constraints_zybo_z7_impl.xdc]
+INFO: [Project 1-1714] 18 XPM XDC files have been applied to the design.
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.012 . Memory (MB): peak = 1663.133 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 36 instances were transformed.
+  RAM32M => RAM32M (RAMD32(x6), RAMS32(x2)): 28 instances
+  RAM32X1D => RAM32X1D (RAMD32(x2)): 8 instances
+
+16 Infos, 0 Warnings, 0 Critical Warnings and 0 Errors encountered.
+link_design completed successfully
+link_design: Time (s): cpu = 00:00:17 ; elapsed = 00:00:17 . Memory (MB): peak = 1663.133 ; gain = 1089.598
+Command: opt_design
+Attempting to get a license for feature 'Implementation' and/or device 'xc7z020'
+INFO: [Common 17-349] Got license for feature 'Implementation' and/or device 'xc7z020'
+Running DRC as a precondition to command opt_design
+
+Starting DRC Task
+INFO: [DRC 23-27] Running DRC with 2 threads
+INFO: [Project 1-461] DRC finished with 0 Errors
+INFO: [Project 1-462] Please refer to the DRC report (report_drc) for more information.
+
+Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.561 . Memory (MB): peak = 1663.133 ; gain = 0.000
+
+Starting Cache Timing Information Task
+INFO: [Timing 38-35] Done setting XDC timing constraints.
+Ending Cache Timing Information Task | Checksum: 1807b4b3b
+
+Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.861 . Memory (MB): peak = 1663.133 ; gain = 0.000
+
+Starting Logic Optimization Task
+
+Phase 1 Initialization
+
+Phase 1.1 Core Generation And Design Setup
+Phase 1.1 Core Generation And Design Setup | Checksum: 1807b4b3b
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.023 . Memory (MB): peak = 2092.242 ; gain = 0.000
+
+Phase 1.2 Setup Constraints And Sort Netlist
+Phase 1.2 Setup Constraints And Sort Netlist | Checksum: 1807b4b3b
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.041 . Memory (MB): peak = 2092.242 ; gain = 0.000
+Phase 1 Initialization | Checksum: 1807b4b3b
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.044 . Memory (MB): peak = 2092.242 ; gain = 0.000
+
+Phase 2 Timer Update And Timing Data Collection
+
+Phase 2.1 Detect if minReqCache needed
+Phase 2.1 Detect if minReqCache needed | Checksum: 1807b4b3b
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.068 . Memory (MB): peak = 2092.266 ; gain = 0.023
+
+Phase 2.2 Timer Update
+Phase 2.2 Timer Update | Checksum: 1807b4b3b
+
+Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.572 . Memory (MB): peak = 2092.266 ; gain = 0.023
+
+Phase 2.3 Timing Data Collection
+Phase 2.3 Timing Data Collection | Checksum: 1807b4b3b
+
+Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.592 . Memory (MB): peak = 2092.266 ; gain = 0.023
+Phase 2 Timer Update And Timing Data Collection | Checksum: 1807b4b3b
+
+Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.594 . Memory (MB): peak = 2092.266 ; gain = 0.023
+
+Phase 3 Retarget
+INFO: [Opt 31-1851] Number of loadless carry chains removed were: 0
+INFO: [Opt 31-1834] Total Chains To Be Transformed Were: 0 AND Number of Transformed insts Created are: 0
+INFO: [Opt 31-1566] Pulled 3 inverters resulting in an inversion of 12 pins
+INFO: [Opt 31-138] Pushed 11 inverter(s) to 34 load pin(s).
+INFO: [Opt 31-49] Retargeted 0 cell(s).
+Phase 3 Retarget | Checksum: 17fd9a7bb
+
+Time (s): cpu = 00:00:01 ; elapsed = 00:00:01 . Memory (MB): peak = 2092.266 ; gain = 0.023
+Retarget | Checksum: 17fd9a7bb
+INFO: [Opt 31-389] Phase Retarget created 28 cells and removed 73 cells
+INFO: [Opt 31-1021] In phase Retarget, 20 netlist objects are constrained preventing optimization. Please run opt_design with -debug_log to get more detail. 
+
+Phase 4 Constant propagation
+INFO: [Opt 31-138] Pushed 2 inverter(s) to 2 load pin(s).
+Phase 4 Constant propagation | Checksum: 1f61056ce
+
+Time (s): cpu = 00:00:02 ; elapsed = 00:00:02 . Memory (MB): peak = 2092.266 ; gain = 0.023
+Constant propagation | Checksum: 1f61056ce
+INFO: [Opt 31-389] Phase Constant propagation created 44 cells and removed 83 cells
+INFO: [Opt 31-1021] In phase Constant propagation, 20 netlist objects are constrained preventing optimization. Please run opt_design with -debug_log to get more detail. 
+
+Phase 5 Sweep
+INFO: [Constraints 18-11670] Building netlist checker database with flags, 0x8
+Done building netlist checker database: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.012 . Memory (MB): peak = 2092.266 ; gain = 0.000
+INFO: [Constraints 18-11670] Building netlist checker database with flags, 0x8
+Done building netlist checker database: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.011 . Memory (MB): peak = 2092.266 ; gain = 0.000
+Phase 5 Sweep | Checksum: 13b634f01
+
+Time (s): cpu = 00:00:02 ; elapsed = 00:00:02 . Memory (MB): peak = 2092.266 ; gain = 0.023
+Sweep | Checksum: 13b634f01
+INFO: [Opt 31-389] Phase Sweep created 0 cells and removed 89 cells
+INFO: [Opt 31-1021] In phase Sweep, 25 netlist objects are constrained preventing optimization. Please run opt_design with -debug_log to get more detail. 
+
+Phase 6 BUFG optimization
+Phase 6 BUFG optimization | Checksum: 13b634f01
+
+Time (s): cpu = 00:00:03 ; elapsed = 00:00:02 . Memory (MB): peak = 2092.266 ; gain = 0.023
+BUFG optimization | Checksum: 13b634f01
+INFO: [Opt 31-662] Phase BUFG optimization created 0 cells of which 0 are BUFGs and removed 0 cells.
+
+Phase 7 Shift Register Optimization
+INFO: [Opt 31-1064] SRL Remap converted 0 SRLs to 0 registers and converted 0 registers of register chains to 0 SRLs
+Phase 7 Shift Register Optimization | Checksum: 13b634f01
+
+Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 2092.266 ; gain = 0.023
+Shift Register Optimization | Checksum: 13b634f01
+INFO: [Opt 31-389] Phase Shift Register Optimization created 0 cells and removed 0 cells
+
+Phase 8 Post Processing Netlist
+Phase 8 Post Processing Netlist | Checksum: 189fa2a24
+
+Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 2092.266 ; gain = 0.023
+Post Processing Netlist | Checksum: 189fa2a24
+INFO: [Opt 31-389] Phase Post Processing Netlist created 0 cells and removed 0 cells
+INFO: [Opt 31-1021] In phase Post Processing Netlist, 20 netlist objects are constrained preventing optimization. Please run opt_design with -debug_log to get more detail. 
+
+Phase 9 Finalization
+
+Phase 9.1 Finalizing Design Cores and Updating Shapes
+Phase 9.1 Finalizing Design Cores and Updating Shapes | Checksum: 1e1f43296
+
+Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 2092.266 ; gain = 0.023
+
+Phase 9.2 Verifying Netlist Connectivity
+
+Starting Connectivity Check Task
+
+Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.049 . Memory (MB): peak = 2092.266 ; gain = 0.000
+Phase 9.2 Verifying Netlist Connectivity | Checksum: 1e1f43296
+
+Time (s): cpu = 00:00:04 ; elapsed = 00:00:03 . Memory (MB): peak = 2092.266 ; gain = 0.023
+Phase 9 Finalization | Checksum: 1e1f43296
+
+Time (s): cpu = 00:00:04 ; elapsed = 00:00:03 . Memory (MB): peak = 2092.266 ; gain = 0.023
+Opt_design Change Summary
+=========================
+
+
+-------------------------------------------------------------------------------------------------------------------------
+|  Phase                        |  #Cells created  |  #Cells Removed  |  #Constrained objects preventing optimizations  |
+-------------------------------------------------------------------------------------------------------------------------
+|  Retarget                     |              28  |              73  |                                             20  |
+|  Constant propagation         |              44  |              83  |                                             20  |
+|  Sweep                        |               0  |              89  |                                             25  |
+|  BUFG optimization            |               0  |               0  |                                              0  |
+|  Shift Register Optimization  |               0  |               0  |                                              0  |
+|  Post Processing Netlist      |               0  |               0  |                                             20  |
+-------------------------------------------------------------------------------------------------------------------------
+
+
+Ending Logic Optimization Task | Checksum: 1e1f43296
+
+Time (s): cpu = 00:00:04 ; elapsed = 00:00:03 . Memory (MB): peak = 2092.266 ; gain = 0.023
+
+Starting Power Optimization Task
+INFO: [Pwropt 34-132] Skipping clock gating for clocks with a period < 2.00 ns.
+INFO: [Timing 38-35] Done setting XDC timing constraints.
+INFO: [Pwropt 34-9] Applying IDT optimizations ...
+INFO: [Pwropt 34-10] Applying ODC optimizations ...
+Running Vector-less Activity Propagation...
+
+Finished Running Vector-less Activity Propagation
+
+
+Starting PowerOpt Patch Enables Task
+INFO: [Pwropt 34-162] WRITE_MODE attribute of 0 BRAM(s) out of a total of 64 has been updated to save power. Run report_power_opt to get a complete listing of the BRAMs updated.
+INFO: [Pwropt 34-201] Structural ODC has moved 0 WE to EN ports
+Number of BRAM Ports augmented: 0 newly gated: 0 Total Ports: 128
+Ending PowerOpt Patch Enables Task | Checksum: 1e1f43296
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.202 . Memory (MB): peak = 2226.449 ; gain = 0.000
+Ending Power Optimization Task | Checksum: 1e1f43296
+
+Time (s): cpu = 00:00:10 ; elapsed = 00:00:06 . Memory (MB): peak = 2226.449 ; gain = 134.184
+
+Starting Final Cleanup Task
+Ending Final Cleanup Task | Checksum: 1e1f43296
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 2226.449 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.011 . Memory (MB): peak = 2226.449 ; gain = 0.000
+INFO: [Common 17-83] Releasing license: Implementation
+47 Infos, 0 Warnings, 0 Critical Warnings and 0 Errors encountered.
+opt_design completed successfully
+opt_design: Time (s): cpu = 00:00:19 ; elapsed = 00:00:13 . Memory (MB): peak = 2226.449 ; gain = 563.316
+INFO: [Vivado 12-24828] Executing command : report_drc -file gnss_zynq_wrapper_drc_opted.rpt -pb gnss_zynq_wrapper_drc_opted.pb -rpx gnss_zynq_wrapper_drc_opted.rpx
+Command: report_drc -file gnss_zynq_wrapper_drc_opted.rpt -pb gnss_zynq_wrapper_drc_opted.pb -rpx gnss_zynq_wrapper_drc_opted.rpx
+INFO: [IP_Flow 19-1839] IP Catalog is up to date.
+INFO: [DRC 23-27] Running DRC with 2 threads
+INFO: [Vivado_Tcl 2-168] The results of DRC are in file D:/FPGA/greta-oto/vivado/gnss_zynq/gnss_zynq.runs/impl_1/gnss_zynq_wrapper_drc_opted.rpt.
+report_drc completed successfully
+INFO: [Timing 38-480] Writing timing data to binary archive.
+Wrote PlaceDB: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2226.449 ; gain = 0.000
+Wrote PulsedLatchDB: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2226.449 ; gain = 0.000
+Writing XDEF routing.
+Writing XDEF routing logical nets.
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.050 . Memory (MB): peak = 2226.449 ; gain = 0.000
+Writing XDEF routing special nets.
+Wrote RouteStorage: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.048 . Memory (MB): peak = 2226.449 ; gain = 0.000
+Wrote PlaceStorage: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.008 . Memory (MB): peak = 2226.449 ; gain = 0.000
+Wrote Netlist Cache: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 2226.449 ; gain = 0.000
+Wrote Device Cache: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.008 . Memory (MB): peak = 2226.449 ; gain = 0.000
+Write Physdb Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.072 . Memory (MB): peak = 2226.449 ; gain = 0.000
+INFO: [Common 17-1381] The checkpoint 'D:/FPGA/greta-oto/vivado/gnss_zynq/gnss_zynq.runs/impl_1/gnss_zynq_wrapper_opt.dcp' has been generated.
+Command: place_design -directive ExtraTimingOpt
+Attempting to get a license for feature 'Implementation' and/or device 'xc7z020'
+INFO: [Common 17-349] Got license for feature 'Implementation' and/or device 'xc7z020'
+INFO: [Common 17-83] Releasing license: Implementation
+INFO: [DRC 23-27] Running DRC with 2 threads
+INFO: [Vivado_Tcl 4-198] DRC finished with 0 Errors
+INFO: [Vivado_Tcl 4-199] Please refer to the DRC report (report_drc) for more information.
+INFO: [Timing 38-35] Done setting XDC timing constraints.
+INFO: [Vivado_Tcl 4-2302] The placer was invoked with the 'ExtraTimingOpt' directive.
+Running DRC as a precondition to command place_design
+INFO: [DRC 23-27] Running DRC with 2 threads
+INFO: [Vivado_Tcl 4-198] DRC finished with 0 Errors, 42 Warnings
+INFO: [Vivado_Tcl 4-199] Please refer to the DRC report (report_drc) for more information.
+INFO: [Place 30-611] Multithreading enabled for place_design using a maximum of 2 CPUs
+
+Starting Placer Task
+
+Phase 1 Placer Initialization
+
+Phase 1.1 Placer Initialization Netlist Sorting
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.010 . Memory (MB): peak = 2226.449 ; gain = 0.000
+Phase 1.1 Placer Initialization Netlist Sorting | Checksum: 180e07ab8
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.016 . Memory (MB): peak = 2226.449 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.010 . Memory (MB): peak = 2226.449 ; gain = 0.000
+
+Phase 1.2 IO Placement/ Clock Placement/ Build Placer Device
+WARNING: [Place 30-87] Partially locked IO Bus is found. Following components of the IO Bus spi0_ss_o are not locked:  'spi0_ss_o[2]'  'spi0_ss_o[1]' 
+Phase 1.2 IO Placement/ Clock Placement/ Build Placer Device | Checksum: 10315bfbe
+
+Time (s): cpu = 00:00:02 ; elapsed = 00:00:02 . Memory (MB): peak = 2226.449 ; gain = 0.000
+
+Phase 1.3 Build Placer Netlist Model
+Phase 1.3 Build Placer Netlist Model | Checksum: 1dc27e789
+
+Time (s): cpu = 00:00:10 ; elapsed = 00:00:07 . Memory (MB): peak = 2226.449 ; gain = 0.000
+
+Phase 1.4 Constrain Clocks/Macros
+Phase 1.4 Constrain Clocks/Macros | Checksum: 1dc27e789
+
+Time (s): cpu = 00:00:10 ; elapsed = 00:00:07 . Memory (MB): peak = 2226.449 ; gain = 0.000
+Phase 1 Placer Initialization | Checksum: 1dc27e789
+
+Time (s): cpu = 00:00:10 ; elapsed = 00:00:07 . Memory (MB): peak = 2226.449 ; gain = 0.000
+
+Phase 2 Global Placement
+
+Phase 2.1 Floorplanning
+Phase 2.1 Floorplanning | Checksum: 156529839
+
+Time (s): cpu = 00:00:16 ; elapsed = 00:00:11 . Memory (MB): peak = 2226.449 ; gain = 0.000
+
+Phase 2.2 Update Timing before SLR Path Opt
+Phase 2.2 Update Timing before SLR Path Opt | Checksum: f7852adb
+
+Time (s): cpu = 00:00:20 ; elapsed = 00:00:13 . Memory (MB): peak = 2226.449 ; gain = 0.000
+
+Phase 2.3 Post-Processing in Floorplanning
+Phase 2.3 Post-Processing in Floorplanning | Checksum: f7852adb
+
+Time (s): cpu = 00:00:20 ; elapsed = 00:00:13 . Memory (MB): peak = 2226.449 ; gain = 0.000
+
+Phase 2.4 Global Place Phase1
+Phase 2.4 Global Place Phase1 | Checksum: 1172e9e76
+
+Time (s): cpu = 00:01:07 ; elapsed = 00:00:41 . Memory (MB): peak = 2226.449 ; gain = 0.000
+
+Phase 2.5 Global Place Phase2
+
+Phase 2.5.1 UpdateTiming Before Physical Synthesis
+Phase 2.5.1 UpdateTiming Before Physical Synthesis | Checksum: 18bcb2ff9
+
+Time (s): cpu = 00:01:13 ; elapsed = 00:00:44 . Memory (MB): peak = 2226.449 ; gain = 0.000
+
+Phase 2.5.2 Physical Synthesis In Placer
+INFO: [Physopt 32-1035] Found 1083 LUTNM shape to break, 561 LUT instances to create LUTNM shape
+INFO: [Physopt 32-1044] Break lutnm for timing: one critical 407, two critical 676, total 1000, new lutff created 1
+INFO: [Physopt 32-1138] End 1 Pass. Optimized 1184 nets or LUTs. Breaked 1000 LUTs, combined 184 existing LUTs and moved 0 existing LUT
+INFO: [Physopt 32-65] No nets found for high-fanout optimization.
+INFO: [Physopt 32-232] Optimized 0 net. Created 0 new instance.
+INFO: [Physopt 32-775] End 1 Pass. Optimized 0 net or cell. Created 0 new cell, deleted 0 existing cell and moved 0 existing cell
+INFO: [Physopt 32-456] No candidate cells for DSP register optimization found in the design.
+INFO: [Physopt 32-775] End 2 Pass. Optimized 0 net or cell. Created 0 new cell, deleted 0 existing cell and moved 0 existing cell
+INFO: [Physopt 32-1123] No candidate cells found for Shift Register to Pipeline optimization
+INFO: [Physopt 32-775] End 2 Pass. Optimized 0 net or cell. Created 0 new cell, deleted 0 existing cell and moved 0 existing cell
+INFO: [Physopt 32-1401] No candidate cells found for Shift Register optimization.
+INFO: [Physopt 32-677] No candidate cells for Shift Register optimization found in the design
+INFO: [Physopt 32-775] End 1 Pass. Optimized 0 net or cell. Created 0 new cell, deleted 0 existing cell and moved 0 existing cell
+INFO: [Physopt 32-526] No candidate cells for BRAM register optimization found in the design
+INFO: [Physopt 32-775] End 1 Pass. Optimized 0 net or cell. Created 0 new cell, deleted 0 existing cell and moved 0 existing cell
+INFO: [Physopt 32-846] No candidate cells for URAM register optimization found in the design
+INFO: [Physopt 32-775] End 1 Pass. Optimized 0 net or cell. Created 0 new cell, deleted 0 existing cell and moved 0 existing cell
+INFO: [Physopt 32-846] No candidate cells for URAM register optimization found in the design
+INFO: [Physopt 32-775] End 1 Pass. Optimized 0 net or cell. Created 0 new cell, deleted 0 existing cell and moved 0 existing cell
+INFO: [Physopt 32-949] No candidate nets found for dynamic/static region interface net replication
+INFO: [Physopt 32-775] End 1 Pass. Optimized 0 net or cell. Created 0 new cell, deleted 0 existing cell and moved 0 existing cell
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.010 . Memory (MB): peak = 2226.449 ; gain = 0.000
+
+Summary of Physical Synthesis Optimizations
+============================================
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+|  Optimization                                     |  Added Cells  |  Removed Cells  |  Optimized Cells/Nets  |  Dont Touch  |  Iterations  |  Elapsed   |
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+|  LUT Combining                                    |         1000  |            184  |                  1184  |           0  |           1  |  00:00:01  |
+|  Retime                                           |            0  |              0  |                     0  |           0  |           1  |  00:00:00  |
+|  Very High Fanout                                 |            0  |              0  |                     0  |           0  |           1  |  00:00:00  |
+|  DSP Register                                     |            0  |              0  |                     0  |           0  |           1  |  00:00:00  |
+|  Shift Register to Pipeline                       |            0  |              0  |                     0  |           0  |           1  |  00:00:00  |
+|  Shift Register                                   |            0  |              0  |                     0  |           0  |           1  |  00:00:00  |
+|  BRAM Register                                    |            0  |              0  |                     0  |           0  |           1  |  00:00:00  |
+|  URAM Register                                    |            0  |              0  |                     0  |           0  |           1  |  00:00:00  |
+|  Dynamic/Static Region Interface Net Replication  |            0  |              0  |                     0  |           0  |           1  |  00:00:00  |
+|  Total                                            |         1000  |            184  |                  1184  |           0  |           9  |  00:00:01  |
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+Phase 2.5.2 Physical Synthesis In Placer | Checksum: 1173f0e09
+
+Time (s): cpu = 00:01:20 ; elapsed = 00:00:48 . Memory (MB): peak = 2226.449 ; gain = 0.000
+Phase 2.5 Global Place Phase2 | Checksum: 18cde8ca5
+
+Time (s): cpu = 00:01:22 ; elapsed = 00:00:50 . Memory (MB): peak = 2226.449 ; gain = 0.000
+Phase 2 Global Placement | Checksum: 18cde8ca5
+
+Time (s): cpu = 00:01:22 ; elapsed = 00:00:50 . Memory (MB): peak = 2226.449 ; gain = 0.000
+
+Phase 3 Detail Placement
+
+Phase 3.1 Commit Multi Column Macros
+Phase 3.1 Commit Multi Column Macros | Checksum: 16b747d73
+
+Time (s): cpu = 00:01:27 ; elapsed = 00:00:53 . Memory (MB): peak = 2226.449 ; gain = 0.000
+
+Phase 3.2 Commit Most Macros & LUTRAMs
+Phase 3.2 Commit Most Macros & LUTRAMs | Checksum: 1bf94cff0
+
+Time (s): cpu = 00:01:37 ; elapsed = 00:00:59 . Memory (MB): peak = 2226.449 ; gain = 0.000
+
+Phase 3.3 Area Swap Optimization
+Phase 3.3 Area Swap Optimization | Checksum: 17f89a4b4
+
+Time (s): cpu = 00:01:38 ; elapsed = 00:01:00 . Memory (MB): peak = 2226.449 ; gain = 0.000
+
+Phase 3.4 Pipeline Register Optimization
+Phase 3.4 Pipeline Register Optimization | Checksum: 1a628b714
+
+Time (s): cpu = 00:01:38 ; elapsed = 00:01:00 . Memory (MB): peak = 2226.449 ; gain = 0.000
+
+Phase 3.5 Fast Optimization
+Phase 3.5 Fast Optimization | Checksum: 19b660aa4
+
+Time (s): cpu = 00:01:48 ; elapsed = 00:01:06 . Memory (MB): peak = 2226.449 ; gain = 0.000
+
+Phase 3.6 Small Shape Detail Placement
+Phase 3.6 Small Shape Detail Placement | Checksum: 1b789db1c
+
+Time (s): cpu = 00:01:54 ; elapsed = 00:01:12 . Memory (MB): peak = 2226.449 ; gain = 0.000
+Phase 3 Detail Placement | Checksum: 1b789db1c
+
+Time (s): cpu = 00:01:54 ; elapsed = 00:01:12 . Memory (MB): peak = 2226.449 ; gain = 0.000
+ERROR: [Place 30-487] The packing of instances into a set of slices defined by an internal area constraint could not be obeyed. There are a total of 2500 slices in the pblock, of which 495 slices are available, however, the unplaced instances require 730 slices. Please analyze your design to determine if the number of LUTs, FFs, and/or control sets can be reduced.
+
+Number of control sets and instances constrained to the internal area constraint
+	Control sets: 178
+	Luts: 2821 (combined) 3397 (total), available capacity: 10000 
+	Flip flops: 3034, available capacity: 20000
+	NOTE: each slice can only accommodate 1 unique control set so FFs cannot be packed to fully fill every slice
+
+To attempt placement at higher effort levels at the expense of runtime, please use the following tcl command, setting the value of limit to 2000 or more.
+	Names of first 20 cells:
+		LUT2  gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_ae_top/u_ae_buffer/sample_in_r[0]_i_1
+		LUT2  gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_ae_top/u_ae_buffer/sample_in_r[2]_i_1
+		LUT2  gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_ae_top/u_ae_core/noncoh_buffer_sram/u_ram/noncoh_read_data[0]_i_1
+		LUT2  gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_ae_top/u_ae_core/noncoh_buffer_sram/u_ram/noncoh_read_data[10]_i_1
+		LUT2  gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_ae_top/u_ae_core/noncoh_buffer_sram/u_ram/noncoh_read_data[12]_i_1
+		LUT2  gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_ae_top/u_ae_core/noncoh_buffer_sram/u_ram/noncoh_read_data[14]_i_1
+		LUT2  gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_ae_top/u_ae_core/noncoh_buffer_sram/u_ram/noncoh_read_data[16]_i_1
+		LUT2  gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_ae_top/u_ae_core/noncoh_buffer_sram/u_ram/noncoh_read_data[18]_i_1
+		LUT2  gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_ae_top/u_ae_core/noncoh_buffer_sram/u_ram/noncoh_read_data[20]_i_1
+		LUT2  gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_ae_top/u_ae_core/noncoh_buffer_sram/u_ram/noncoh_read_data[22]_i_1
+		LUT2  gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_ae_top/u_ae_core/noncoh_buffer_sram/u_ram/noncoh_read_data[24]_i_1
+		LUT2  gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_ae_top/u_ae_core/noncoh_buffer_sram/u_ram/noncoh_read_data[26]_i_1
+		LUT2  gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_ae_top/u_ae_core/noncoh_buffer_sram/u_ram/noncoh_read_data[28]_i_1
+		LUT2  gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_ae_top/u_ae_core/noncoh_buffer_sram/u_ram/noncoh_read_data[2]_i_1
+		LUT2  gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_ae_top/u_ae_core/noncoh_buffer_sram/u_ram/noncoh_read_data[30]_i_1
+		LUT2  gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_ae_top/u_ae_core/noncoh_buffer_sram/u_ram/noncoh_read_data[32]_i_1
+		LUT2  gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_ae_top/u_ae_core/noncoh_buffer_sram/u_ram/noncoh_read_data[34]_i_1
+		LUT2  gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_ae_top/u_ae_core/noncoh_buffer_sram/u_ram/noncoh_read_data[36]_i_1
+		LUT2  gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_ae_top/u_ae_core/noncoh_buffer_sram/u_ram/noncoh_read_data[38]_i_1
+		LUT2  gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_ae_top/u_ae_core/noncoh_buffer_sram/u_ram/noncoh_read_data[40]_i_1
+
+ERROR: [Place 30-99] Placer failed with error: 'Detail Placement failed please check previous errors for details.'
+Please review all ERROR, CRITICAL WARNING, and WARNING messages during placement to understand the cause for failure.
+
+Phase 4 Add Constraints
+
+Phase 4.1 Add User PBlocks
+Phase 4.1 Add User PBlocks | Checksum: 172dbacff
+
+Time (s): cpu = 00:01:55 ; elapsed = 00:01:12 . Memory (MB): peak = 2226.449 ; gain = 0.000
+Phase 4 Add Constraints | Checksum: 172dbacff
+
+Time (s): cpu = 00:01:55 ; elapsed = 00:01:12 . Memory (MB): peak = 2226.449 ; gain = 0.000
+Ending Placer Task | Checksum: 111e4ccf1
+
+Time (s): cpu = 00:01:55 ; elapsed = 00:01:12 . Memory (MB): peak = 2226.449 ; gain = 0.000
+85 Infos, 1 Warnings, 0 Critical Warnings and 3 Errors encountered.
+place_design failed
+place_design: Time (s): cpu = 00:01:59 ; elapsed = 00:01:15 . Memory (MB): peak = 2226.449 ; gain = 0.000
+ERROR: [Common 17-69] Command failed: Placer could not place all instances
+INFO: [Common 17-206] Exiting Vivado at Thu Jun 25 20:00:52 2026...
+[Thu Jun 25 20:00:53 2026] impl_1 finished
+ERROR: [Vivado 12-13638] Failed runs(s) : 'impl_1'
+wait_on_runs: Time (s): cpu = 00:00:00 ; elapsed = 00:02:06 . Memory (MB): peak = 575.371 ; gain = 0.000
+ERROR: [Common 17-39] 'wait_on_runs' failed due to earlier errors.
+
+    while executing
+"wait_on_run impl_1"
+    (file "impl_bufhce_try2.tcl" line 32)
+INFO: [Common 17-206] Exiting Vivado at Thu Jun 25 20:00:53 2026...

@@ -1,0 +1,24 @@
+#-----------------------------------------------------------
+# Vivado v2025.2 (64-bit)
+# SW Build 6299465 on Fri Nov 14 19:35:11 GMT 2025
+# IP Build 6300035 on Fri Nov 14 10:48:45 MST 2025
+# SharedData Build 6298862 on Thu Nov 13 04:50:51 MST 2025
+# Start of session at: Thu Jun 25 20:03:33 2026
+# Process ID         : 24916
+# Current directory  : D:/FPGA/greta-oto/vivado
+# Command line       : vivado.exe -mode batch -source impl_bufhce_try3.tcl -log try3_vivado.log -journal try3_vivado.jou
+# Log file           : D:/FPGA/greta-oto/vivado/try3_vivado.log
+# Journal file       : D:/FPGA/greta-oto/vivado\try3_vivado.jou
+# Running On         : GPSLAB
+# Platform           : Windows Server 2016 or Windows 10
+# Operating System   : 26200
+# Processor Detail   : 12th Gen Intel(R) Core(TM) i7-12700
+# CPU Frequency      : 2112 MHz
+# CPU Physical cores : 12
+# CPU Logical cores  : 20
+# Host memory        : 34013 MB
+# Swap memory        : 2147 MB
+# Total Virtual      : 36160 MB
+# Available Virtual  : 16262 MB
+#-----------------------------------------------------------
+source impl_bufhce_try3.tcl

@@ -1,0 +1,399 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
+---------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2025.2 (win64) Build 6299465 Fri Nov 14 19:35:11 GMT 2025
+| Date         : Thu Jun 25 20:18:54 2026
+| Host         : GPSLAB running 64-bit major release  (build 9200)
+| Command      : report_clock_utilization -file D:/FPGA/greta-oto/vivado/try3/clock_util_try3.rpt
+| Design       : gnss_zynq_wrapper
+| Device       : 7z020-clg400
+| Speed File   : -1  PRODUCTION 1.12 2019-11-22
+| Design State : Physopt postRoute
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+Clock Utilization Report
+
+Table of Contents
+-----------------
+1. Clock Primitive Utilization
+2. Global Clock Resources
+3. Global Clock Source Details
+4. Clock Regions: Key Resource Utilization
+5. Clock Regions : Global Clock Summary
+6. Device Cell Placement Summary for Global Clock g0
+7. Device Cell Placement Summary for Global Clock g1
+8. Device Cell Placement Summary for Global Clock g2
+9. Device Cell Placement Summary for Global Clock g3
+10. Device Cell Placement Summary for Global Clock g4
+11. Device Cell Placement Summary for Global Clock g5
+12. Clock Region Cell Placement per Global Clock: Region X0Y0
+13. Clock Region Cell Placement per Global Clock: Region X1Y0
+14. Clock Region Cell Placement per Global Clock: Region X0Y1
+15. Clock Region Cell Placement per Global Clock: Region X1Y1
+16. Clock Region Cell Placement per Global Clock: Region X0Y2
+17. Clock Region Cell Placement per Global Clock: Region X1Y2
+
+1. Clock Primitive Utilization
+------------------------------
+
++----------+------+-----------+-----+--------------+--------+
+| Type     | Used | Available | LOC | Clock Region | Pblock |
++----------+------+-----------+-----+--------------+--------+
+| BUFGCTRL |    2 |        32 |   0 |            0 |      0 |
+| BUFH     |    4 |        72 |   0 |            0 |      0 |
+| BUFIO    |    0 |        16 |   0 |            0 |      0 |
+| BUFMR    |    0 |         8 |   0 |            0 |      0 |
+| BUFR     |    0 |        16 |   0 |            0 |      0 |
+| MMCM     |    0 |         4 |   0 |            0 |      0 |
+| PLL      |    0 |         4 |   0 |            0 |      0 |
++----------+------+-----------+-----+--------------+--------+
+
+
+2. Global Clock Resources
+-------------------------
+
++-----------+-----------+-----------------+------------+----------------+--------------+-------------------+-------------+-----------------+--------------+------------+-----------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------+
+| Global Id | Source Id | Driver Type/Pin | Constraint | Site           | Clock Region | Load Clock Region | Clock Loads | Non-Clock Loads | Clock Period | Clock      | Driver Pin                                                                                    | Net                                                                                           |
++-----------+-----------+-----------------+------------+----------------+--------------+-------------------+-------------+-----------------+--------------+------------+-----------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------+
+| g0        | src0      | BUFGCTRL/O      | None       | BUFGCTRL_X0Y17 | n/a          |                 6 |       10667 |               0 |       10.000 | clk_fpga_0 | gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_ae_top/u_ae_core/u_gated_clock/g_bufg.u_bufgce/O | gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_ae_top/u_ae_core/u_gated_clock/g_bufg.u_bufgce_0 |
+| g0        | src1      | BUFGCTRL/O      | None       | BUFGCTRL_X0Y17 | n/a          |                 6 |       10667 |               0 |       10.000 | clk_fpga_0 | gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_ae_top/u_ae_core/u_gated_clock/g_bufg.u_bufgce/O | gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_ae_top/u_ae_core/u_gated_clock/g_bufg.u_bufgce_0 |
+| g1        | src0      | BUFHCE/O        | None       | BUFHCE_X0Y0    | X0Y0         |                 1 |        1187 |               0 |       10.000 | clk_fpga_0 | gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/gated_clock_u1/g_bufh.u_bufhce/O | gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/gated_clock_u1/CLK               |
+| g2        | src0      | BUFHCE/O        | None       | BUFHCE_X0Y1    | X0Y0         |                 1 |        1187 |               0 |       10.000 | clk_fpga_0 | gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/gated_clock_u2/g_bufh.u_bufhce/O | gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/gated_clock_u2/CLK               |
+| g3        | src0      | BUFHCE/O        | None       | BUFHCE_X0Y2    | X0Y0         |                 1 |        1187 |               0 |       10.000 | clk_fpga_0 | gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/gated_clock_u3/g_bufh.u_bufhce/O | gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/gated_clock_u3/CLK               |
+| g4        | src0      | BUFHCE/O        | None       | BUFHCE_X0Y3    | X0Y0         |                 1 |        1187 |               0 |       10.000 | clk_fpga_0 | gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/gated_clock_u4/g_bufh.u_bufhce/O | gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/gated_clock_u4/CLK               |
+| g5        | src0      | BUFG/O          | None       | BUFGCTRL_X0Y16 | n/a          |                 7 |        5593 |               0 |       10.000 | clk_fpga_0 | gnss_zynq_i/processing_system7_0/inst/buffer_fclk_clk_0.FCLK_CLK_0_BUFG/O                     | gnss_zynq_i/processing_system7_0/inst/FCLK_CLK0                                               |
++-----------+-----------+-----------------+------------+----------------+--------------+-------------------+-------------+-----------------+--------------+------------+-----------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------+
+* Clock Loads column represents cell count of net connects that connect to a clock pin. Internal cell leaf pins are not considered
+** Non-Clock Loads column represents cell count of non-clock pin loads
+
+
+3. Global Clock Source Details
+------------------------------
+
++-----------+-----------+-----------------+------------+----------------+--------------+-------------+-----------------+---------------------+--------------+-----------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+
+| Source Id | Global Id | Driver Type/Pin | Constraint | Site           | Clock Region | Clock Loads | Non-Clock Loads | Source Clock Period | Source Clock | Driver Pin                                                                        | Net                                                                               |
++-----------+-----------+-----------------+------------+----------------+--------------+-------------+-----------------+---------------------+--------------+-----------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+
+| src0      | g0        | BUFG/O          | None       | BUFGCTRL_X0Y16 | n/a          |        5797 |               0 |              10.000 | clk_fpga_0   | gnss_zynq_i/processing_system7_0/inst/buffer_fclk_clk_0.FCLK_CLK_0_BUFG/O         | gnss_zynq_i/processing_system7_0/inst/FCLK_CLK0                                   |
+| src0      | g1        | BUFG/O          | None       | BUFGCTRL_X0Y16 | n/a          |        5797 |               0 |              10.000 | clk_fpga_0   | gnss_zynq_i/processing_system7_0/inst/buffer_fclk_clk_0.FCLK_CLK_0_BUFG/O         | gnss_zynq_i/processing_system7_0/inst/FCLK_CLK0                                   |
+| src0      | g2        | BUFG/O          | None       | BUFGCTRL_X0Y16 | n/a          |        5797 |               0 |              10.000 | clk_fpga_0   | gnss_zynq_i/processing_system7_0/inst/buffer_fclk_clk_0.FCLK_CLK_0_BUFG/O         | gnss_zynq_i/processing_system7_0/inst/FCLK_CLK0                                   |
+| src0      | g3        | BUFG/O          | None       | BUFGCTRL_X0Y16 | n/a          |        5797 |               0 |              10.000 | clk_fpga_0   | gnss_zynq_i/processing_system7_0/inst/buffer_fclk_clk_0.FCLK_CLK_0_BUFG/O         | gnss_zynq_i/processing_system7_0/inst/FCLK_CLK0                                   |
+| src0      | g4        | BUFG/O          | None       | BUFGCTRL_X0Y16 | n/a          |        5797 |               0 |              10.000 | clk_fpga_0   | gnss_zynq_i/processing_system7_0/inst/buffer_fclk_clk_0.FCLK_CLK_0_BUFG/O         | gnss_zynq_i/processing_system7_0/inst/FCLK_CLK0                                   |
+| src0      | g5        | PS7/FCLKCLK[0]  | PS7_X0Y0   | PS7_X0Y0       | X0Y2         |           1 |               0 |              10.000 | clk_fpga_0   | gnss_zynq_i/processing_system7_0/inst/PS7_i/FCLKCLK[0]                            | gnss_zynq_i/processing_system7_0/inst/FCLK_CLK_unbuffered[0]                      |
+| src1      | g0        | VCC/P           | None       |                | n/a          |           0 |               0 |                     |              | gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_ae_top/u_ae_core/u_gated_clock/VCC/P | gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_ae_top/u_ae_core/u_gated_clock/VCC_1 |
++-----------+-----------+-----------------+------------+----------------+--------------+-------------+-----------------+---------------------+--------------+-----------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+
+* Clock Loads column represents cell count of net connects that connect to a clock pin. Internal cell leaf pins are not considered
+** Non-Clock Loads column represents cell count of non-clock pin loads
+
+
+4. Clock Regions: Key Resource Utilization
+------------------------------------------
+
++-------------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+
+|                   | Global Clock |     BUFRs    |    BUFMRs    |    BUFIOs    |     MMCM     |      PLL     |      GT      |      PCI     |    ILOGIC    |    OLOGIC    |      FF      |     LUTM     |    RAMB18    |    RAMB36    |    DSP48E2   |
++-------------------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+
+| Clock Region Name | Used | Avail | Used | Avail | Used | Avail | Used | Avail | Used | Avail | Used | Avail | Used | Avail | Used | Avail | Used | Avail | Used | Avail | Used | Avail | Used | Avail | Used | Avail | Used | Avail | Used | Avail |
++-------------------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+
+| X0Y0              |    6 |    12 |    0 |     4 |    0 |     2 |    0 |     4 |    0 |     1 |    0 |     1 |    0 |     0 |    0 |     0 |    0 |    50 |    0 |    50 | 5412 |  2500 | 1954 |  1000 |    0 |    60 |   16 |    30 |    0 |    60 |
+| X1Y0              |    2 |    12 |    0 |     4 |    0 |     2 |    0 |     4 |    0 |     1 |    0 |     1 |    0 |     0 |    0 |     0 |    0 |    50 |    0 |    50 | 1590 |  3200 |  473 |   850 |    1 |    60 |    9 |    30 |    0 |    40 |
+| X0Y1              |    2 |    12 |    0 |     0 |    0 |     0 |    0 |     0 |    0 |     0 |    0 |     0 |    0 |     0 |    0 |     0 |    0 |     0 |    0 |     0 | 2199 |  1200 |  737 |   400 |    0 |    20 |    6 |    10 |    6 |    20 |
+| X1Y1              |    2 |    12 |    0 |     4 |    0 |     2 |    0 |     4 |    0 |     1 |    0 |     1 |    0 |     0 |    0 |     0 |    0 |    50 |    0 |    50 | 4367 |  2600 | 1400 |   850 |    0 |    60 |   28 |    30 |    0 |    40 |
+| X0Y2              |    2 |    12 |    0 |     0 |    0 |     0 |    0 |     0 |    0 |     0 |    0 |     0 |    0 |     0 |    0 |     0 |    0 |     0 |    0 |     0 | 2437 |  1200 |  812 |   400 |    0 |    20 |    0 |    10 |    2 |    20 |
+| X1Y2              |    2 |    12 |    0 |     4 |    0 |     2 |    0 |     4 |    0 |     1 |    0 |     1 |    0 |     0 |    0 |     0 |    0 |    50 |    0 |    50 | 4881 |  2600 | 1695 |   850 |    0 |    60 |    2 |    30 |    0 |    40 |
++-------------------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+
+* Global Clock column represents track count; while other columns represents cell counts
+
+
+5. Clock Regions : Global Clock Summary
+---------------------------------------
+
+All Modules
++----+----+----+
+|    | X0 | X1 |
++----+----+----+
+| Y2 |  0 |  0 |
+| Y1 |  0 |  0 |
+| Y0 |  0 |  0 |
++----+----+----+
+
+
+6. Device Cell Placement Summary for Global Clock g0
+----------------------------------------------------
+
++-----------+-----------------+-------------------+------------+-------------+---------------+-------------+----------+----------------+----------+-----------------------------------------------------------------------------------------------+
+| Global Id | Driver Type/Pin | Driver Region (D) | Clock      | Period (ns) | Waveform (ns) | Slice Loads | IO Loads | Clocking Loads | GT Loads | Net                                                                                           |
++-----------+-----------------+-------------------+------------+-------------+---------------+-------------+----------+----------------+----------+-----------------------------------------------------------------------------------------------+
+| g0        | BUFGCTRL/O      | n/a               | clk_fpga_0 |      10.000 | {0.000 5.000} |       10667 |        0 |              0 |        0 | gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_ae_top/u_ae_core/u_gated_clock/g_bufg.u_bufgce_0 |
++-----------+-----------------+-------------------+------------+-------------+---------------+-------------+----------+----------------+----------+-----------------------------------------------------------------------------------------------+
+* Slice Loads column represents load cell count of all cell types other than IO, GT and clock resources
+** IO Loads column represents load cell count of IO types
+*** Clocking Loads column represents load cell count that are clock resources (global clock buffer, MMCM, PLL, etc)
+**** GT Loads column represents load cell count of GT types
+
+
++----+-------+-------+-----------------------+
+|    | X0    | X1    | HORIZONTAL PROG DELAY |
++----+-------+-------+-----------------------+
+| Y2 |  2258 |  4881 |                     0 |
+| Y1 |   765 |  2742 |                     0 |
+| Y0 |     6 |    15 |                     0 |
++----+-------+-------+-----------------------+
+
+
+7. Device Cell Placement Summary for Global Clock g1
+----------------------------------------------------
+
++-----------+-----------------+-------------------+------------+-------------+---------------+-------------+----------+----------------+----------+---------------------------------------------------------------------------------+
+| Global Id | Driver Type/Pin | Driver Region (D) | Clock      | Period (ns) | Waveform (ns) | Slice Loads | IO Loads | Clocking Loads | GT Loads | Net                                                                             |
++-----------+-----------------+-------------------+------------+-------------+---------------+-------------+----------+----------------+----------+---------------------------------------------------------------------------------+
+| g1        | BUFHCE/O        | X0Y0              | clk_fpga_0 |      10.000 | {0.000 5.000} |        1187 |        0 |              0 |        0 | gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/gated_clock_u1/CLK |
++-----------+-----------------+-------------------+------------+-------------+---------------+-------------+----------+----------------+----------+---------------------------------------------------------------------------------+
+* Slice Loads column represents load cell count of all cell types other than IO, GT and clock resources
+** IO Loads column represents load cell count of IO types
+*** Clocking Loads column represents load cell count that are clock resources (global clock buffer, MMCM, PLL, etc)
+**** GT Loads column represents load cell count of GT types
+
+
++----+-----------+----+-----------------------+
+|    | X0        | X1 | HORIZONTAL PROG DELAY |
++----+-----------+----+-----------------------+
+| Y2 |         0 |  0 |                     - |
+| Y1 |         0 |  0 |                     - |
+| Y0 |  (D) 1187 |  0 |                     0 |
++----+-----------+----+-----------------------+
+
+
+8. Device Cell Placement Summary for Global Clock g2
+----------------------------------------------------
+
++-----------+-----------------+-------------------+------------+-------------+---------------+-------------+----------+----------------+----------+---------------------------------------------------------------------------------+
+| Global Id | Driver Type/Pin | Driver Region (D) | Clock      | Period (ns) | Waveform (ns) | Slice Loads | IO Loads | Clocking Loads | GT Loads | Net                                                                             |
++-----------+-----------------+-------------------+------------+-------------+---------------+-------------+----------+----------------+----------+---------------------------------------------------------------------------------+
+| g2        | BUFHCE/O        | X0Y0              | clk_fpga_0 |      10.000 | {0.000 5.000} |        1187 |        0 |              0 |        0 | gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/gated_clock_u2/CLK |
++-----------+-----------------+-------------------+------------+-------------+---------------+-------------+----------+----------------+----------+---------------------------------------------------------------------------------+
+* Slice Loads column represents load cell count of all cell types other than IO, GT and clock resources
+** IO Loads column represents load cell count of IO types
+*** Clocking Loads column represents load cell count that are clock resources (global clock buffer, MMCM, PLL, etc)
+**** GT Loads column represents load cell count of GT types
+
+
++----+-----------+----+-----------------------+
+|    | X0        | X1 | HORIZONTAL PROG DELAY |
++----+-----------+----+-----------------------+
+| Y2 |         0 |  0 |                     - |
+| Y1 |         0 |  0 |                     - |
+| Y0 |  (D) 1187 |  0 |                     0 |
++----+-----------+----+-----------------------+
+
+
+9. Device Cell Placement Summary for Global Clock g3
+----------------------------------------------------
+
++-----------+-----------------+-------------------+------------+-------------+---------------+-------------+----------+----------------+----------+---------------------------------------------------------------------------------+
+| Global Id | Driver Type/Pin | Driver Region (D) | Clock      | Period (ns) | Waveform (ns) | Slice Loads | IO Loads | Clocking Loads | GT Loads | Net                                                                             |
++-----------+-----------------+-------------------+------------+-------------+---------------+-------------+----------+----------------+----------+---------------------------------------------------------------------------------+
+| g3        | BUFHCE/O        | X0Y0              | clk_fpga_0 |      10.000 | {0.000 5.000} |        1187 |        0 |              0 |        0 | gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/gated_clock_u3/CLK |
++-----------+-----------------+-------------------+------------+-------------+---------------+-------------+----------+----------------+----------+---------------------------------------------------------------------------------+
+* Slice Loads column represents load cell count of all cell types other than IO, GT and clock resources
+** IO Loads column represents load cell count of IO types
+*** Clocking Loads column represents load cell count that are clock resources (global clock buffer, MMCM, PLL, etc)
+**** GT Loads column represents load cell count of GT types
+
+
++----+-----------+----+-----------------------+
+|    | X0        | X1 | HORIZONTAL PROG DELAY |
++----+-----------+----+-----------------------+
+| Y2 |         0 |  0 |                     - |
+| Y1 |         0 |  0 |                     - |
+| Y0 |  (D) 1187 |  0 |                     0 |
++----+-----------+----+-----------------------+
+
+
+10. Device Cell Placement Summary for Global Clock g4
+-----------------------------------------------------
+
++-----------+-----------------+-------------------+------------+-------------+---------------+-------------+----------+----------------+----------+---------------------------------------------------------------------------------+
+| Global Id | Driver Type/Pin | Driver Region (D) | Clock      | Period (ns) | Waveform (ns) | Slice Loads | IO Loads | Clocking Loads | GT Loads | Net                                                                             |
++-----------+-----------------+-------------------+------------+-------------+---------------+-------------+----------+----------------+----------+---------------------------------------------------------------------------------+
+| g4        | BUFHCE/O        | X0Y0              | clk_fpga_0 |      10.000 | {0.000 5.000} |        1187 |        0 |              0 |        0 | gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/gated_clock_u4/CLK |
++-----------+-----------------+-------------------+------------+-------------+---------------+-------------+----------+----------------+----------+---------------------------------------------------------------------------------+
+* Slice Loads column represents load cell count of all cell types other than IO, GT and clock resources
+** IO Loads column represents load cell count of IO types
+*** Clocking Loads column represents load cell count that are clock resources (global clock buffer, MMCM, PLL, etc)
+**** GT Loads column represents load cell count of GT types
+
+
++----+-----------+----+-----------------------+
+|    | X0        | X1 | HORIZONTAL PROG DELAY |
++----+-----------+----+-----------------------+
+| Y2 |         0 |  0 |                     - |
+| Y1 |         0 |  0 |                     - |
+| Y0 |  (D) 1187 |  0 |                     0 |
++----+-----------+----+-----------------------+
+
+
+11. Device Cell Placement Summary for Global Clock g5
+-----------------------------------------------------
+
++-----------+-----------------+-------------------+------------+-------------+---------------+-------------+----------+----------------+----------+-------------------------------------------------+
+| Global Id | Driver Type/Pin | Driver Region (D) | Clock      | Period (ns) | Waveform (ns) | Slice Loads | IO Loads | Clocking Loads | GT Loads | Net                                             |
++-----------+-----------------+-------------------+------------+-------------+---------------+-------------+----------+----------------+----------+-------------------------------------------------+
+| g5        | BUFG/O          | n/a               | clk_fpga_0 |      10.000 | {0.000 5.000} |        5552 |        0 |              5 |        0 | gnss_zynq_i/processing_system7_0/inst/FCLK_CLK0 |
++-----------+-----------------+-------------------+------------+-------------+---------------+-------------+----------+----------------+----------+-------------------------------------------------+
+* Slice Loads column represents load cell count of all cell types other than IO, GT and clock resources
+** IO Loads column represents load cell count of IO types
+*** Clocking Loads column represents load cell count that are clock resources (global clock buffer, MMCM, PLL, etc)
+**** GT Loads column represents load cell count of GT types
+
+
++----+-------+-------+-----------------------+
+|    | X0    | X1    | HORIZONTAL PROG DELAY |
++----+-------+-------+-----------------------+
+| Y2 |   183 |     2 |                     0 |
+| Y1 |  1447 |  1660 |                     0 |
+| Y0 |   678 |  1586 |                     0 |
++----+-------+-------+-----------------------+
+
+
+12. Clock Region Cell Placement per Global Clock: Region X0Y0
+-------------------------------------------------------------
+
++-----------+-------+-----------------+------------+-------------+-----------------+------+-------------+------+-----+----+------+-----+---------+-----------------------------------------------------------------------------------------------+
+| Global Id | Track | Driver Type/Pin | Constraint | Clock Loads | Non-Clock Loads | FF   | Memory LUTs | RAMB | DSP | GT | MMCM | PLL | Hard IP | Net                                                                                           |
++-----------+-------+-----------------+------------+-------------+-----------------+------+-------------+------+-----+----+------+-----+---------+-----------------------------------------------------------------------------------------------+
+| g0        | n/a   | BUFGCTRL/O      | None       |           6 |               0 |    6 |           0 |    0 |   0 |  0 |    0 |   0 |       0 | gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_ae_top/u_ae_core/u_gated_clock/g_bufg.u_bufgce_0 |
+| g5        | n/a   | BUFG/O          | None       |         678 |               0 |  658 |           0 |   16 |   0 |  0 |    0 |   0 |       0 | gnss_zynq_i/processing_system7_0/inst/FCLK_CLK0                                               |
+| g1        | n/a   | BUFHCE/O        | None       |        1187 |               0 | 1187 |           0 |    0 |   0 |  0 |    0 |   0 |       0 | gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/gated_clock_u1/CLK               |
+| g2        | n/a   | BUFHCE/O        | None       |        1187 |               0 | 1187 |           0 |    0 |   0 |  0 |    0 |   0 |       0 | gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/gated_clock_u2/CLK               |
+| g3        | n/a   | BUFHCE/O        | None       |        1187 |               0 | 1187 |           0 |    0 |   0 |  0 |    0 |   0 |       0 | gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/gated_clock_u3/CLK               |
+| g4        | n/a   | BUFHCE/O        | None       |        1187 |               0 | 1187 |           0 |    0 |   0 |  0 |    0 |   0 |       0 | gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/gated_clock_u4/CLK               |
++-----------+-------+-----------------+------------+-------------+-----------------+------+-------------+------+-----+----+------+-----+---------+-----------------------------------------------------------------------------------------------+
+* Clock Loads column represents cell count of net connects that connect to a clock pin. Internal cell leaf pins are not considered
+** Non-Clock Loads column represents cell count of non-clock pin loads
+*** Columns FF, LUTRAM, RAMB through 'Hard IP' represents load cell counts
+
+
+13. Clock Region Cell Placement per Global Clock: Region X1Y0
+-------------------------------------------------------------
+
++-----------+-------+-----------------+------------+-------------+-----------------+------+-------------+------+-----+----+------+-----+---------+-----------------------------------------------------------------------------------------------+
+| Global Id | Track | Driver Type/Pin | Constraint | Clock Loads | Non-Clock Loads | FF   | Memory LUTs | RAMB | DSP | GT | MMCM | PLL | Hard IP | Net                                                                                           |
++-----------+-------+-----------------+------------+-------------+-----------------+------+-------------+------+-----+----+------+-----+---------+-----------------------------------------------------------------------------------------------+
+| g0        | n/a   | BUFGCTRL/O      | None       |          15 |               0 |   15 |           0 |    0 |   0 |  0 |    0 |   0 |       0 | gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_ae_top/u_ae_core/u_gated_clock/g_bufg.u_bufgce_0 |
+| g5        | n/a   | BUFG/O          | None       |        1586 |               0 | 1575 |           0 |   10 |   0 |  0 |    0 |   0 |       0 | gnss_zynq_i/processing_system7_0/inst/FCLK_CLK0                                               |
++-----------+-------+-----------------+------------+-------------+-----------------+------+-------------+------+-----+----+------+-----+---------+-----------------------------------------------------------------------------------------------+
+* Clock Loads column represents cell count of net connects that connect to a clock pin. Internal cell leaf pins are not considered
+** Non-Clock Loads column represents cell count of non-clock pin loads
+*** Columns FF, LUTRAM, RAMB through 'Hard IP' represents load cell counts
+
+
+14. Clock Region Cell Placement per Global Clock: Region X0Y1
+-------------------------------------------------------------
+
++-----------+-------+-----------------+------------+-------------+-----------------+------+-------------+------+-----+----+------+-----+---------+-----------------------------------------------------------------------------------------------+
+| Global Id | Track | Driver Type/Pin | Constraint | Clock Loads | Non-Clock Loads | FF   | Memory LUTs | RAMB | DSP | GT | MMCM | PLL | Hard IP | Net                                                                                           |
++-----------+-------+-----------------+------------+-------------+-----------------+------+-------------+------+-----+----+------+-----+---------+-----------------------------------------------------------------------------------------------+
+| g0        | n/a   | BUFGCTRL/O      | None       |         765 |               0 |  757 |           0 |    2 |   6 |  0 |    0 |   0 |       0 | gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_ae_top/u_ae_core/u_gated_clock/g_bufg.u_bufgce_0 |
+| g5        | n/a   | BUFG/O          | None       |        1447 |               0 | 1442 |           1 |    4 |   0 |  0 |    0 |   0 |       0 | gnss_zynq_i/processing_system7_0/inst/FCLK_CLK0                                               |
++-----------+-------+-----------------+------------+-------------+-----------------+------+-------------+------+-----+----+------+-----+---------+-----------------------------------------------------------------------------------------------+
+* Clock Loads column represents cell count of net connects that connect to a clock pin. Internal cell leaf pins are not considered
+** Non-Clock Loads column represents cell count of non-clock pin loads
+*** Columns FF, LUTRAM, RAMB through 'Hard IP' represents load cell counts
+
+
+15. Clock Region Cell Placement per Global Clock: Region X1Y1
+-------------------------------------------------------------
+
++-----------+-------+-----------------+------------+-------------+-----------------+------+-------------+------+-----+----+------+-----+---------+-----------------------------------------------------------------------------------------------+
+| Global Id | Track | Driver Type/Pin | Constraint | Clock Loads | Non-Clock Loads | FF   | Memory LUTs | RAMB | DSP | GT | MMCM | PLL | Hard IP | Net                                                                                           |
++-----------+-------+-----------------+------------+-------------+-----------------+------+-------------+------+-----+----+------+-----+---------+-----------------------------------------------------------------------------------------------+
+| g0        | n/a   | BUFGCTRL/O      | None       |        2742 |               0 | 2730 |           6 |    5 |   0 |  0 |    0 |   0 |       0 | gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_ae_top/u_ae_core/u_gated_clock/g_bufg.u_bufgce_0 |
+| g5        | n/a   | BUFG/O          | None       |        1660 |               0 | 1637 |           0 |   23 |   0 |  0 |    0 |   0 |       0 | gnss_zynq_i/processing_system7_0/inst/FCLK_CLK0                                               |
++-----------+-------+-----------------+------------+-------------+-----------------+------+-------------+------+-----+----+------+-----+---------+-----------------------------------------------------------------------------------------------+
+* Clock Loads column represents cell count of net connects that connect to a clock pin. Internal cell leaf pins are not considered
+** Non-Clock Loads column represents cell count of non-clock pin loads
+*** Columns FF, LUTRAM, RAMB through 'Hard IP' represents load cell counts
+
+
+16. Clock Region Cell Placement per Global Clock: Region X0Y2
+-------------------------------------------------------------
+
++-----------+-------+-----------------+------------+-------------+-----------------+------+-------------+------+-----+----+------+-----+---------+-----------------------------------------------------------------------------------------------+
+| Global Id | Track | Driver Type/Pin | Constraint | Clock Loads | Non-Clock Loads | FF   | Memory LUTs | RAMB | DSP | GT | MMCM | PLL | Hard IP | Net                                                                                           |
++-----------+-------+-----------------+------------+-------------+-----------------+------+-------------+------+-----+----+------+-----+---------+-----------------------------------------------------------------------------------------------+
+| g0        | n/a   | BUFGCTRL/O      | None       |        2258 |               0 | 2256 |           0 |    0 |   2 |  0 |    0 |   0 |       0 | gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_ae_top/u_ae_core/u_gated_clock/g_bufg.u_bufgce_0 |
+| g5        | n/a   | BUFG/O          | None       |         183 |               0 |  181 |           1 |    0 |   0 |  0 |    0 |   0 |       0 | gnss_zynq_i/processing_system7_0/inst/FCLK_CLK0                                               |
++-----------+-------+-----------------+------------+-------------+-----------------+------+-------------+------+-----+----+------+-----+---------+-----------------------------------------------------------------------------------------------+
+* Clock Loads column represents cell count of net connects that connect to a clock pin. Internal cell leaf pins are not considered
+** Non-Clock Loads column represents cell count of non-clock pin loads
+*** Columns FF, LUTRAM, RAMB through 'Hard IP' represents load cell counts
+
+
+17. Clock Region Cell Placement per Global Clock: Region X1Y2
+-------------------------------------------------------------
+
++-----------+-------+-----------------+------------+-------------+-----------------+------+-------------+------+-----+----+------+-----+---------+-----------------------------------------------------------------------------------------------+
+| Global Id | Track | Driver Type/Pin | Constraint | Clock Loads | Non-Clock Loads | FF   | Memory LUTs | RAMB | DSP | GT | MMCM | PLL | Hard IP | Net                                                                                           |
++-----------+-------+-----------------+------------+-------------+-----------------+------+-------------+------+-----+----+------+-----+---------+-----------------------------------------------------------------------------------------------+
+| g0        | n/a   | BUFGCTRL/O      | None       |        4881 |               0 | 4881 |           0 |    0 |   0 |  0 |    0 |   0 |       0 | gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_ae_top/u_ae_core/u_gated_clock/g_bufg.u_bufgce_0 |
+| g5        | n/a   | BUFG/O          | None       |           2 |               0 |    0 |           0 |    2 |   0 |  0 |    0 |   0 |       0 | gnss_zynq_i/processing_system7_0/inst/FCLK_CLK0                                               |
++-----------+-------+-----------------+------------+-------------+-----------------+------+-------------+------+-----+----+------+-----+---------+-----------------------------------------------------------------------------------------------+
+* Clock Loads column represents cell count of net connects that connect to a clock pin. Internal cell leaf pins are not considered
+** Non-Clock Loads column represents cell count of non-clock pin loads
+*** Columns FF, LUTRAM, RAMB through 'Hard IP' represents load cell counts
+
+
+
+# Location of BUFG Primitives 
+set_property LOC BUFGCTRL_X0Y16 [get_cells gnss_zynq_i/processing_system7_0/inst/buffer_fclk_clk_0.FCLK_CLK_0_BUFG]
+set_property LOC BUFGCTRL_X0Y17 [get_cells gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_ae_top/u_ae_core/u_gated_clock/g_bufg.u_bufgce]
+
+# Location of BUFH Primitives 
+set_property LOC BUFHCE_X0Y3 [get_cells gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/gated_clock_u4/g_bufh.u_bufhce]
+set_property LOC BUFHCE_X0Y2 [get_cells gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/gated_clock_u3/g_bufh.u_bufhce]
+set_property LOC BUFHCE_X0Y1 [get_cells gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/gated_clock_u2/g_bufh.u_bufhce]
+set_property LOC BUFHCE_X0Y0 [get_cells gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/gated_clock_u1/g_bufh.u_bufhce]
+
+# Location of IO Primitives which is load of clock spine
+
+# Location of clock ports
+
+# Clock net "gnss_zynq_i/processing_system7_0/inst/FCLK_CLK0" driven by instance "gnss_zynq_i/processing_system7_0/inst/buffer_fclk_clk_0.FCLK_CLK_0_BUFG" located at site "BUFGCTRL_X0Y16"
+#startgroup
+create_pblock {CLKAG_gnss_zynq_i/processing_system7_0/inst/FCLK_CLK0}
+add_cells_to_pblock [get_pblocks  {CLKAG_gnss_zynq_i/processing_system7_0/inst/FCLK_CLK0}] [get_cells -filter { PRIMITIVE_GROUP != I/O && IS_PRIMITIVE==1 && PRIMITIVE_LEVEL !=INTERNAL && NAME!=gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/gated_clock_u4/g_bufh.u_bufhce && NAME!=gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/gated_clock_u3/g_bufh.u_bufhce && NAME!=gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/gated_clock_u2/g_bufh.u_bufhce && NAME!=gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/gated_clock_u1/g_bufh.u_bufhce && NAME!=gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_ae_top/u_ae_core/u_gated_clock/g_bufg.u_bufgce} -of_object [get_pins -filter {DIRECTION==IN} -of_objects [get_nets -hierarchical -filter {PARENT=="gnss_zynq_i/processing_system7_0/inst/FCLK_CLK0"}]]]
+resize_pblock [get_pblocks {CLKAG_gnss_zynq_i/processing_system7_0/inst/FCLK_CLK0}] -add {CLOCKREGION_X0Y0:CLOCKREGION_X0Y0 CLOCKREGION_X0Y1:CLOCKREGION_X0Y1 CLOCKREGION_X0Y2:CLOCKREGION_X0Y2 CLOCKREGION_X1Y0:CLOCKREGION_X1Y0 CLOCKREGION_X1Y1:CLOCKREGION_X1Y1 CLOCKREGION_X1Y2:CLOCKREGION_X1Y2}
+#endgroup
+
+# Clock net "gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/gated_clock_u4/CLK" driven by instance "gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/gated_clock_u4/g_bufh.u_bufhce" located at site "BUFHCE_X0Y3"
+#startgroup
+create_pblock {CLKAG_gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/gated_clock_u4/CLK}
+add_cells_to_pblock [get_pblocks  {CLKAG_gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/gated_clock_u4/CLK}] [get_cells -filter { PRIMITIVE_GROUP != I/O && IS_PRIMITIVE==1 && PRIMITIVE_LEVEL !=INTERNAL } -of_object [get_pins -filter {DIRECTION==IN} -of_objects [get_nets -hierarchical -filter {PARENT=="gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/gated_clock_u4/CLK"}]]]
+resize_pblock [get_pblocks {CLKAG_gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/gated_clock_u4/CLK}] -add {CLOCKREGION_X0Y0:CLOCKREGION_X0Y0}
+#endgroup
+
+# Clock net "gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/gated_clock_u3/CLK" driven by instance "gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/gated_clock_u3/g_bufh.u_bufhce" located at site "BUFHCE_X0Y2"
+#startgroup
+create_pblock {CLKAG_gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/gated_clock_u3/CLK}
+add_cells_to_pblock [get_pblocks  {CLKAG_gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/gated_clock_u3/CLK}] [get_cells -filter { PRIMITIVE_GROUP != I/O && IS_PRIMITIVE==1 && PRIMITIVE_LEVEL !=INTERNAL } -of_object [get_pins -filter {DIRECTION==IN} -of_objects [get_nets -hierarchical -filter {PARENT=="gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/gated_clock_u3/CLK"}]]]
+resize_pblock [get_pblocks {CLKAG_gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/gated_clock_u3/CLK}] -add {CLOCKREGION_X0Y0:CLOCKREGION_X0Y0}
+#endgroup
+
+# Clock net "gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/gated_clock_u2/CLK" driven by instance "gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/gated_clock_u2/g_bufh.u_bufhce" located at site "BUFHCE_X0Y1"
+#startgroup
+create_pblock {CLKAG_gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/gated_clock_u2/CLK}
+add_cells_to_pblock [get_pblocks  {CLKAG_gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/gated_clock_u2/CLK}] [get_cells -filter { PRIMITIVE_GROUP != I/O && IS_PRIMITIVE==1 && PRIMITIVE_LEVEL !=INTERNAL } -of_object [get_pins -filter {DIRECTION==IN} -of_objects [get_nets -hierarchical -filter {PARENT=="gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/gated_clock_u2/CLK"}]]]
+resize_pblock [get_pblocks {CLKAG_gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/gated_clock_u2/CLK}] -add {CLOCKREGION_X0Y0:CLOCKREGION_X0Y0}
+#endgroup
+
+# Clock net "gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/gated_clock_u1/CLK" driven by instance "gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/gated_clock_u1/g_bufh.u_bufhce" located at site "BUFHCE_X0Y0"
+#startgroup
+create_pblock {CLKAG_gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/gated_clock_u1/CLK}
+add_cells_to_pblock [get_pblocks  {CLKAG_gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/gated_clock_u1/CLK}] [get_cells -filter { PRIMITIVE_GROUP != I/O && IS_PRIMITIVE==1 && PRIMITIVE_LEVEL !=INTERNAL } -of_object [get_pins -filter {DIRECTION==IN} -of_objects [get_nets -hierarchical -filter {PARENT=="gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/gated_clock_u1/CLK"}]]]
+resize_pblock [get_pblocks {CLKAG_gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/gated_clock_u1/CLK}] -add {CLOCKREGION_X0Y0:CLOCKREGION_X0Y0}
+#endgroup
+
+# Clock net "gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_ae_top/u_ae_core/u_gated_clock/g_bufg.u_bufgce_0" driven by instance "gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_ae_top/u_ae_core/u_gated_clock/g_bufg.u_bufgce" located at site "BUFGCTRL_X0Y17"
+#startgroup
+create_pblock {CLKAG_gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_ae_top/u_ae_core/u_gated_clock/g_bufg.u_bufgce_0}
+add_cells_to_pblock [get_pblocks  {CLKAG_gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_ae_top/u_ae_core/u_gated_clock/g_bufg.u_bufgce_0}] [get_cells -filter { PRIMITIVE_GROUP != I/O && IS_PRIMITIVE==1 && PRIMITIVE_LEVEL !=INTERNAL } -of_object [get_pins -filter {DIRECTION==IN} -of_objects [get_nets -hierarchical -filter {PARENT=="gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_ae_top/u_ae_core/u_gated_clock/g_bufg.u_bufgce_0"}]]]
+resize_pblock [get_pblocks {CLKAG_gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_ae_top/u_ae_core/u_gated_clock/g_bufg.u_bufgce_0}] -add {CLOCKREGION_X0Y0:CLOCKREGION_X0Y0 CLOCKREGION_X0Y1:CLOCKREGION_X0Y1 CLOCKREGION_X0Y2:CLOCKREGION_X0Y2 CLOCKREGION_X1Y0:CLOCKREGION_X1Y0 CLOCKREGION_X1Y1:CLOCKREGION_X1Y1 CLOCKREGION_X1Y2:CLOCKREGION_X1Y2}
+#endgroup

@@ -1,7 +1,3 @@
-Vivado Commands
-General Messages
-[Vivado 12-7122] Auto Incremental Compile:: No reference checkpoint was found in run synth_1. Auto-incremental flow will not be run, the standard flow will be run instead.
-
 Synthesis
 synth_1
 [Synth 8-7071] port 'pps_irq' of module 'gnss_zynq_gnss_top_axi_0_0' is unconnected for instance 'gnss_top_axi_0' ["d:/FPGA/greta-oto/vivado/gnss_zynq/gnss_zynq.gen/sources_1/bd/gnss_zynq/synth/gnss_zynq.v":234]
@@ -12,9 +8,17 @@ synth_1
 
 Out-of-Context Module Runs
 gnss_zynq
-gnss_zynq_gnss_top_axi_0_0_synth_1
-[Synth 8-6901] identifier 'host_d4rd' is used before its declaration ["D:/FPGA/greta-oto/BB_HW/rtl/xilinx/gnss_top_axi.v":180]
+gnss_zynq_axi_smc_0_0
+gnss_zynq_axi_smc_0_0_synth_1
+[Synth 8-7071] port 'mb_reset' of module 'bd_5145_psr_aclk_0' is unconnected for instance 'psr_aclk' ["d:/FPGA/greta-oto/vivado/gnss_zynq/gnss_zynq.gen/sources_1/bd/gnss_zynq/ip/gnss_zynq_axi_smc_0_0/bd_0/synth/bd_5145.v":691]
 
+[Synth 8-7023] instance 'psr_aclk' of module 'bd_5145_psr_aclk_0' has 10 connections declared, but only 6 given ["d:/FPGA/greta-oto/vivado/gnss_zynq/gnss_zynq.gen/sources_1/bd/gnss_zynq/ip/gnss_zynq_axi_smc_0_0/bd_0/synth/bd_5145.v":691]
+
+[Synth 8-3848] Net aresetn_out in module/entity clk_map_imp_A481I2 does not have driver. ["d:/FPGA/greta-oto/vivado/gnss_zynq/gnss_zynq.gen/sources_1/bd/gnss_zynq/ip/gnss_zynq_axi_smc_0_0/bd_0/synth/bd_5145.v":676]
+
+[Synth 8-3332] Sequential element (clk_map/psr_aclk/U0/FDRE_inst) is unused and will be removed from module bd_5145.
+
+gnss_zynq_gnss_top_axi_0_0_synth_1
 [Synth 8-7071] port 'injectsbiterra' of module 'xpm_memory_sprom' is unconnected for instance 'u_rom' ["D:/FPGA/greta-oto/BB_HW/rtl/xilinx/xilinx_rom_wrapper.v":53]
 
 [Synth 8-7023] instance 'u_rom' of module 'xpm_memory_sprom' has 11 connections declared, but only 7 given ["D:/FPGA/greta-oto/BB_HW/rtl/xilinx/xilinx_rom_wrapper.v":53]
@@ -25,16 +29,4 @@ gnss_zynq_gnss_top_axi_0_0_synth_1
 
 [Synth 8-6014] Unused sequential element sample_in_r2_reg was removed.  ["D:/FPGA/greta-oto/BB_HW/rtl/acquire_engine/read_sample.v":67]
 
-[Netlist 29-345] The value of SIM_DEVICE on instance 'inst/u_gnss_top/u_ae_top/u_ae_core/u_gated_clock/u_bufgce' of type 'BUFGCE' is 'ULTRASCALE'; it is being changed to match the current FPGA architecture, '7SERIES'. For functional simulation to match hardware behavior, the value of SIM_DEVICE should be changed in the source netlist. 
-
 [Synth 8-327] inferring latch for variable 'FSM_sequential_next_state_reg' ["D:/FPGA/greta-oto/BB_HW/rtl/tracking_engine/coherent_sum.v":60]
-
-gnss_zynq_axi_smc_0_0
-gnss_zynq_axi_smc_0_0_synth_1
-[Synth 8-7071] port 'mb_reset' of module 'bd_5145_psr_aclk_0' is unconnected for instance 'psr_aclk' ["d:/FPGA/greta-oto/vivado/gnss_zynq/gnss_zynq.gen/sources_1/bd/gnss_zynq/ip/gnss_zynq_axi_smc_0_0/bd_0/synth/bd_5145.v":691]
-
-[Synth 8-7023] instance 'psr_aclk' of module 'bd_5145_psr_aclk_0' has 10 connections declared, but only 6 given ["d:/FPGA/greta-oto/vivado/gnss_zynq/gnss_zynq.gen/sources_1/bd/gnss_zynq/ip/gnss_zynq_axi_smc_0_0/bd_0/synth/bd_5145.v":691]
-
-[Synth 8-3848] Net aresetn_out in module/entity clk_map_imp_A481I2 does not have driver. ["d:/FPGA/greta-oto/vivado/gnss_zynq/gnss_zynq.gen/sources_1/bd/gnss_zynq/ip/gnss_zynq_axi_smc_0_0/bd_0/synth/bd_5145.v":676]
-
-[Synth 8-3332] Sequential element (clk_map/psr_aclk/U0/FDRE_inst) is unused and will be removed from module bd_5145.

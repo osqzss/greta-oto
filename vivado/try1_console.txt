@@ -1,0 +1,1351 @@
+
+****** Vivado v2025.2 (64-bit)
+  **** SW Build 6299465 on Fri Nov 14 19:35:11 GMT 2025
+  **** IP Build 6300035 on Fri Nov 14 10:48:45 MST 2025
+  **** SharedData Build 6298862 on Thu Nov 13 04:50:51 MST 2025
+  **** Start of session at: Thu Jun 25 19:38:51 2026
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source impl_retime_try1.tcl
+# set runs   D:/FPGA/greta-oto/vivado/gnss_zynq/gnss_zynq.runs
+# set outdir D:/FPGA/greta-oto/vivado/try1
+# file mkdir $outdir
+# open_checkpoint $runs/impl_1/gnss_zynq_wrapper_opt.dcp
+Command: open_checkpoint D:/FPGA/greta-oto/vivado/gnss_zynq/gnss_zynq.runs/impl_1/gnss_zynq_wrapper_opt.dcp
+
+Starting open_checkpoint Task
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.035 . Memory (MB): peak = 324.668 ; gain = 5.797
+INFO: [Device 21-403] Loading part xc7z020clg400-1
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.455 . Memory (MB): peak = 844.422 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 2070 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-479] Netlist was created with Vivado 2025.2
+INFO: [Project 1-570] Preparing netlist for logic optimization
+Read ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.061 . Memory (MB): peak = 984.207 ; gain = 7.453
+INFO: [Timing 38-478] Restoring timing data from binary archive.
+INFO: [Timing 38-479] Binary timing data restore complete.
+INFO: [Project 1-856] Restoring constraints from binary archive.
+INFO: [Project 1-853] Binary constraint restore complete.
+INFO: [Designutils 20-5722] Start Reading Physical Databases.
+Reading placement.
+Read Netlist Cache: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1531.516 ; gain = 0.000
+Reading placer database...
+Read Device Cache: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.009 . Memory (MB): peak = 1531.516 ; gain = 0.000
+Read PlaceDB: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1531.516 ; gain = 0.000
+Read placeStorage: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.050 . Memory (MB): peak = 1531.516 ; gain = 0.000
+Read PulsedLatchDB: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1531.516 ; gain = 0.000
+Reading routing.
+Read RouteStorage: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.005 . Memory (MB): peak = 1531.516 ; gain = 0.000
+Read Physdb Files: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.074 . Memory (MB): peak = 1531.516 ; gain = 0.000
+Restored from archive | CPU: 0.000000 secs | Memory: 0.000000 MB |
+Finished XDEF File Restore: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.108 . Memory (MB): peak = 1531.516 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.008 . Memory (MB): peak = 1531.516 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 36 instances were transformed.
+  RAM32M => RAM32M (RAMD32(x6), RAMS32(x2)): 28 instances
+  RAM32X1D => RAM32X1D (RAMD32(x2)): 8 instances
+
+INFO: [Project 1-604] Checkpoint was created with Vivado v2025.2 (64-bit) build 6299465
+open_checkpoint: Time (s): cpu = 00:00:17 ; elapsed = 00:00:16 . Memory (MB): peak = 1531.516 ; gain = 1223.098
+# place_design -directive ExtraTimingOpt
+Command: place_design -directive ExtraTimingOpt
+Attempting to get a license for feature 'Implementation' and/or device 'xc7z020'
+INFO: [Common 17-349] Got license for feature 'Implementation' and/or device 'xc7z020'
+INFO: [Common 17-83] Releasing license: Implementation
+INFO: [DRC 23-27] Running DRC with 2 threads
+INFO: [Vivado_Tcl 4-198] DRC finished with 0 Errors
+INFO: [Vivado_Tcl 4-199] Please refer to the DRC report (report_drc) for more information.
+INFO: [Timing 38-35] Done setting XDC timing constraints.
+INFO: [Vivado_Tcl 4-2302] The placer was invoked with the 'ExtraTimingOpt' directive.
+Running DRC as a precondition to command place_design
+INFO: [DRC 23-27] Running DRC with 2 threads
+INFO: [Vivado_Tcl 4-198] DRC finished with 0 Errors, 42 Warnings
+INFO: [Vivado_Tcl 4-199] Please refer to the DRC report (report_drc) for more information.
+INFO: [Place 30-611] Multithreading enabled for place_design using a maximum of 2 CPUs
+
+Starting Placer Task
+
+Phase 1 Placer Initialization
+
+Phase 1.1 Placer Initialization Netlist Sorting
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.010 . Memory (MB): peak = 1665.512 ; gain = 0.000
+Phase 1.1 Placer Initialization Netlist Sorting | Checksum: 180e07ab8
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.013 . Memory (MB): peak = 1665.512 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.008 . Memory (MB): peak = 1665.512 ; gain = 0.000
+
+Phase 1.2 IO Placement/ Clock Placement/ Build Placer Device
+WARNING: [Place 30-87] Partially locked IO Bus is found. Following components of the IO Bus spi0_ss_o are not locked:  'spi0_ss_o[2]'  'spi0_ss_o[1]' 
+WARNING: [Place 30-120] Sub-optimal placement for a BUFG-BUFG cascade pair. This is normally an ERROR but the CLOCK_DEDICATED_ROUTE constraint is set to FALSE allowing your design to continue. The use of this override is highly discouraged as it may lead to very poor timing results. It is recommended that this error condition be corrected in the design.
+
+	gnss_zynq_i/processing_system7_0/inst/buffer_fclk_clk_0.FCLK_CLK_0_BUFG (BUFG.O) is provisionally placed by clockplacer on BUFGCTRL_X0Y16
+	gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_ae_top/u_ae_core/u_gated_clock/u_bufgce (BUFGCTRL.I0) is provisionally placed by clockplacer on BUFGCTRL_X0Y0
+	gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/gated_clock_u3/u_bufgce (BUFGCTRL.I0) is provisionally placed by clockplacer on BUFGCTRL_X0Y3
+	gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/gated_clock_u1/u_bufgce (BUFGCTRL.I0) is provisionally placed by clockplacer on BUFGCTRL_X0Y1
+	gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/gated_clock_u2/u_bufgce (BUFGCTRL.I0) is provisionally placed by clockplacer on BUFGCTRL_X0Y2
+	gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/gated_clock_u4/u_bufgce (BUFGCTRL.I0) is provisionally placed by clockplacer on BUFGCTRL_X0Y4
+Resolution: A dedicated routing path between the two BUFGs can be used if they are placed in cyclically adjacent BUFG sites and both are in the same half (TOP/BOTTOM) side of an SLR. If this condition cannot be met, it is recommended that a BUFH be connected in series between the two BUFGs to ensure that clock region partitioning will account for the use of a clock spine for this connection.
+Phase 1.2 IO Placement/ Clock Placement/ Build Placer Device | Checksum: 141da5ef9
+
+Time (s): cpu = 00:00:02 ; elapsed = 00:00:01 . Memory (MB): peak = 1665.512 ; gain = 0.000
+
+Phase 1.3 Build Placer Netlist Model
+Phase 1.3 Build Placer Netlist Model | Checksum: 1c65a62b7
+
+Time (s): cpu = 00:00:09 ; elapsed = 00:00:07 . Memory (MB): peak = 1824.824 ; gain = 159.312
+
+Phase 1.4 Constrain Clocks/Macros
+Phase 1.4 Constrain Clocks/Macros | Checksum: 1c65a62b7
+
+Time (s): cpu = 00:00:09 ; elapsed = 00:00:07 . Memory (MB): peak = 1824.824 ; gain = 159.312
+Phase 1 Placer Initialization | Checksum: 1c65a62b7
+
+Time (s): cpu = 00:00:09 ; elapsed = 00:00:07 . Memory (MB): peak = 1824.824 ; gain = 159.312
+
+Phase 2 Global Placement
+
+Phase 2.1 Floorplanning
+Phase 2.1 Floorplanning | Checksum: 143b036a4
+
+Time (s): cpu = 00:00:14 ; elapsed = 00:00:09 . Memory (MB): peak = 1824.824 ; gain = 159.312
+
+Phase 2.2 Update Timing before SLR Path Opt
+Phase 2.2 Update Timing before SLR Path Opt | Checksum: 15682f903
+
+Time (s): cpu = 00:00:18 ; elapsed = 00:00:12 . Memory (MB): peak = 1824.824 ; gain = 159.312
+
+Phase 2.3 Post-Processing in Floorplanning
+Phase 2.3 Post-Processing in Floorplanning | Checksum: 15682f903
+
+Time (s): cpu = 00:00:18 ; elapsed = 00:00:12 . Memory (MB): peak = 1824.824 ; gain = 159.312
+
+Phase 2.4 Global Place Phase1
+Phase 2.4 Global Place Phase1 | Checksum: d1f65dda
+
+Time (s): cpu = 00:00:54 ; elapsed = 00:00:32 . Memory (MB): peak = 1834.660 ; gain = 169.148
+
+Phase 2.5 Global Place Phase2
+
+Phase 2.5.1 UpdateTiming Before Physical Synthesis
+Phase 2.5.1 UpdateTiming Before Physical Synthesis | Checksum: 1017bc07a
+
+Time (s): cpu = 00:00:58 ; elapsed = 00:00:35 . Memory (MB): peak = 1834.660 ; gain = 169.148
+
+Phase 2.5.2 Physical Synthesis In Placer
+INFO: [Physopt 32-1035] Found 77 LUTNM shape to break, 827 LUT instances to create LUTNM shape
+INFO: [Physopt 32-1044] Break lutnm for timing: one critical 41, two critical 36, total 77, new lutff created 0
+INFO: [Physopt 32-1138] End 1 Pass. Optimized 370 nets or LUTs. Breaked 77 LUTs, combined 293 existing LUTs and moved 0 existing LUT
+INFO: [Physopt 32-65] No nets found for high-fanout optimization.
+INFO: [Physopt 32-232] Optimized 0 net. Created 0 new instance.
+INFO: [Physopt 32-775] End 1 Pass. Optimized 0 net or cell. Created 0 new cell, deleted 0 existing cell and moved 0 existing cell
+INFO: [Physopt 32-456] No candidate cells for DSP register optimization found in the design.
+INFO: [Physopt 32-775] End 2 Pass. Optimized 0 net or cell. Created 0 new cell, deleted 0 existing cell and moved 0 existing cell
+INFO: [Physopt 32-1123] No candidate cells found for Shift Register to Pipeline optimization
+INFO: [Physopt 32-775] End 2 Pass. Optimized 0 net or cell. Created 0 new cell, deleted 0 existing cell and moved 0 existing cell
+INFO: [Physopt 32-1401] No candidate cells found for Shift Register optimization.
+INFO: [Physopt 32-677] No candidate cells for Shift Register optimization found in the design
+INFO: [Physopt 32-775] End 1 Pass. Optimized 0 net or cell. Created 0 new cell, deleted 0 existing cell and moved 0 existing cell
+INFO: [Physopt 32-526] No candidate cells for BRAM register optimization found in the design
+INFO: [Physopt 32-775] End 1 Pass. Optimized 0 net or cell. Created 0 new cell, deleted 0 existing cell and moved 0 existing cell
+INFO: [Physopt 32-846] No candidate cells for URAM register optimization found in the design
+INFO: [Physopt 32-775] End 1 Pass. Optimized 0 net or cell. Created 0 new cell, deleted 0 existing cell and moved 0 existing cell
+INFO: [Physopt 32-846] No candidate cells for URAM register optimization found in the design
+INFO: [Physopt 32-775] End 1 Pass. Optimized 0 net or cell. Created 0 new cell, deleted 0 existing cell and moved 0 existing cell
+INFO: [Physopt 32-949] No candidate nets found for dynamic/static region interface net replication
+INFO: [Physopt 32-775] End 1 Pass. Optimized 0 net or cell. Created 0 new cell, deleted 0 existing cell and moved 0 existing cell
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.009 . Memory (MB): peak = 1839.926 ; gain = 0.000
+
+Summary of Physical Synthesis Optimizations
+============================================
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+|  Optimization                                     |  Added Cells  |  Removed Cells  |  Optimized Cells/Nets  |  Dont Touch  |  Iterations  |  Elapsed   |
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+|  LUT Combining                                    |           77  |            293  |                   370  |           0  |           1  |  00:00:00  |
+|  Retime                                           |            0  |              0  |                     0  |           0  |           1  |  00:00:00  |
+|  Very High Fanout                                 |            0  |              0  |                     0  |           0  |           1  |  00:00:00  |
+|  DSP Register                                     |            0  |              0  |                     0  |           0  |           1  |  00:00:00  |
+|  Shift Register to Pipeline                       |            0  |              0  |                     0  |           0  |           1  |  00:00:00  |
+|  Shift Register                                   |            0  |              0  |                     0  |           0  |           1  |  00:00:00  |
+|  BRAM Register                                    |            0  |              0  |                     0  |           0  |           1  |  00:00:00  |
+|  URAM Register                                    |            0  |              0  |                     0  |           0  |           1  |  00:00:00  |
+|  Dynamic/Static Region Interface Net Replication  |            0  |              0  |                     0  |           0  |           1  |  00:00:00  |
+|  Total                                            |           77  |            293  |                   370  |           0  |           9  |  00:00:01  |
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+Phase 2.5.2 Physical Synthesis In Placer | Checksum: 16e40f687
+
+Time (s): cpu = 00:01:03 ; elapsed = 00:00:38 . Memory (MB): peak = 1839.926 ; gain = 174.414
+Phase 2.5 Global Place Phase2 | Checksum: 121b091fb
+
+Time (s): cpu = 00:01:05 ; elapsed = 00:00:39 . Memory (MB): peak = 1839.926 ; gain = 174.414
+Phase 2 Global Placement | Checksum: 121b091fb
+
+Time (s): cpu = 00:01:05 ; elapsed = 00:00:39 . Memory (MB): peak = 1839.926 ; gain = 174.414
+
+Phase 3 Detail Placement
+
+Phase 3.1 Commit Multi Column Macros
+Phase 3.1 Commit Multi Column Macros | Checksum: 1435a4d7a
+
+Time (s): cpu = 00:01:10 ; elapsed = 00:00:42 . Memory (MB): peak = 1839.926 ; gain = 174.414
+
+Phase 3.2 Commit Most Macros & LUTRAMs
+Phase 3.2 Commit Most Macros & LUTRAMs | Checksum: 228b220e9
+
+Time (s): cpu = 00:01:17 ; elapsed = 00:00:46 . Memory (MB): peak = 1839.926 ; gain = 174.414
+
+Phase 3.3 Area Swap Optimization
+Phase 3.3 Area Swap Optimization | Checksum: 2210c3837
+
+Time (s): cpu = 00:01:18 ; elapsed = 00:00:47 . Memory (MB): peak = 1839.926 ; gain = 174.414
+
+Phase 3.4 Pipeline Register Optimization
+Phase 3.4 Pipeline Register Optimization | Checksum: 241d2a364
+
+Time (s): cpu = 00:01:18 ; elapsed = 00:00:47 . Memory (MB): peak = 1839.926 ; gain = 174.414
+
+Phase 3.5 Fast Optimization
+Phase 3.5 Fast Optimization | Checksum: 24e83f8cd
+
+Time (s): cpu = 00:01:28 ; elapsed = 00:00:53 . Memory (MB): peak = 1839.926 ; gain = 174.414
+
+Phase 3.6 Small Shape Detail Placement
+Phase 3.6 Small Shape Detail Placement | Checksum: 21e854a71
+
+Time (s): cpu = 00:01:38 ; elapsed = 00:01:05 . Memory (MB): peak = 1857.336 ; gain = 191.824
+
+Phase 3.7 Re-assign LUT pins
+Phase 3.7 Re-assign LUT pins | Checksum: 1ce955a8a
+
+Time (s): cpu = 00:01:41 ; elapsed = 00:01:07 . Memory (MB): peak = 1857.336 ; gain = 191.824
+
+Phase 3.8 Pipeline Register Optimization
+Phase 3.8 Pipeline Register Optimization | Checksum: 1ac870c8d
+
+Time (s): cpu = 00:01:41 ; elapsed = 00:01:07 . Memory (MB): peak = 1857.336 ; gain = 191.824
+
+Phase 3.9 Fast Optimization
+Phase 3.9 Fast Optimization | Checksum: 21870e432
+
+Time (s): cpu = 00:01:57 ; elapsed = 00:01:18 . Memory (MB): peak = 1900.879 ; gain = 235.367
+Phase 3 Detail Placement | Checksum: 21870e432
+
+Time (s): cpu = 00:01:57 ; elapsed = 00:01:18 . Memory (MB): peak = 1900.879 ; gain = 235.367
+
+Phase 4 Post Placement Optimization and Clean-Up
+
+Phase 4.1 Post Commit Optimization
+INFO: [Timing 38-35] Done setting XDC timing constraints.
+
+Phase 4.1.1 Post Placement Optimization
+Post Placement Optimization Initialization | Checksum: 1d9ecf526
+
+Phase 4.1.1.1 BUFG Insertion
+
+Starting Physical Synthesis Task
+
+Phase 1 Physical Synthesis Initialization
+INFO: [Physopt 32-721] Multithreading enabled for phys_opt_design using a maximum of 2 CPUs
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=-0.972 | TNS=-11.616 |
+Phase 1 Physical Synthesis Initialization | Checksum: 18e8e9bf3
+
+Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.425 . Memory (MB): peak = 1990.738 ; gain = 0.000
+INFO: [Place 46-33] Processed net gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_ae_top/u_ae_core/u_read_sample/sample_out_valid, BUFG insertion was skipped due to placement/routing conflicts.
+INFO: [Place 46-33] Processed net gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[1].u_correlator/u_prn_code/weil_prn2/S_AXI_ARESETN_0, BUFG insertion was skipped due to placement/routing conflicts.
+INFO: [Place 46-33] Processed net gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_ae_top/u_ae_core/u_coh_acc/u1_coh_sum_pair/S_AXI_ARESETN_0, BUFG insertion was skipped due to placement/routing conflicts.
+INFO: [Place 46-56] BUFG insertion identified 3 candidate nets. Inserted BUFG: 0, Replicated BUFG Driver: 0, Skipped due to Placement/Routing Conflicts: 3, Skipped due to Timing Degradation: 0, Skipped due to netlist editing failed: 0.
+Ending Physical Synthesis Task | Checksum: 161517ab8
+
+Time (s): cpu = 00:00:02 ; elapsed = 00:00:01 . Memory (MB): peak = 1990.738 ; gain = 0.000
+Phase 4.1.1.1 BUFG Insertion | Checksum: 1d9ecf526
+
+Time (s): cpu = 00:02:08 ; elapsed = 00:01:25 . Memory (MB): peak = 1990.738 ; gain = 325.227
+
+Phase 4.1.1.2 Post Placement Timing Optimization
+INFO: [Place 30-746] Post Placement Timing Summary WNS=0.178. For the most accurate timing information please run report_timing.
+Phase 4.1.1.2 Post Placement Timing Optimization | Checksum: 108de2653
+
+Time (s): cpu = 00:03:48 ; elapsed = 00:03:02 . Memory (MB): peak = 1990.738 ; gain = 325.227
+
+Time (s): cpu = 00:03:48 ; elapsed = 00:03:02 . Memory (MB): peak = 1990.738 ; gain = 325.227
+Phase 4.1 Post Commit Optimization | Checksum: 108de2653
+
+Time (s): cpu = 00:03:48 ; elapsed = 00:03:02 . Memory (MB): peak = 1990.738 ; gain = 325.227
+
+Phase 4.2 Post Placement Cleanup
+Phase 4.2 Post Placement Cleanup | Checksum: 108de2653
+
+Time (s): cpu = 00:03:49 ; elapsed = 00:03:02 . Memory (MB): peak = 1990.738 ; gain = 325.227
+
+Phase 4.3 Placer Reporting
+
+Phase 4.3.1 Print Estimated Congestion
+INFO: [Place 30-612] Post-Placement Estimated Congestion 
+ ____________________________________________________
+|           | Global Congestion | Short Congestion  |
+| Direction | Region Size       | Region Size       |
+|___________|___________________|___________________|
+|      North|                1x1|                2x2|
+|___________|___________________|___________________|
+|      South|                1x1|                1x1|
+|___________|___________________|___________________|
+|       East|                1x1|                1x1|
+|___________|___________________|___________________|
+|       West|                1x1|                1x1|
+|___________|___________________|___________________|
+
+Phase 4.3.1 Print Estimated Congestion | Checksum: 108de2653
+
+Time (s): cpu = 00:03:49 ; elapsed = 00:03:02 . Memory (MB): peak = 1990.738 ; gain = 325.227
+Phase 4.3 Placer Reporting | Checksum: 108de2653
+
+Time (s): cpu = 00:03:49 ; elapsed = 00:03:02 . Memory (MB): peak = 1990.738 ; gain = 325.227
+
+Phase 4.4 Final Placement Cleanup
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.011 . Memory (MB): peak = 1990.738 ; gain = 0.000
+
+Time (s): cpu = 00:03:49 ; elapsed = 00:03:02 . Memory (MB): peak = 1990.738 ; gain = 325.227
+Phase 4 Post Placement Optimization and Clean-Up | Checksum: 1fb97d693
+
+Time (s): cpu = 00:03:49 ; elapsed = 00:03:02 . Memory (MB): peak = 1990.738 ; gain = 325.227
+Ending Placer Task | Checksum: 1c810ef39
+
+Time (s): cpu = 00:03:49 ; elapsed = 00:03:02 . Memory (MB): peak = 1990.738 ; gain = 325.227
+41 Infos, 2 Warnings, 0 Critical Warnings and 0 Errors encountered.
+place_design completed successfully
+place_design: Time (s): cpu = 00:03:53 ; elapsed = 00:03:05 . Memory (MB): peak = 1990.738 ; gain = 459.223
+# phys_opt_design -directive AggressiveExplore
+Command: phys_opt_design -directive AggressiveExplore
+Attempting to get a license for feature 'Implementation' and/or device 'xc7z020'
+INFO: [Common 17-349] Got license for feature 'Implementation' and/or device 'xc7z020'
+INFO: [Vivado_Tcl 4-137] Directive used for phys_opt_design is: AggressiveExplore
+
+Starting Initial Update Timing Task
+
+Time (s): cpu = 00:00:08 ; elapsed = 00:00:04 . Memory (MB): peak = 2003.250 ; gain = 12.512
+INFO: [Vivado_Tcl 4-2280] Estimated Timing Summary | WNS= 0.178 | TNS= 0.000 | WHS= -1.649 |
+INFO: [Vivado_Tcl 4-383] Design worst setup slack (WNS) is greater than or equal to 0.000 ns. All physical synthesis setup optimizations will be skipped.
+INFO: [Vivado_Tcl 4-1435] PhysOpt_Tcl_Interface Runtime Before Starting Physical Synthesis Task | CPU: 8.00s |  WALL: 4.50s
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.009 . Memory (MB): peak = 2003.250 ; gain = 0.000
+
+Starting Physical Synthesis Task
+
+Phase 1 Physical Synthesis Initialization
+INFO: [Physopt 32-721] Multithreading enabled for phys_opt_design using a maximum of 2 CPUs
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=0.178 | TNS=0.000 |
+Phase 1 Physical Synthesis Initialization | Checksum: 20601702a
+
+Time (s): cpu = 00:00:02 ; elapsed = 00:00:01 . Memory (MB): peak = 2003.250 ; gain = 0.000
+
+Phase 2 Hold Fix Optimization
+INFO: [Physopt 32-668] Estimated Timing Summary | WNS=0.178 | TNS=0.000 | WHS=-1.649 | THS=-2300.960 |
+INFO: [Physopt 32-45] Identified 3116 candidate nets for hold slack optimization.
+INFO: [Physopt 32-234] Optimized 1000 nets. Inserted 0 new ZHOLD_DELAYs. Calibrated 0 existing ZHOLD_DELAYs. Inserted 975 buffers.
+
+Netlist sorting complete. Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.255 . Memory (MB): peak = 2003.250 ; gain = 0.000
+INFO: [Physopt 32-668] Estimated Timing Summary | WNS=0.119 | TNS=0.000 | WHS=-1.393 | THS=-359.981 |
+Phase 2 Hold Fix Optimization | Checksum: 1e9ce70c4
+
+Time (s): cpu = 00:00:26 ; elapsed = 00:00:23 . Memory (MB): peak = 2003.250 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.010 . Memory (MB): peak = 2003.250 ; gain = 0.000
+INFO: [Physopt 32-669] Post Physical Optimization Timing Summary | WNS=0.119 | TNS=0.000 | WHS=-1.393 | THS=-359.981 |
+
+Summary of Physical Synthesis Optimizations
+============================================
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+|  Optimization            |  WNS Gain (ns)  |  TNS Gain (ns)  |  Added Cells  |  Removed Cells  |  Optimized Cells/Nets  |  Dont Touch  |  Iterations  |  Elapsed   |
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+|  Fanout                  |          0.000  |          0.000  |            0  |              0  |                     0  |           0  |           0  |  00:00:00  |
+|  Single Cell Placement   |          0.000  |          0.000  |            0  |              0  |                     0  |           0  |           0  |  00:00:00  |
+|  Multi Cell Placement    |          0.000  |          0.000  |            0  |              0  |                     0  |           0  |           0  |  00:00:00  |
+|  Rewire                  |          0.000  |          0.000  |            0  |              0  |                     0  |           0  |           0  |  00:00:00  |
+|  Critical Cell           |          0.000  |          0.000  |            0  |              0  |                     0  |           0  |           0  |  00:00:00  |
+|  SLR Crossing            |          0.000  |          0.000  |            0  |              0  |                     0  |           0  |           0  |  00:00:00  |
+|  DSP Register            |          0.000  |          0.000  |            0  |              0  |                     0  |           0  |           0  |  00:00:00  |
+|  BRAM Register           |          0.000  |          0.000  |            0  |              0  |                     0  |           0  |           0  |  00:00:00  |
+|  URAM Register           |          0.000  |          0.000  |            0  |              0  |                     0  |           0  |           0  |  00:00:00  |
+|  Shift Register          |          0.000  |          0.000  |            0  |              0  |                     0  |           0  |           0  |  00:00:00  |
+|  Critical Pin            |          0.000  |          0.000  |            0  |              0  |                     0  |           0  |           0  |  00:00:00  |
+|  Very High Fanout        |          0.000  |          0.000  |            0  |              0  |                     0  |           0  |           0  |  00:00:00  |
+|  Total                   |          0.000  |          0.000  |            0  |              0  |                     0  |           0  |           0  |  00:00:00  |
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+Summary of Hold Fix Optimizations
+=================================
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+|  Optimization               |  WHS Gain (ns)  |  THS Gain (ns)  |  Added LUTs  |  Added FFs  |  Optimized Nets  |  Dont Touch  |  Iterations  |  Elapsed   |
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+|  LUT1 and ZHOLD Insertion   |          0.256  |       1940.979  |         975  |          0  |            1000  |           0  |           1  |  00:00:22  |
+|  Total                      |          0.256  |       1940.979  |         975  |          0  |            1000  |           0  |           1  |  00:00:22  |
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.009 . Memory (MB): peak = 2003.250 ; gain = 0.000
+Ending Physical Synthesis Task | Checksum: 20093329b
+
+Time (s): cpu = 00:00:26 ; elapsed = 00:00:23 . Memory (MB): peak = 2003.250 ; gain = 0.000
+INFO: [Common 17-83] Releasing license: Implementation
+13 Infos, 0 Warnings, 0 Critical Warnings and 0 Errors encountered.
+phys_opt_design completed successfully
+phys_opt_design: Time (s): cpu = 00:00:34 ; elapsed = 00:00:28 . Memory (MB): peak = 2003.250 ; gain = 12.512
+# route_design -directive Explore
+Command: route_design -directive Explore
+Attempting to get a license for feature 'Implementation' and/or device 'xc7z020'
+INFO: [Common 17-349] Got license for feature 'Implementation' and/or device 'xc7z020'
+INFO: [DRC 23-27] Running DRC with 2 threads
+INFO: [Vivado_Tcl 4-198] DRC finished with 0 Errors
+INFO: [Vivado_Tcl 4-199] Please refer to the DRC report (report_drc) for more information.
+
+
+Starting Routing Task
+INFO: [Route 35-270] Using Router directive 'Explore'.
+INFO: [Route 35-254] Multithreading enabled for route_design using a maximum of 2 CPUs
+
+Phase 1 Build RT Design
+Checksum: PlaceDB: 143db9dd ConstDB: 0 ShapeSum: e30b1af4 RouteDB: 15f972f0
+Post Restoration Checksum: NetGraph: 830c8175 | NumContArr: c5a1fb9f | Constraints: c2a8fa9d | Timing: c2a8fa9d
+Phase 1 Build RT Design | Checksum: 2ce00724e
+
+Time (s): cpu = 00:00:29 ; elapsed = 00:00:21 . Memory (MB): peak = 2086.289 ; gain = 66.945
+
+Phase 2 Router Initialization
+
+Phase 2.1 Fix Topology Constraints
+Phase 2.1 Fix Topology Constraints | Checksum: 2ce00724e
+
+Time (s): cpu = 00:00:29 ; elapsed = 00:00:21 . Memory (MB): peak = 2086.289 ; gain = 66.945
+
+Phase 2.2 Pre Route Cleanup
+Phase 2.2 Pre Route Cleanup | Checksum: 2ce00724e
+
+Time (s): cpu = 00:00:30 ; elapsed = 00:00:21 . Memory (MB): peak = 2086.289 ; gain = 66.945
+ Number of Nodes with overlaps = 0
+
+Phase 2.3 Update Timing
+Phase 2.3 Update Timing | Checksum: 2165cbcb8
+
+Time (s): cpu = 00:00:43 ; elapsed = 00:00:29 . Memory (MB): peak = 2145.785 ; gain = 126.441
+INFO: [Route 35-416] Intermediate Timing Summary | WNS=-2.133 | TNS=-386.574| WHS=-1.266 | THS=-5525.854|
+
+
+Phase 2.4 Soft Constraint Pins - Fast Budgeting
+Phase 2.4 Soft Constraint Pins - Fast Budgeting | Checksum: 235138368
+
+Time (s): cpu = 00:00:47 ; elapsed = 00:00:32 . Memory (MB): peak = 2226.977 ; gain = 207.633
+
+Router Utilization Summary
+  Global Vertical Routing Utilization    = 0.000673087 %
+  Global Horizontal Routing Utilization  = 0.000845166 %
+  Routable Net Status*
+  *Does not include unroutable nets such as driverless and loadless.
+  Run report_route_status for detailed report.
+  Number of Failed Nets               = 41600
+    (Failed Nets is the sum of unrouted and partially routed nets)
+  Number of Unrouted Nets             = 41591
+  Number of Partially Routed Nets     = 9
+  Number of Node Overlaps             = 5
+
+Phase 2 Router Initialization | Checksum: 20a2cbc94
+
+Time (s): cpu = 00:00:47 ; elapsed = 00:00:32 . Memory (MB): peak = 2226.977 ; gain = 207.633
+
+Phase 3 Global Routing
+Phase 3 Global Routing | Checksum: 20a2cbc94
+
+Time (s): cpu = 00:00:47 ; elapsed = 00:00:32 . Memory (MB): peak = 2226.977 ; gain = 207.633
+
+Phase 4 Initial Routing
+
+Phase 4.1 Initial Net Routing Pass
+Phase 4.1 Initial Net Routing Pass | Checksum: 2c60c2687
+
+Time (s): cpu = 00:01:05 ; elapsed = 00:00:43 . Memory (MB): peak = 2241.160 ; gain = 221.816
+Phase 4 Initial Routing | Checksum: 2c60c2687
+
+Time (s): cpu = 00:01:05 ; elapsed = 00:00:43 . Memory (MB): peak = 2241.160 ; gain = 221.816
+INFO: [Route 35-580] Design has 895 pins with tight setup and hold constraints.
+
+The top 5 pins with tight setup and hold constraints:
+
++====================+===================+==========================================================================================================================================+
+| Launch Setup Clock | Launch Hold Clock | Pin                                                                                                                                      |
++====================+===================+==========================================================================================================================================+
+| clk_fpga_0         | clk_fpga_0        | gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[1].u_correlator/data_acc_gen[0].u_data_acc/i_acc_o_reg[15]/D |
+| clk_fpga_0         | clk_fpga_0        | gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[3].u_correlator/u_prn_code/weil_prn1/legendre_addr2_reg[5]/D |
+| clk_fpga_0         | clk_fpga_0        | gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[3].u_correlator/u_prn_code/weil_prn1/legendre_addr2_reg[4]/D |
+| clk_fpga_0         | clk_fpga_0        | gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[3].u_correlator/u_prn_code/weil_prn1/legendre_addr2_reg[3]/D |
+| clk_fpga_0         | clk_fpga_0        | gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[3].u_correlator/u_prn_code/weil_prn1/legendre_addr2_reg[2]/D |
++--------------------+-------------------+------------------------------------------------------------------------------------------------------------------------------------------+
+
+File with complete list of pins: tight_setup_hold_pins.txt
+
+
+Phase 5 Rip-up And Reroute
+
+Phase 5.1 Global Iteration 0
+ Number of Nodes with overlaps = 5625
+ Number of Nodes with overlaps = 275
+ Number of Nodes with overlaps = 20
+ Number of Nodes with overlaps = 1
+ Number of Nodes with overlaps = 0
+INFO: [Route 35-416] Intermediate Timing Summary | WNS=-2.903 | TNS=-2450.124| WHS=N/A    | THS=N/A    |
+
+Phase 5.1 Global Iteration 0 | Checksum: 1dfe86435
+
+Time (s): cpu = 00:02:35 ; elapsed = 00:01:46 . Memory (MB): peak = 3140.141 ; gain = 1120.797
+
+Phase 5.2 Global Iteration 1
+ Number of Nodes with overlaps = 49
+ Number of Nodes with overlaps = 110
+ Number of Nodes with overlaps = 101
+ Number of Nodes with overlaps = 26
+ Number of Nodes with overlaps = 15
+ Number of Nodes with overlaps = 5
+ Number of Nodes with overlaps = 3
+ Number of Nodes with overlaps = 0
+INFO: [Route 35-416] Intermediate Timing Summary | WNS=-2.000 | TNS=-1442.417| WHS=N/A    | THS=N/A    |
+
+Phase 5.2 Global Iteration 1 | Checksum: 32153abcb
+
+Time (s): cpu = 00:02:55 ; elapsed = 00:02:00 . Memory (MB): peak = 3140.141 ; gain = 1120.797
+
+Phase 5.3 Global Iteration 2
+ Number of Nodes with overlaps = 69
+ Number of Nodes with overlaps = 58
+ Number of Nodes with overlaps = 34
+ Number of Nodes with overlaps = 9
+ Number of Nodes with overlaps = 3
+ Number of Nodes with overlaps = 6
+ Number of Nodes with overlaps = 1
+ Number of Nodes with overlaps = 0
+INFO: [Route 35-416] Intermediate Timing Summary | WNS=-2.110 | TNS=-1239.164| WHS=N/A    | THS=N/A    |
+
+Phase 5.3 Global Iteration 2 | Checksum: 1f459ac7d
+
+Time (s): cpu = 00:03:03 ; elapsed = 00:02:06 . Memory (MB): peak = 3140.141 ; gain = 1120.797
+Phase 5 Rip-up And Reroute | Checksum: 1f459ac7d
+
+Time (s): cpu = 00:03:03 ; elapsed = 00:02:06 . Memory (MB): peak = 3140.141 ; gain = 1120.797
+
+Phase 6 Delay and Skew Optimization
+
+Phase 6.1 Delay CleanUp
+
+Phase 6.1.1 Update Timing
+Phase 6.1.1 Update Timing | Checksum: 1cae16f04
+
+Time (s): cpu = 00:03:05 ; elapsed = 00:02:07 . Memory (MB): peak = 3140.141 ; gain = 1120.797
+INFO: [Route 35-416] Intermediate Timing Summary | WNS=-2.000 | TNS=-1334.995| WHS=N/A    | THS=N/A    |
+
+ Number of Nodes with overlaps = 0
+Phase 6.1 Delay CleanUp | Checksum: 2792cc2ea
+
+Time (s): cpu = 00:03:05 ; elapsed = 00:02:07 . Memory (MB): peak = 3140.141 ; gain = 1120.797
+
+Phase 6.2 Clock Skew Optimization
+Phase 6.2 Clock Skew Optimization | Checksum: 2792cc2ea
+
+Time (s): cpu = 00:03:05 ; elapsed = 00:02:08 . Memory (MB): peak = 3140.141 ; gain = 1120.797
+Phase 6 Delay and Skew Optimization | Checksum: 2792cc2ea
+
+Time (s): cpu = 00:03:05 ; elapsed = 00:02:08 . Memory (MB): peak = 3140.141 ; gain = 1120.797
+
+Phase 7 Post Hold Fix
+
+Phase 7.1 Hold Fix Iter
+INFO: [Route 35-416] Intermediate Timing Summary | WNS=-1.988 | TNS=-1331.633| WHS=-0.294 | THS=-9.956 |
+
+Phase 7.1 Hold Fix Iter | Checksum: 26e568fef
+
+Time (s): cpu = 00:03:07 ; elapsed = 00:02:09 . Memory (MB): peak = 3140.141 ; gain = 1120.797
+
+Phase 7.2 Non Free Resource Hold Fix Iter
+Phase 7.2 Non Free Resource Hold Fix Iter | Checksum: 2a9efb263
+
+Time (s): cpu = 00:03:07 ; elapsed = 00:02:09 . Memory (MB): peak = 3140.141 ; gain = 1120.797
+WARNING: [Route 35-468] The router encountered 189 pins that are both setup-critical and hold-critical and tried to fix hold violations at the expense of setup slack. Such pins are:
+	gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[3].u_correlator/u_prn_code/weil_prn1/code_index1_reg[0]/CE
+	gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[3].u_correlator/u_prn_code/weil_prn1/code_index1_reg[10]/CE
+	gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[3].u_correlator/u_prn_code/weil_prn1/code_index1_reg[11]/CE
+	gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[3].u_correlator/u_prn_code/weil_prn1/code_index1_reg[12]/CE
+	gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[3].u_correlator/u_prn_code/weil_prn1/code_index1_reg[1]/CE
+	gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[3].u_correlator/u_prn_code/weil_prn1/code_index1_reg[2]/CE
+	gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[3].u_correlator/u_prn_code/weil_prn1/code_index1_reg[4]/CE
+	gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[3].u_correlator/u_prn_code/weil_prn1/code_index1_reg[5]/CE
+	gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[3].u_correlator/u_prn_code/weil_prn1/code_index1_reg[6]/CE
+	gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[3].u_correlator/u_prn_code/weil_prn1/code_index1_reg[7]/CE
+	.. and 179 more pins.
+
+Phase 7 Post Hold Fix | Checksum: 2a9efb263
+
+Time (s): cpu = 00:03:08 ; elapsed = 00:02:09 . Memory (MB): peak = 3140.141 ; gain = 1120.797
+
+Phase 8 Timing Verification
+
+Phase 8.1 Update Timing
+Phase 8.1 Update Timing | Checksum: 206161af4
+
+Time (s): cpu = 00:03:11 ; elapsed = 00:02:11 . Memory (MB): peak = 3140.141 ; gain = 1120.797
+INFO: [Route 35-416] Intermediate Timing Summary | WNS=-1.988 | TNS=-1331.587| WHS=0.050  | THS=0.000  |
+
+Phase 8 Timing Verification | Checksum: 206161af4
+
+Time (s): cpu = 00:03:12 ; elapsed = 00:02:11 . Memory (MB): peak = 3140.141 ; gain = 1120.797
+
+Phase 9 Route finalize
+
+Router Utilization Summary
+  Global Vertical Routing Utilization    = 13.8307 %
+  Global Horizontal Routing Utilization  = 17.2175 %
+  Routable Net Status*
+  *Does not include unroutable nets such as driverless and loadless.
+  Run report_route_status for detailed report.
+  Number of Failed Nets               = 0
+    (Failed Nets is the sum of unrouted and partially routed nets)
+  Number of Unrouted Nets             = 0
+  Number of Partially Routed Nets     = 0
+  Number of Node Overlaps             = 0
+
+
+--GLOBAL Congestion:
+Utilization threshold used for congestion level computation: 0.85
+Congestion Report
+North Dir 1x1 Area, Max Cong = 77.4775%, No Congested Regions.
+South Dir 1x1 Area, Max Cong = 77.4775%, No Congested Regions.
+East Dir 1x1 Area, Max Cong = 91.1765%, Congestion bounded by tiles (Lower Left Tile -> Upper Right Tile):
+   INT_L_X36Y75 -> INT_L_X36Y75
+   INT_L_X38Y74 -> INT_L_X38Y74
+West Dir 1x1 Area, Max Cong = 91.1765%, Congestion bounded by tiles (Lower Left Tile -> Upper Right Tile):
+   INT_L_X38Y88 -> INT_L_X38Y88
+
+------------------------------
+Reporting congestion hotspots
+------------------------------
+Direction: North
+----------------
+Congested clusters found at Level 0
+Effective congestion level: 0 Aspect Ratio: 1 Sparse Ratio: 0
+Direction: South
+----------------
+Congested clusters found at Level 0
+Effective congestion level: 0 Aspect Ratio: 1 Sparse Ratio: 0
+Direction: East
+----------------
+Congested clusters found at Level 0
+Effective congestion level: 0 Aspect Ratio: 1 Sparse Ratio: 1
+Direction: West
+----------------
+Congested clusters found at Level 0
+Effective congestion level: 0 Aspect Ratio: 1 Sparse Ratio: 1
+
+Phase 9 Route finalize | Checksum: 206161af4
+
+Time (s): cpu = 00:03:12 ; elapsed = 00:02:11 . Memory (MB): peak = 3140.141 ; gain = 1120.797
+
+Phase 10 Verifying routed nets
+
+ Verification completed successfully
+Phase 10 Verifying routed nets | Checksum: 206161af4
+
+Time (s): cpu = 00:03:12 ; elapsed = 00:02:11 . Memory (MB): peak = 3140.141 ; gain = 1120.797
+
+Phase 11 Depositing Routes
+Phase 11 Depositing Routes | Checksum: 264856761
+
+Time (s): cpu = 00:03:16 ; elapsed = 00:02:15 . Memory (MB): peak = 3140.141 ; gain = 1120.797
+
+Phase 12 Incr Placement Change
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.010 . Memory (MB): peak = 3140.141 ; gain = 0.000
+INFO: [Place 30-746] Post Placement Timing Summary WNS=-1.274. For the most accurate timing information please run report_timing.
+Ending IncrPlace Task | Checksum: 1626d3ea6
+
+Time (s): cpu = 00:00:52 ; elapsed = 00:00:45 . Memory (MB): peak = 3140.141 ; gain = 0.000
+Google Cpuprofiler is only supported on Linux.
+Phase 12 Incr Placement Change | Checksum: 1626d3ea6
+
+Time (s): cpu = 00:04:10 ; elapsed = 00:03:00 . Memory (MB): peak = 3140.141 ; gain = 1120.797
+
+Phase 13 Build RT Design
+Checksum: PlaceDB: 8b951692 ConstDB: 0 ShapeSum: 6d34cf60 RouteDB: 69a358b4
+Post Restoration Checksum: NetGraph: 1e62615c | NumContArr: d0a853ed | Constraints: c2a8fa9d | Timing: c2a8fa9d
+Phase 13 Build RT Design | Checksum: 2745caa83
+
+Time (s): cpu = 00:04:21 ; elapsed = 00:03:06 . Memory (MB): peak = 3140.141 ; gain = 1120.797
+
+Phase 14 Router Initialization
+
+Phase 14.1 Fix Topology Constraints
+Phase 14.1 Fix Topology Constraints | Checksum: 2745caa83
+
+Time (s): cpu = 00:04:22 ; elapsed = 00:03:07 . Memory (MB): peak = 3140.141 ; gain = 1120.797
+
+Phase 14.2 Pre Route Cleanup
+Phase 14.2 Pre Route Cleanup | Checksum: 2fa4eb5b5
+
+Time (s): cpu = 00:04:22 ; elapsed = 00:03:07 . Memory (MB): peak = 3140.141 ; gain = 1120.797
+ Number of Nodes with overlaps = 0
+
+Phase 14.3 Update Timing
+Phase 14.3 Update Timing | Checksum: 1d7fe7b92
+
+Time (s): cpu = 00:04:37 ; elapsed = 00:03:15 . Memory (MB): peak = 3140.141 ; gain = 1120.797
+INFO: [Route 35-416] Intermediate Timing Summary | WNS=-1.377 | TNS=-1054.015| WHS=-1.266 | THS=-5496.196|
+
+
+Phase 14.4 Soft Constraint Pins - Fast Budgeting
+Phase 14.4 Soft Constraint Pins - Fast Budgeting | Checksum: 2440a6d7e
+
+Time (s): cpu = 00:04:41 ; elapsed = 00:03:18 . Memory (MB): peak = 3140.141 ; gain = 1120.797
+
+Router Utilization Summary
+  Global Vertical Routing Utilization    = 13.7885 %
+  Global Horizontal Routing Utilization  = 17.1657 %
+  Routable Net Status*
+  *Does not include unroutable nets such as driverless and loadless.
+  Run report_route_status for detailed report.
+  Number of Failed Nets               = 406
+    (Failed Nets is the sum of unrouted and partially routed nets)
+  Number of Unrouted Nets             = 208
+  Number of Partially Routed Nets     = 198
+  Number of Node Overlaps             = 0
+
+Phase 14 Router Initialization | Checksum: 258b24f3e
+
+Time (s): cpu = 00:04:41 ; elapsed = 00:03:18 . Memory (MB): peak = 3140.141 ; gain = 1120.797
+
+Phase 15 Global Routing
+Phase 15 Global Routing | Checksum: 258b24f3e
+
+Time (s): cpu = 00:04:41 ; elapsed = 00:03:18 . Memory (MB): peak = 3140.141 ; gain = 1120.797
+
+Phase 16 Initial Routing
+
+Phase 16.1 Initial Net Routing Pass
+Phase 16.1 Initial Net Routing Pass | Checksum: 2a77e8077
+
+Time (s): cpu = 00:05:27 ; elapsed = 00:03:42 . Memory (MB): peak = 3140.141 ; gain = 1120.797
+Phase 16 Initial Routing | Checksum: 2a77e8077
+
+Time (s): cpu = 00:05:27 ; elapsed = 00:03:42 . Memory (MB): peak = 3140.141 ; gain = 1120.797
+INFO: [Route 35-580] Design has 3434 pins with tight setup and hold constraints.
+
+The top 5 pins with tight setup and hold constraints:
+
++====================+===================+============================================================================================================================================+
+| Launch Setup Clock | Launch Hold Clock | Pin                                                                                                                                        |
++====================+===================+============================================================================================================================================+
+| clk_fpga_0         | clk_fpga_0        | gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[3].u_correlator/u_prn_code/weil_prn1/code_index1_init_reg[5]/D |
+| clk_fpga_0         | clk_fpga_0        | gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[3].u_correlator/data_acc_gen[0].u_data_acc/i_acc_o_reg[13]/D   |
+| clk_fpga_0         | clk_fpga_0        | gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[3].u_correlator/data_acc_gen[0].u_data_acc/i_acc_o_reg[15]/D   |
+| clk_fpga_0         | clk_fpga_0        | gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[3].u_correlator/data_acc_gen[0].u_data_acc/i_acc_o_reg[14]/D   |
+| clk_fpga_0         | clk_fpga_0        | gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[3].u_correlator/data_acc_gen[0].u_data_acc/i_acc_o_reg[9]/D    |
++--------------------+-------------------+--------------------------------------------------------------------------------------------------------------------------------------------+
+
+File with complete list of pins: tight_setup_hold_pins.txt
+
+
+Phase 17 Rip-up And Reroute
+
+Phase 17.1 Global Iteration 0
+ Number of Nodes with overlaps = 2027
+ Number of Nodes with overlaps = 372
+ Number of Nodes with overlaps = 65
+ Number of Nodes with overlaps = 29
+ Number of Nodes with overlaps = 12
+ Number of Nodes with overlaps = 4
+ Number of Nodes with overlaps = 2
+ Number of Nodes with overlaps = 0
+INFO: [Route 35-416] Intermediate Timing Summary | WNS=-1.385 | TNS=-732.271| WHS=N/A    | THS=N/A    |
+
+Phase 17.1 Global Iteration 0 | Checksum: 26e29447e
+
+Time (s): cpu = 00:06:42 ; elapsed = 00:04:29 . Memory (MB): peak = 3140.141 ; gain = 1120.797
+
+Phase 17.2 Global Iteration 1
+ Number of Nodes with overlaps = 679
+ Number of Nodes with overlaps = 242
+ Number of Nodes with overlaps = 143
+ Number of Nodes with overlaps = 90
+ Number of Nodes with overlaps = 46
+ Number of Nodes with overlaps = 28
+ Number of Nodes with overlaps = 23
+ Number of Nodes with overlaps = 17
+ Number of Nodes with overlaps = 16
+ Number of Nodes with overlaps = 17
+ Number of Nodes with overlaps = 9
+ Number of Nodes with overlaps = 4
+ Number of Nodes with overlaps = 2
+ Number of Nodes with overlaps = 1
+ Number of Nodes with overlaps = 0
+INFO: [Route 35-416] Intermediate Timing Summary | WNS=-1.325 | TNS=-518.448| WHS=N/A    | THS=N/A    |
+
+Phase 17.2 Global Iteration 1 | Checksum: 24abb2338
+
+Time (s): cpu = 00:07:17 ; elapsed = 00:04:55 . Memory (MB): peak = 3140.141 ; gain = 1120.797
+
+Phase 17.3 Global Iteration 2
+ Number of Nodes with overlaps = 210
+ Number of Nodes with overlaps = 86
+ Number of Nodes with overlaps = 27
+ Number of Nodes with overlaps = 23
+ Number of Nodes with overlaps = 16
+ Number of Nodes with overlaps = 13
+ Number of Nodes with overlaps = 5
+ Number of Nodes with overlaps = 4
+ Number of Nodes with overlaps = 2
+ Number of Nodes with overlaps = 2
+ Number of Nodes with overlaps = 2
+ Number of Nodes with overlaps = 1
+ Number of Nodes with overlaps = 0
+INFO: [Route 35-416] Intermediate Timing Summary | WNS=-1.347 | TNS=-510.572| WHS=N/A    | THS=N/A    |
+
+Phase 17.3 Global Iteration 2 | Checksum: 2dddb9509
+
+Time (s): cpu = 00:07:28 ; elapsed = 00:05:04 . Memory (MB): peak = 3140.141 ; gain = 1120.797
+Phase 17 Rip-up And Reroute | Checksum: 2dddb9509
+
+Time (s): cpu = 00:07:28 ; elapsed = 00:05:04 . Memory (MB): peak = 3140.141 ; gain = 1120.797
+
+Phase 18 Delay and Skew Optimization
+
+Phase 18.1 Delay CleanUp
+
+Phase 18.1.1 Update Timing
+Phase 18.1.1 Update Timing | Checksum: 2b052f515
+
+Time (s): cpu = 00:07:30 ; elapsed = 00:05:05 . Memory (MB): peak = 3140.141 ; gain = 1120.797
+INFO: [Route 35-416] Intermediate Timing Summary | WNS=-1.325 | TNS=-493.166| WHS=N/A    | THS=N/A    |
+
+ Number of Nodes with overlaps = 0
+Phase 18.1 Delay CleanUp | Checksum: 1c2c9d379
+
+Time (s): cpu = 00:07:30 ; elapsed = 00:05:05 . Memory (MB): peak = 3140.141 ; gain = 1120.797
+
+Phase 18.2 Clock Skew Optimization
+Phase 18.2 Clock Skew Optimization | Checksum: 1c2c9d379
+
+Time (s): cpu = 00:07:30 ; elapsed = 00:05:05 . Memory (MB): peak = 3140.141 ; gain = 1120.797
+Phase 18 Delay and Skew Optimization | Checksum: 1c2c9d379
+
+Time (s): cpu = 00:07:30 ; elapsed = 00:05:05 . Memory (MB): peak = 3140.141 ; gain = 1120.797
+
+Phase 19 Post Hold Fix
+
+Phase 19.1 Hold Fix Iter
+INFO: [Route 35-416] Intermediate Timing Summary | WNS=-1.325 | TNS=-491.658| WHS=-0.365 | THS=-3.589 |
+
+Phase 19.1 Hold Fix Iter | Checksum: 1efa928d3
+
+Time (s): cpu = 00:07:32 ; elapsed = 00:05:07 . Memory (MB): peak = 3140.141 ; gain = 1120.797
+
+Phase 19.2 Non Free Resource Hold Fix Iter
+Phase 19.2 Non Free Resource Hold Fix Iter | Checksum: 256f59076
+
+Time (s): cpu = 00:07:32 ; elapsed = 00:05:07 . Memory (MB): peak = 3140.141 ; gain = 1120.797
+WARNING: [Route 35-468] The router encountered 85 pins that are both setup-critical and hold-critical and tried to fix hold violations at the expense of setup slack. Such pins are:
+	gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[3].u_correlator/u_prn_code/weil_prn1/code_index1[10]_i_1__5/I0
+	gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[3].u_correlator/u_prn_code/weil_prn1/legendre_code2_r[15]_i_3__5/I3
+	gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[3].u_correlator/u_prn_code/weil_prn1/legendre_code1_r_reg[14]/D
+	gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/fill_state_gen[3].u_fill_state/nh_count_o[4]_i_1__2/I1
+	gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[3].u_correlator/u_prn_code/weil_prn2/insert_count_reg[1]/D
+	gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[3].u_correlator/u_prn_code/memcode_prn2/current_code_r[31]_i_1__7/I3
+	gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[3].u_correlator/i_acc_o[3]_i_2/I1
+	gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[3].u_correlator/i_acc_o[3]_i_3/I1
+	gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[3].u_correlator/i_acc_o[7]_i_5/I1
+	gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[3].u_correlator/q_acc_o[3]_i_2/I1
+	.. and 75 more pins.
+
+Phase 19 Post Hold Fix | Checksum: 256f59076
+
+Time (s): cpu = 00:07:33 ; elapsed = 00:05:07 . Memory (MB): peak = 3140.141 ; gain = 1120.797
+
+Phase 20 Timing Verification
+
+Phase 20.1 Update Timing
+Phase 20.1 Update Timing | Checksum: 1dbf3655e
+
+Time (s): cpu = 00:07:37 ; elapsed = 00:05:09 . Memory (MB): peak = 3140.141 ; gain = 1120.797
+INFO: [Route 35-416] Intermediate Timing Summary | WNS=-1.325 | TNS=-491.658| WHS=0.050  | THS=0.000  |
+
+Phase 20 Timing Verification | Checksum: 1dbf3655e
+
+Time (s): cpu = 00:07:37 ; elapsed = 00:05:09 . Memory (MB): peak = 3140.141 ; gain = 1120.797
+
+Phase 21 Route finalize
+
+Router Utilization Summary
+  Global Vertical Routing Utilization    = 14.3637 %
+  Global Horizontal Routing Utilization  = 17.7131 %
+  Routable Net Status*
+  *Does not include unroutable nets such as driverless and loadless.
+  Run report_route_status for detailed report.
+  Number of Failed Nets               = 0
+    (Failed Nets is the sum of unrouted and partially routed nets)
+  Number of Unrouted Nets             = 0
+  Number of Partially Routed Nets     = 0
+  Number of Node Overlaps             = 0
+
+
+--GLOBAL Congestion:
+Utilization threshold used for congestion level computation: 0.85
+Congestion Report
+North Dir 1x1 Area, Max Cong = 74.7748%, No Congested Regions.
+South Dir 1x1 Area, Max Cong = 90.0901%, Congestion bounded by tiles (Lower Left Tile -> Upper Right Tile):
+   INT_R_X55Y109 -> INT_R_X55Y109
+East Dir 1x1 Area, Max Cong = 85.2941%, Congestion bounded by tiles (Lower Left Tile -> Upper Right Tile):
+   INT_L_X40Y82 -> INT_L_X40Y82
+West Dir 1x1 Area, Max Cong = 82.3529%, No Congested Regions.
+
+------------------------------
+Reporting congestion hotspots
+------------------------------
+Direction: North
+----------------
+Congested clusters found at Level 0
+Effective congestion level: 0 Aspect Ratio: 1 Sparse Ratio: 0
+Direction: South
+----------------
+Congested clusters found at Level 0
+Effective congestion level: 0 Aspect Ratio: 1 Sparse Ratio: 1
+Direction: East
+----------------
+Congested clusters found at Level 0
+Effective congestion level: 0 Aspect Ratio: 1 Sparse Ratio: 1
+Direction: West
+----------------
+Congested clusters found at Level 0
+Effective congestion level: 0 Aspect Ratio: 1 Sparse Ratio: 0
+
+Phase 21 Route finalize | Checksum: 1dbf3655e
+
+Time (s): cpu = 00:07:37 ; elapsed = 00:05:09 . Memory (MB): peak = 3140.141 ; gain = 1120.797
+
+Phase 22 Verifying routed nets
+
+ Verification completed successfully
+Phase 22 Verifying routed nets | Checksum: 1dbf3655e
+
+Time (s): cpu = 00:07:38 ; elapsed = 00:05:09 . Memory (MB): peak = 3140.141 ; gain = 1120.797
+
+Phase 23 Depositing Routes
+Phase 23 Depositing Routes | Checksum: 16f19e4fa
+
+Time (s): cpu = 00:07:42 ; elapsed = 00:05:14 . Memory (MB): peak = 3140.141 ; gain = 1120.797
+
+Phase 24 Post Process Routing
+Phase 24 Post Process Routing | Checksum: 16f19e4fa
+
+Time (s): cpu = 00:07:43 ; elapsed = 00:05:14 . Memory (MB): peak = 3140.141 ; gain = 1120.797
+
+Phase 25 Post Router Timing
+INFO: [Route 35-20] Post Routing Timing Summary | WNS=-1.321 | TNS=-487.336| WHS=0.050  | THS=0.000  |
+
+Phase 25 Post Router Timing | Checksum: 1cabaed31
+
+Time (s): cpu = 00:07:56 ; elapsed = 00:05:21 . Memory (MB): peak = 3140.141 ; gain = 1120.797
+CRITICAL WARNING: [Route 35-39] The design did not meet timing requirements. Please run report_timing_summary for detailed reports.
+Resolution: Verify that the timing was met or had small violations at all previous steps (synthesis, placement, power_opt, and phys_opt). Run report_timing_summary and analyze individual timing paths.
+INFO: [Route 35-253] TNS is the sum of the worst slack violation on every endpoint in the design. Review the paths with the biggest WNS violations in the timing reports and modify your constraints or your design to improve both WNS and TNS.
+Total Elapsed time in route_design: 320.984 secs
+
+Phase 26 Post-Route Event Processing
+Phase 26 Post-Route Event Processing | Checksum: 1a22aed8d
+
+Time (s): cpu = 00:07:56 ; elapsed = 00:05:21 . Memory (MB): peak = 3140.141 ; gain = 1120.797
+INFO: [Route 35-16] Router Completed Successfully
+Ending Routing Task | Checksum: 1a22aed8d
+
+Time (s): cpu = 00:07:56 ; elapsed = 00:05:21 . Memory (MB): peak = 3140.141 ; gain = 1120.797
+
+Routing Is Done.
+INFO: [Common 17-83] Releasing license: Implementation
+27 Infos, 2 Warnings, 1 Critical Warnings and 0 Errors encountered.
+route_design completed successfully
+route_design: Time (s): cpu = 00:07:57 ; elapsed = 00:05:22 . Memory (MB): peak = 3140.141 ; gain = 1136.891
+# phys_opt_design -directive AggressiveExplore
+Command: phys_opt_design -directive AggressiveExplore
+Attempting to get a license for feature 'Implementation' and/or device 'xc7z020'
+INFO: [Common 17-349] Got license for feature 'Implementation' and/or device 'xc7z020'
+INFO: [Vivado_Tcl 4-241] Physical synthesis in post route mode 
+INFO: [Vivado_Tcl 4-137] Directive used for phys_opt_design is: AggressiveExplore
+
+Starting Initial Update Timing Task
+
+Time (s): cpu = 00:00:10 ; elapsed = 00:00:06 . Memory (MB): peak = 3140.141 ; gain = 0.000
+INFO: [Vivado_Tcl 4-1435] PhysOpt_Tcl_Interface Runtime Before Starting Physical Synthesis Task | CPU: 13.00s |  WALL: 8.05s
+INFO: [DRC 23-27] Running DRC with 2 threads
+INFO: [Vivado_Tcl 4-198] DRC finished with 0 Errors
+INFO: [Vivado_Tcl 4-199] Please refer to the DRC report (report_drc) for more information.
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.010 . Memory (MB): peak = 3140.141 ; gain = 0.000
+
+Starting Physical Synthesis Task
+
+Phase 1 Physical Synthesis Initialization
+INFO: [Physopt 32-721] Multithreading enabled for phys_opt_design using a maximum of 2 CPUs
+INFO: [Physopt 32-668] Current Timing Summary | WNS=-1.321 | TNS=-487.336 | WHS=0.050 | THS=0.000 |
+Phase 1 Physical Synthesis Initialization | Checksum: 22d462f62
+
+Time (s): cpu = 00:00:04 ; elapsed = 00:00:02 . Memory (MB): peak = 3140.141 ; gain = 0.000
+WARNING: [Physopt 32-745] Physical Optimization has determined that the magnitude of the negative slack is too large and it is highly unlikely that slack will be improved. Post-Route Physical Optimization is most effective when WNS is above -0.5ns
+
+Phase 2 Critical Path Optimization
+INFO: [Physopt 32-668] Current Timing Summary | WNS=-1.321 | TNS=-487.336 | WHS=0.050 | THS=0.000 |
+INFO: [Physopt 32-953] Path group WNS did not improve. Path group: clk_fpga_0. Processed net: gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/l1c_legendre_data/u_rom/xpm_memory_base_inst/douta[0].
+INFO: [Physopt 32-953] Path group WNS did not improve. Path group: clk_fpga_0. Processed net: gnss_zynq_i/processing_system7_0/inst/FCLK_CLK_unbuffered[0].
+INFO: [Physopt 32-710] Processed net gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[0].u_correlator/u_prn_code/weil_prn1/addra[4]. Critical path length was reduced through logic transformation on cell gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[0].u_correlator/u_prn_code/weil_prn1/xpm_memory_base_inst_i_7__0_comp.
+INFO: [Physopt 32-952] Improved path group WNS = -1.202. Path group: clk_fpga_0. Processed net: gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[0].u_correlator/u_prn_code/weil_prn2/legendre_addr2_reg[4]_0.
+INFO: [Physopt 32-710] Processed net gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[0].u_correlator/u_prn_code/weil_prn1/addra[2]. Critical path length was reduced through logic transformation on cell gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[0].u_correlator/u_prn_code/weil_prn1/xpm_memory_base_inst_i_9__0_comp.
+INFO: [Physopt 32-952] Improved path group WNS = -1.201. Path group: clk_fpga_0. Processed net: gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[0].u_correlator/u_prn_code/weil_prn2/legendre_addr2_reg[2]_0.
+INFO: [Physopt 32-953] Path group WNS did not improve. Path group: clk_fpga_0. Processed net: gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/b1c_legendre_data/u_rom/xpm_memory_base_inst/douta[0].
+INFO: [Physopt 32-710] Processed net gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[0].u_correlator/u_prn_code/weil_prn1/prn_config_reg[29][4]. Critical path length was reduced through logic transformation on cell gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[0].u_correlator/u_prn_code/weil_prn1/xpm_memory_base_inst_i_7__1_comp.
+INFO: [Physopt 32-952] Improved path group WNS = -1.193. Path group: clk_fpga_0. Processed net: gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[0].u_correlator/u_prn_code/weil_prn2/legendre_addr2_reg[4]_0.
+INFO: [Physopt 32-710] Processed net gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[0].u_correlator/u_prn_code/weil_prn1/addra[9]. Critical path length was reduced through logic transformation on cell gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[0].u_correlator/u_prn_code/weil_prn1/xpm_memory_base_inst_i_2__0_comp.
+INFO: [Physopt 32-952] Improved path group WNS = -1.186. Path group: clk_fpga_0. Processed net: gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[0].u_correlator/u_prn_code/weil_prn2/legendre_addr2_reg[9]_0.
+INFO: [Physopt 32-710] Processed net gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[0].u_correlator/u_prn_code/weil_prn1/prn_config_reg[29][2]. Critical path length was reduced through logic transformation on cell gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[0].u_correlator/u_prn_code/weil_prn1/xpm_memory_base_inst_i_9__1_comp.
+INFO: [Physopt 32-952] Improved path group WNS = -1.180. Path group: clk_fpga_0. Processed net: gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[0].u_correlator/u_prn_code/weil_prn2/legendre_addr2_reg[2]_0.
+INFO: [Physopt 32-710] Processed net gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[0].u_correlator/u_prn_code/weil_prn1/prn_config_reg[29][2]. Critical path length was reduced through logic transformation on cell gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[0].u_correlator/u_prn_code/weil_prn1/xpm_memory_base_inst_i_9__1_comp_1.
+INFO: [Physopt 32-952] Improved path group WNS = -1.150. Path group: clk_fpga_0. Processed net: gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[1].u_correlator/u_prn_code/weil_prn2/legendre_addr2_reg[2]_0.
+INFO: [Physopt 32-710] Processed net gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[0].u_correlator/u_prn_code/weil_prn1/addra[5]. Critical path length was reduced through logic transformation on cell gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[0].u_correlator/u_prn_code/weil_prn1/xpm_memory_base_inst_i_6__0_comp.
+INFO: [Physopt 32-952] Improved path group WNS = -1.095. Path group: clk_fpga_0. Processed net: gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[0].u_correlator/u_prn_code/weil_prn2/legendre_addr2_reg[5]_0.
+INFO: [Physopt 32-710] Processed net gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[0].u_correlator/u_prn_code/weil_prn1/prn_config_reg[29][4]. Critical path length was reduced through logic transformation on cell gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[0].u_correlator/u_prn_code/weil_prn1/xpm_memory_base_inst_i_7__1_comp_1.
+INFO: [Physopt 32-952] Improved path group WNS = -1.069. Path group: clk_fpga_0. Processed net: gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[1].u_correlator/u_prn_code/weil_prn2/legendre_addr2_reg[4]_0.
+INFO: [Physopt 32-710] Processed net gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[0].u_correlator/u_prn_code/weil_prn1/addra[2]. Critical path length was reduced through logic transformation on cell gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[0].u_correlator/u_prn_code/weil_prn1/xpm_memory_base_inst_i_9__0_comp_1.
+INFO: [Physopt 32-952] Improved path group WNS = -1.021. Path group: clk_fpga_0. Processed net: gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[1].u_correlator/u_prn_code/weil_prn2/legendre_addr2_reg[2]_0.
+INFO: [Physopt 32-710] Processed net gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[0].u_correlator/u_prn_code/weil_prn1/prn_config_reg[29][5]. Critical path length was reduced through logic transformation on cell gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[0].u_correlator/u_prn_code/weil_prn1/xpm_memory_base_inst_i_6__1_comp.
+INFO: [Physopt 32-952] Improved path group WNS = -1.020. Path group: clk_fpga_0. Processed net: gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[0].u_correlator/u_prn_code/weil_prn2/legendre_addr2_reg[5]_0.
+INFO: [Physopt 32-953] Path group WNS did not improve. Path group: clk_fpga_0. Processed net: gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/te_channel_ow_protect[14].
+INFO: [Physopt 32-953] Path group WNS did not improve. Path group: clk_fpga_0. Processed net: gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/u_fill_dump_ctrl/FSM_onehot_cur_te_state_reg[3][0].
+INFO: [Physopt 32-710] Processed net gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/u_fill_dump_ctrl/FSM_onehot_cur_te_state_reg[3][0]. Critical path length was reduced through logic transformation on cell gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/u_fill_dump_ctrl/FSM_onehot_cur_state[1]_i_4_comp.
+INFO: [Physopt 32-952] Improved path group WNS = -1.010. Path group: clk_fpga_0. Processed net: gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/u_coherent_sum/FSM_onehot_cur_te_state_reg[12].
+INFO: [Physopt 32-710] Processed net gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[0].u_correlator/u_prn_code/weil_prn1/prn_config_reg[29][1]. Critical path length was reduced through logic transformation on cell gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[0].u_correlator/u_prn_code/weil_prn1/xpm_memory_base_inst_i_10__1_comp.
+INFO: [Physopt 32-952] Improved path group WNS = -1.001. Path group: clk_fpga_0. Processed net: gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[0].u_correlator/u_prn_code/weil_prn2/legendre_addr2_reg[1]_0.
+INFO: [Physopt 32-710] Processed net gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[0].u_correlator/u_prn_code/weil_prn1/addra[7]. Critical path length was reduced through logic transformation on cell gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[0].u_correlator/u_prn_code/weil_prn1/xpm_memory_base_inst_i_4__0_comp.
+INFO: [Physopt 32-952] Improved path group WNS = -0.992. Path group: clk_fpga_0. Processed net: gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[0].u_correlator/u_prn_code/weil_prn2/legendre_addr2_reg[7]_0.
+INFO: [Physopt 32-710] Processed net gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[0].u_correlator/u_prn_code/weil_prn1/addra[1]. Critical path length was reduced through logic transformation on cell gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[0].u_correlator/u_prn_code/weil_prn1/xpm_memory_base_inst_i_10__0_comp.
+INFO: [Physopt 32-952] Improved path group WNS = -0.988. Path group: clk_fpga_0. Processed net: gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[0].u_correlator/u_prn_code/weil_prn2/legendre_addr2_reg[1]_0.
+INFO: [Physopt 32-710] Processed net gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[0].u_correlator/u_prn_code/weil_prn1/prn_config_reg[29][7]. Critical path length was reduced through logic transformation on cell gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[0].u_correlator/u_prn_code/weil_prn1/xpm_memory_base_inst_i_4__1_comp.
+INFO: [Physopt 32-952] Improved path group WNS = -0.943. Path group: clk_fpga_0. Processed net: gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[0].u_correlator/u_prn_code/weil_prn2/legendre_addr2_reg[7]_0.
+INFO: [Physopt 32-953] Path group WNS did not improve. Path group: clk_fpga_0. Processed net: gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[3].u_correlator/data_acc_gen[0].u_data_acc/q_acc_o_reg[15]_0[13].
+INFO: [Physopt 32-663] Processed net gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[3].u_correlator/i___5_n_0.  Re-placed instance gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[3].u_correlator/i___5
+INFO: [Physopt 32-952] Improved path group WNS = -0.933. Path group: clk_fpga_0. Processed net: gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[3].u_correlator/i___5_n_0.
+INFO: [Physopt 32-663] Processed net gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[3].u_correlator/i___8_n_0.  Re-placed instance gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[3].u_correlator/i___8
+INFO: [Physopt 32-952] Improved path group WNS = -0.933. Path group: clk_fpga_0. Processed net: gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[3].u_correlator/i___8_n_0.
+INFO: [Physopt 32-953] Path group WNS did not improve. Path group: clk_fpga_0. Processed net: gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[3].u_correlator/data_acc_gen[0].u_data_acc/Q[13].
+INFO: [Physopt 32-663] Processed net gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[3].u_correlator/i___3_n_0.  Re-placed instance gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[3].u_correlator/i___3
+INFO: [Physopt 32-952] Improved path group WNS = -0.926. Path group: clk_fpga_0. Processed net: gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[3].u_correlator/i___3_n_0.
+INFO: [Physopt 32-710] Processed net gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[0].u_correlator/u_prn_code/weil_prn1/addra[6]. Critical path length was reduced through logic transformation on cell gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[0].u_correlator/u_prn_code/weil_prn1/xpm_memory_base_inst_i_5__0_comp.
+INFO: [Physopt 32-952] Improved path group WNS = -0.909. Path group: clk_fpga_0. Processed net: gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[0].u_correlator/u_prn_code/weil_prn2/legendre_addr2_reg[6]_0.
+INFO: [Physopt 32-953] Path group WNS did not improve. Path group: clk_fpga_0. Processed net: gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/dump_state_gen[3].u_dump_state/state_d4wt_reg[31]_0[0].
+INFO: [Physopt 32-953] Path group WNS did not improve. Path group: clk_fpga_0. Processed net: gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/dump_state_gen[3].u_dump_state/state_d4wt[0]_i_4_n_0.
+INFO: [Physopt 32-952] Improved path group WNS = -0.907. Path group: clk_fpga_0. Processed net: gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[3].u_correlator/u_prn_code/weil_prn1/enable_boc_reg.
+INFO: [Physopt 32-953] Path group WNS did not improve. Path group: clk_fpga_0. Processed net: gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[3].u_correlator/u_prn_code/weil_prn1/enable_boc_reg.
+INFO: [Physopt 32-953] Path group WNS did not improve. Path group: clk_fpga_0. Processed net: gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[3].u_correlator/u_prn_code/weil_prn1/i__i_4__2_n_0.
+INFO: [Physopt 32-710] Processed net gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[3].u_correlator/u_prn_code/weil_prn1/i__i_4__2_n_0. Critical path length was reduced through logic transformation on cell gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[3].u_correlator/u_prn_code/weil_prn1/i__i_4__2_comp.
+INFO: [Physopt 32-952] Improved path group WNS = -0.891. Path group: clk_fpga_0. Processed net: gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/fill_state_gen[3].u_fill_state/prn_config_reg[29]_0.
+INFO: [Physopt 32-710] Processed net gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[0].u_correlator/u_prn_code/weil_prn1/prn_config_reg[29][3]. Critical path length was reduced through logic transformation on cell gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[0].u_correlator/u_prn_code/weil_prn1/xpm_memory_base_inst_i_8__1_comp.
+INFO: [Physopt 32-952] Improved path group WNS = -0.889. Path group: clk_fpga_0. Processed net: gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[0].u_correlator/u_prn_code/weil_prn2/legendre_addr2_reg[3]_0.
+INFO: [Physopt 32-710] Processed net gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[0].u_correlator/u_prn_code/weil_prn1/prn_config_reg[29][7]. Critical path length was reduced through logic transformation on cell gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[0].u_correlator/u_prn_code/weil_prn1/xpm_memory_base_inst_i_4__1_comp_1.
+INFO: [Physopt 32-952] Improved path group WNS = -0.884. Path group: clk_fpga_0. Processed net: gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[1].u_correlator/u_prn_code/weil_prn2/legendre_addr2_reg[7]_0.
+INFO: [Physopt 32-953] Path group WNS did not improve. Path group: clk_fpga_0. Processed net: gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[1].u_correlator/u_prn_code/weil_prn2/legendre_addr2_reg[9]_0.
+INFO: [Physopt 32-953] Path group WNS did not improve. Path group: clk_fpga_0. Processed net: gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[3].u_correlator/u_prn_code/weil_prn2/cor_legendre_addr[3]_574[9].
+INFO: [Physopt 32-710] Processed net gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[3].u_correlator/u_prn_code/weil_prn2/cor_legendre_addr[3]_574[9]. Critical path length was reduced through logic transformation on cell gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[3].u_correlator/u_prn_code/weil_prn2/xpm_memory_base_inst_i_55_comp.
+INFO: [Physopt 32-952] Improved path group WNS = -0.882. Path group: clk_fpga_0. Processed net: gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[3].u_correlator/u_prn_code/weil_prn2/xpm_memory_base_inst_i_85_n_0.
+INFO: [Physopt 32-710] Processed net gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/u_fill_dump_ctrl/FSM_onehot_cur_te_state_reg[3][0]. Critical path length was reduced through logic transformation on cell gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/u_fill_dump_ctrl/FSM_onehot_cur_state[1]_i_4_comp_1.
+INFO: [Physopt 32-952] Improved path group WNS = -0.802. Path group: clk_fpga_0. Processed net: gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/u_find_channel/data5[0].
+INFO: [Physopt 32-710] Processed net gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[0].u_correlator/u_prn_code/weil_prn1/addra[6]. Critical path length was reduced through logic transformation on cell gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[0].u_correlator/u_prn_code/weil_prn1/xpm_memory_base_inst_i_5__0_comp_1.
+INFO: [Physopt 32-952] Improved path group WNS = -0.798. Path group: clk_fpga_0. Processed net: gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[1].u_correlator/u_prn_code/weil_prn2/legendre_addr2_reg[6]_0.
+INFO: [Physopt 32-953] Path group WNS did not improve. Path group: clk_fpga_0. Processed net: gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[0].u_correlator/u_prn_code/weil_prn2/legendre_addr2_reg[6]_0.
+INFO: [Physopt 32-710] Processed net gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[0].u_correlator/u_prn_code/weil_prn2/legendre_addr2_reg[6]_0. Critical path length was reduced through logic transformation on cell gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[0].u_correlator/u_prn_code/weil_prn2/xpm_memory_base_inst_i_20_comp_1.
+INFO: [Physopt 32-952] Improved path group WNS = -0.781. Path group: clk_fpga_0. Processed net: gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[1].u_correlator/u_prn_code/weil_prn2/legendre_addr2_reg[6]_0.
+INFO: [Physopt 32-710] Processed net gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[0].u_correlator/u_prn_code/weil_prn1/addra[8]. Critical path length was reduced through logic transformation on cell gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[0].u_correlator/u_prn_code/weil_prn1/xpm_memory_base_inst_i_3__0_comp.
+INFO: [Physopt 32-952] Improved path group WNS = -0.776. Path group: clk_fpga_0. Processed net: gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[0].u_correlator/u_prn_code/weil_prn2/legendre_addr2_reg[8]_0.
+INFO: [Physopt 32-710] Processed net gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[0].u_correlator/u_prn_code/weil_prn1/prn_config_reg[29][0]. Critical path length was reduced through logic transformation on cell gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[0].u_correlator/u_prn_code/weil_prn1/xpm_memory_base_inst_i_11__1_comp.
+INFO: [Physopt 32-952] Improved path group WNS = -0.776. Path group: clk_fpga_0. Processed net: gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[0].u_correlator/u_prn_code/weil_prn2/legendre_addr2_reg[0]_0.
+INFO: [Physopt 32-710] Processed net gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[0].u_correlator/u_prn_code/weil_prn1/addra[4]. Critical path length was reduced through logic transformation on cell gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[0].u_correlator/u_prn_code/weil_prn1/xpm_memory_base_inst_i_7__0_comp_1.
+INFO: [Physopt 32-952] Improved path group WNS = -0.760. Path group: clk_fpga_0. Processed net: gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[1].u_correlator/u_prn_code/weil_prn2/legendre_addr2_reg[4]_0.
+INFO: [Physopt 32-953] Path group WNS did not improve. Path group: clk_fpga_0. Processed net: gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[0].u_correlator/u_prn_code/weil_prn2/p_0_in[8].
+INFO: [Physopt 32-710] Processed net gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[0].u_correlator/u_prn_code/weil_prn2/code_index1[12]_i_1__0_n_0_hold_fix_1. Critical path length was reduced through logic transformation on cell gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[0].u_correlator/u_prn_code/weil_prn2/code_index1[12]_i_1__0_n_0_hold_fix_comp.
+INFO: [Physopt 32-952] Improved path group WNS = -0.744. Path group: clk_fpga_0. Processed net: gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[0].u_correlator/u_prn_code/weil_prn2/code_index1[12]_i_1__0_n_0.
+INFO: [Physopt 32-663] Processed net gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[1].u_correlator/u_prn_code/weil_prn2/legendre_addr2_reg[5]_0.  Re-placed instance gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[1].u_correlator/u_prn_code/weil_prn2/xpm_memory_base_inst_i_43
+INFO: [Physopt 32-952] Improved path group WNS = -0.738. Path group: clk_fpga_0. Processed net: gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[1].u_correlator/u_prn_code/weil_prn2/legendre_addr2_reg[5]_0.
+INFO: [Physopt 32-710] Processed net gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[0].u_correlator/u_prn_code/weil_prn1/prn_config_reg[29][8]. Critical path length was reduced through logic transformation on cell gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[0].u_correlator/u_prn_code/weil_prn1/xpm_memory_base_inst_i_3__1_comp.
+INFO: [Physopt 32-952] Improved path group WNS = -0.725. Path group: clk_fpga_0. Processed net: gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[0].u_correlator/u_prn_code/weil_prn2/legendre_addr2_reg[8]_0.
+INFO: [Physopt 32-608] Optimized 1 net.  Swapped 11 pins.
+INFO: [Physopt 32-952] Improved path group WNS = -0.722. Path group: clk_fpga_0. Processed net: gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[1].u_correlator/u_prn_code/weil_prn2/legendre_addr2_reg[7]_0_repN_1.
+INFO: [Physopt 32-710] Processed net gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[0].u_correlator/u_prn_code/weil_prn1/addra[3]. Critical path length was reduced through logic transformation on cell gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[0].u_correlator/u_prn_code/weil_prn1/xpm_memory_base_inst_i_8__0_comp.
+INFO: [Physopt 32-952] Improved path group WNS = -0.711. Path group: clk_fpga_0. Processed net: gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[0].u_correlator/u_prn_code/weil_prn2/legendre_addr2_reg[3]_0.
+INFO: [Physopt 32-953] Path group WNS did not improve. Path group: clk_fpga_0. Processed net: gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[1].u_correlator/u_prn_code/weil_prn2/legendre_addr2_reg[7]_0.
+INFO: [Physopt 32-710] Processed net gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[1].u_correlator/u_prn_code/weil_prn2/legendre_addr2_reg[7]_0. Critical path length was reduced through logic transformation on cell gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[1].u_correlator/u_prn_code/weil_prn2/xpm_memory_base_inst_i_39_comp_2.
+INFO: [Physopt 32-952] Improved path group WNS = -0.710. Path group: clk_fpga_0. Processed net: gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[3].u_correlator/u_prn_code/weil_prn2/cor_legendre_addr[3]_574[7].
+INFO: [Physopt 32-663] Processed net gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_ae_top/u_ae_core/u_mf_core/shift_reg_gen[627].sample_buffer_reg[627]_451[10].  Re-placed instance gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_ae_top/u_ae_core/u_mf_core/shift_reg_gen[627].sample_buffer_reg[627][10]
+INFO: [Physopt 32-952] Improved path group WNS = -0.710. Path group: clk_fpga_0. Processed net: gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_ae_top/u_ae_core/u_mf_core/shift_reg_gen[627].sample_buffer_reg[627]_451[10].
+INFO: [Physopt 32-663] Processed net gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_ae_top/u_ae_core/u_mf_core/shift_reg_gen[628].sample_buffer_reg_n_0_[628][10].  Re-placed instance gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_ae_top/u_ae_core/u_mf_core/shift_reg_gen[628].sample_buffer_reg[628][10]
+INFO: [Physopt 32-952] Improved path group WNS = -0.710. Path group: clk_fpga_0. Processed net: gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_ae_top/u_ae_core/u_mf_core/shift_reg_gen[628].sample_buffer_reg_n_0_[628][10].
+INFO: [Physopt 32-663] Processed net gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_ae_top/u_ae_core/u_mf_core/shift_reg_gen[635].sample_buffer_reg[635]_455[9].  Re-placed instance gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_ae_top/u_ae_core/u_mf_core/shift_reg_gen[635].sample_buffer_reg[635][9]
+INFO: [Physopt 32-952] Improved path group WNS = -0.710. Path group: clk_fpga_0. Processed net: gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_ae_top/u_ae_core/u_mf_core/shift_reg_gen[635].sample_buffer_reg[635]_455[9].
+INFO: [Physopt 32-953] Path group WNS did not improve. Path group: clk_fpga_0. Processed net: gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_ae_top/u_ae_core/u_mf_core/shift_reg_gen[636].sample_buffer_reg_n_0_[636][9].
+INFO: [Physopt 32-663] Processed net gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_ae_top/u_ae_core/u_read_sample/sample_out_valid.  Re-placed instance gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_ae_top/u_ae_core/u_read_sample/sample_out_valid_reg
+INFO: [Physopt 32-952] Improved path group WNS = -0.695. Path group: clk_fpga_0. Processed net: gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_ae_top/u_ae_core/u_read_sample/sample_out_valid.
+INFO: [Physopt 32-710] Processed net gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[0].u_correlator/u_prn_code/weil_prn2/legendre_addr2_reg[6]_0. Critical path length was reduced through logic transformation on cell gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[0].u_correlator/u_prn_code/weil_prn2/xpm_memory_base_inst_i_20_comp_2.
+INFO: [Physopt 32-952] Improved path group WNS = -0.694. Path group: clk_fpga_0. Processed net: gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[3].u_correlator/u_prn_code/weil_prn2/cor_legendre_addr[3]_574[6].
+INFO: [Physopt 32-663] Processed net gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[1].u_correlator/u_prn_code/weil_prn2/legendre_addr2_reg[3]_0.  Re-placed instance gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[1].u_correlator/u_prn_code/weil_prn2/xpm_memory_base_inst_i_47
+INFO: [Physopt 32-952] Improved path group WNS = -0.672. Path group: clk_fpga_0. Processed net: gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[1].u_correlator/u_prn_code/weil_prn2/legendre_addr2_reg[3]_0.
+INFO: [Physopt 32-710] Processed net gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[0].u_correlator/u_prn_code/weil_prn1/prn_config_reg[29][5]. Critical path length was reduced through logic transformation on cell gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[0].u_correlator/u_prn_code/weil_prn1/xpm_memory_base_inst_i_6__1_comp_1.
+INFO: [Physopt 32-952] Improved path group WNS = -0.671. Path group: clk_fpga_0. Processed net: gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[1].u_correlator/u_prn_code/weil_prn2/legendre_addr2_reg[5]_0.
+INFO: [Physopt 32-663] Processed net gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[3].u_correlator/u_prn_code/weil_prn2/xpm_memory_base_inst_i_85_n_0.  Re-placed instance gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[3].u_correlator/u_prn_code/weil_prn2/xpm_memory_base_inst_i_85_comp
+INFO: [Physopt 32-952] Improved path group WNS = -0.636. Path group: clk_fpga_0. Processed net: gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[3].u_correlator/u_prn_code/weil_prn2/xpm_memory_base_inst_i_85_n_0.
+INFO: [Physopt 32-953] Path group WNS did not improve. Path group: clk_fpga_0. Processed net: gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[0].u_correlator/u_prn_code/weil_prn2/legendre_addr2_reg[0]_0.
+INFO: [Physopt 32-953] Path group WNS did not improve. Path group: clk_fpga_0. Processed net: gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[1].u_correlator/u_prn_code/weil_prn2/legendre_addr2_reg[0]_0.
+INFO: [Physopt 32-953] Path group WNS did not improve. Path group: clk_fpga_0. Processed net: gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[3].u_correlator/u_prn_code/weil_prn2/cor_legendre_addr[3]_574[0].
+INFO: [Physopt 32-663] Processed net gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[3].u_correlator/u_prn_code/weil_prn2/xpm_memory_base_inst_i_112_n_0.  Re-placed instance gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[3].u_correlator/u_prn_code/weil_prn2/xpm_memory_base_inst_i_112
+INFO: [Physopt 32-952] Improved path group WNS = -0.634. Path group: clk_fpga_0. Processed net: gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[3].u_correlator/u_prn_code/weil_prn2/xpm_memory_base_inst_i_112_n_0.
+INFO: [Physopt 32-953] Path group WNS did not improve. Path group: clk_fpga_0. Processed net: gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[1].u_correlator/u_prn_code/weil_prn2/legendre_addr2_reg[2]_0_repN_1.
+INFO: [Physopt 32-663] Processed net gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[0].u_correlator/u_prn_code/weil_prn2/legendre_addr2_reg[2]_0.  Re-placed instance gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[0].u_correlator/u_prn_code/weil_prn2/xpm_memory_base_inst_i_28_comp_1
+INFO: [Physopt 32-952] Improved path group WNS = -0.628. Path group: clk_fpga_0. Processed net: gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[0].u_correlator/u_prn_code/weil_prn2/legendre_addr2_reg[2]_0.
+INFO: [Physopt 32-953] Path group WNS did not improve. Path group: clk_fpga_0. Processed net: gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[1].u_correlator/u_prn_code/weil_prn2/legendre_addr2_reg[7]_0_repN_1.
+INFO: [Physopt 32-663] Processed net gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[3].u_correlator/u_prn_code/weil_prn1/te_legendre_rd.  Re-placed instance gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[3].u_correlator/u_prn_code/weil_prn1/xpm_memory_base_inst_i_12
+INFO: [Physopt 32-952] Improved path group WNS = -0.627. Path group: clk_fpga_0. Processed net: gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[3].u_correlator/u_prn_code/weil_prn1/te_legendre_rd.
+INFO: [Physopt 32-710] Processed net gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[1].u_correlator/u_prn_code/weil_prn2/legendre_addr2_reg[7]_0_repN_1. Critical path length was reduced through logic transformation on cell gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[1].u_correlator/u_prn_code/weil_prn2/xpm_memory_base_inst_i_39_comp_3.
+INFO: [Physopt 32-952] Improved path group WNS = -0.624. Path group: clk_fpga_0. Processed net: gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[0].u_correlator/u_prn_code/weil_prn2/legendre_addr2_reg[7]_0.
+INFO: [Physopt 32-710] Processed net gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[0].u_correlator/u_prn_code/weil_prn1/addra[4]. Critical path length was reduced through logic transformation on cell gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[0].u_correlator/u_prn_code/weil_prn1/xpm_memory_base_inst_i_7__0_comp.
+INFO: [Physopt 32-952] Improved path group WNS = -0.603. Path group: clk_fpga_0. Processed net: gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[3].u_correlator/u_prn_code/weil_prn2/cor_legendre_addr[3]_574[4].
+INFO: [Physopt 32-710] Processed net gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[0].u_correlator/u_prn_code/weil_prn1/addra[2]. Critical path length was reduced through logic transformation on cell gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[0].u_correlator/u_prn_code/weil_prn1/xpm_memory_base_inst_i_9__0_comp.
+INFO: [Physopt 32-952] Improved path group WNS = -0.585. Path group: clk_fpga_0. Processed net: gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[3].u_correlator/u_prn_code/weil_prn2/cor_legendre_addr[3]_574[2].
+INFO: [Physopt 32-710] Processed net gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[1].u_correlator/u_prn_code/weil_prn2/legendre_addr2_reg[2]_0_repN_1. Critical path length was reduced through logic transformation on cell gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[1].u_correlator/u_prn_code/weil_prn2/xpm_memory_base_inst_i_49_comp_4.
+INFO: [Physopt 32-952] Improved path group WNS = -0.585. Path group: clk_fpga_0. Processed net: gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[0].u_correlator/u_prn_code/weil_prn2/legendre_addr2_reg[2]_0.
+INFO: [Physopt 32-953] Path group WNS did not improve. Path group: clk_fpga_0. Processed net: gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[1].u_correlator/u_prn_code/weil_prn2/legendre_addr2_reg[3]_0.
+INFO: [Physopt 32-710] Processed net gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[1].u_correlator/u_prn_code/weil_prn2/legendre_addr2_reg[3]_0. Critical path length was reduced through logic transformation on cell gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[1].u_correlator/u_prn_code/weil_prn2/xpm_memory_base_inst_i_47_comp.
+INFO: [Physopt 32-952] Improved path group WNS = -0.582. Path group: clk_fpga_0. Processed net: gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[3].u_correlator/u_prn_code/weil_prn2/cor_legendre_addr[3]_574[3].
+INFO: [Physopt 32-663] Processed net gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[1].u_correlator/u_prn_code/weil_prn1/code_index1_reg_n_0_[6].  Re-placed instance gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[1].u_correlator/u_prn_code/weil_prn1/code_index1_reg[6]
+INFO: [Physopt 32-952] Improved path group WNS = -0.582. Path group: clk_fpga_0. Processed net: gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[1].u_correlator/u_prn_code/weil_prn1/code_index1_reg_n_0_[6].
+INFO: [Physopt 32-953] Path group WNS did not improve. Path group: clk_fpga_0. Processed net: gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[0].u_correlator/data_acc_gen[4].u_data_acc/q_acc_o_reg[15]_0[13].
+INFO: [Physopt 32-608] Optimized 1 net.  Swapped 15 pins.
+INFO: [Physopt 32-952] Improved path group WNS = -0.581. Path group: clk_fpga_0. Processed net: gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[0].u_correlator/q_acc_o[3]_i_5__3_n_0.
+INFO: [Physopt 32-953] Path group WNS did not improve. Path group: clk_fpga_0. Processed net: gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/memory_code_rom/u_rom/xpm_memory_base_inst/douta[18].
+INFO: [Physopt 32-953] Path group WNS did not improve. Path group: clk_fpga_0. Processed net: gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[0].u_correlator/te_memcode_addr[10].
+INFO: [Physopt 32-710] Processed net gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[0].u_correlator/te_memcode_addr[10]. Critical path length was reduced through logic transformation on cell gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[0].u_correlator/i___328__2_comp.
+INFO: [Physopt 32-952] Improved path group WNS = -0.577. Path group: clk_fpga_0. Processed net: gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[1].u_correlator/u_prn_code/memcode_prn1/memcode_addr_reg[10]_0.
+INFO: [Physopt 32-953] Path group WNS did not improve. Path group: clk_fpga_0. Processed net: gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/fill_state_gen[0].u_fill_state/prn2_config_reg[29]_0[25].
+INFO: [Physopt 32-953] Path group WNS did not improve. Path group: clk_fpga_0. Processed net: gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/coherent_buffer/u_ram/DOADO[25].
+INFO: [Physopt 32-953] Path group WNS did not improve. Path group: **async_default**. Processed net: gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/fill_state_gen[2].u_fill_state/prn_config_reg[31]_0[29].
+INFO: [Physopt 32-663] Processed net gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_te_fifo/S_AXI_AWVALID_1.  Re-placed instance gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_te_fifo/fifo_block_adjust[7]_i_10
+INFO: [Physopt 32-952] Improved path group WNS = -0.138. Path group: **async_default**. Processed net: gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_te_fifo/S_AXI_AWVALID_1.
+INFO: [Physopt 32-710] Processed net gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[1].u_correlator/u_prn_code/weil_prn2/S_AXI_ARESETN_0. Critical path length was reduced through logic transformation on cell gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[1].u_correlator/u_prn_code/weil_prn2/carrier_phase_r[31]_i_8_comp.
+INFO: [Physopt 32-952] Improved path group WNS = -0.094. Path group: **async_default**. Processed net: gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_te_fifo/aw_buf_addr_reg[2].
+INFO: [Physopt 32-710] Processed net gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[1].u_correlator/u_prn_code/weil_prn2/S_AXI_ARESETN_0. Critical path length was reduced through logic transformation on cell gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[1].u_correlator/u_prn_code/weil_prn2/carrier_phase_r[31]_i_8_comp_1.
+INFO: [Physopt 32-952] Improved path group WNS = -0.022. Path group: **async_default**. Processed net: gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_te_fifo/S_AXI_AWVALID_1.
+INFO: [Physopt 32-710] Processed net gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[1].u_correlator/u_prn_code/weil_prn2/S_AXI_ARESETN_0. Critical path length was reduced through logic transformation on cell gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[1].u_correlator/u_prn_code/weil_prn2/carrier_phase_r[31]_i_8_comp.
+INFO: [Physopt 32-735] Processed net gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_te_fifo/aw_buf_addr_reg[3]. Optimization improves timing on the net.
+INFO: [Physopt 32-668] Current Timing Summary | WNS=-0.577 | TNS=-166.938 | WHS=0.044 | THS=0.000 |
+INFO: [Physopt 32-953] Path group WNS did not improve. Path group: clk_fpga_0. Processed net: gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/fill_state_gen[0].u_fill_state/prn2_config_reg[29]_0[25].
+INFO: [Physopt 32-953] Path group WNS did not improve. Path group: clk_fpga_0. Processed net: gnss_zynq_i/processing_system7_0/inst/FCLK_CLK_unbuffered[0].
+INFO: [Physopt 32-953] Path group WNS did not improve. Path group: clk_fpga_0. Processed net: gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/coherent_buffer/u_ram/DOADO[25].
+INFO: [Physopt 32-668] Current Timing Summary | WNS=-0.577 | TNS=-166.938 | WHS=0.044 | THS=0.000 |
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.049 . Memory (MB): peak = 3140.141 ; gain = 0.000
+Phase 2 Critical Path Optimization | Checksum: 22d462f62
+
+Time (s): cpu = 00:04:36 ; elapsed = 00:03:30 . Memory (MB): peak = 3140.141 ; gain = 0.000
+
+Phase 3 Hold Fix Optimization
+INFO: [Physopt 32-668] Current Timing Summary | WNS=-0.577 | TNS=-166.938 | WHS=0.044 | THS=0.000 |
+INFO: [Physopt 32-1493] The number of hold_fix net fail limit is 5.
+INFO: [Physopt 32-66] No high hold slack nets found for hold slack optimization.
+INFO: [Physopt 32-668] Current Timing Summary | WNS=-0.577 | TNS=-166.938 | WHS=0.044 | THS=0.000 |
+Phase 3 Hold Fix Optimization | Checksum: 22d462f62
+
+Time (s): cpu = 00:04:36 ; elapsed = 00:03:30 . Memory (MB): peak = 3140.141 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.010 . Memory (MB): peak = 3140.141 ; gain = 0.000
+INFO: [Physopt 32-669] Post Physical Optimization Timing Summary | WNS=-0.577 | TNS=-166.938 | WHS=0.044 | THS=0.000 |
+
+Summary of Physical Synthesis Optimizations
+============================================
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+|  Optimization   |  WNS Gain (ns)  |  TNS Gain (ns)  |  Added Cells  |  Removed Cells  |  Optimized Cells/Nets  |  Dont Touch  |  Iterations  |  Elapsed   |
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+|  Critical Path  |          0.743  |        320.398  |            0  |              0  |                    59  |           0  |           1  |  00:03:27  |
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+Summary of Hold Fix Optimizations
+=================================
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+|  Optimization               |  WHS Gain (ns)  |  THS Gain (ns)  |  Added LUTs  |  Added FFs  |  Optimized Nets  |  Dont Touch  |  Iterations  |  Elapsed   |
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+|  LUT1 and ZHOLD Insertion   |          0.000  |          0.000  |           0  |          0  |               0  |           0  |           0  |  00:00:00  |
+|  Total                      |          0.000  |          0.000  |           0  |          0  |               0  |           0  |           0  |  00:00:00  |
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.010 . Memory (MB): peak = 3140.141 ; gain = 0.000
+Ending Physical Synthesis Task | Checksum: 1440d8f51
+
+Time (s): cpu = 00:04:36 ; elapsed = 00:03:30 . Memory (MB): peak = 3140.141 ; gain = 0.000
+INFO: [Common 17-83] Releasing license: Implementation
+167 Infos, 1 Warnings, 0 Critical Warnings and 0 Errors encountered.
+phys_opt_design completed successfully
+phys_opt_design: Time (s): cpu = 00:04:51 ; elapsed = 00:03:38 . Memory (MB): peak = 3140.141 ; gain = 0.000
+# phys_opt_design -directive Explore
+Command: phys_opt_design -directive Explore
+Attempting to get a license for feature 'Implementation' and/or device 'xc7z020'
+INFO: [Common 17-349] Got license for feature 'Implementation' and/or device 'xc7z020'
+INFO: [Vivado_Tcl 4-241] Physical synthesis in post route mode 
+INFO: [Vivado_Tcl 4-137] Directive used for phys_opt_design is: Explore
+
+Starting Initial Update Timing Task
+
+Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.263 . Memory (MB): peak = 3140.141 ; gain = 0.000
+INFO: [Vivado_Tcl 4-1435] PhysOpt_Tcl_Interface Runtime Before Starting Physical Synthesis Task | CPU: 4.00s |  WALL: 2.82s
+INFO: [DRC 23-27] Running DRC with 2 threads
+INFO: [Vivado_Tcl 4-198] DRC finished with 0 Errors
+INFO: [Vivado_Tcl 4-199] Please refer to the DRC report (report_drc) for more information.
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.010 . Memory (MB): peak = 3140.141 ; gain = 0.000
+
+Starting Physical Synthesis Task
+
+Phase 1 Physical Synthesis Initialization
+INFO: [Physopt 32-721] Multithreading enabled for phys_opt_design using a maximum of 2 CPUs
+INFO: [Physopt 32-668] Current Timing Summary | WNS=-0.577 | TNS=-166.938 | WHS=0.044 | THS=0.000 |
+Phase 1 Physical Synthesis Initialization | Checksum: 1f6e6c8e6
+
+Time (s): cpu = 00:00:04 ; elapsed = 00:00:02 . Memory (MB): peak = 3140.141 ; gain = 0.000
+WARNING: [Physopt 32-745] Physical Optimization has determined that the magnitude of the negative slack is too large and it is highly unlikely that slack will be improved. Post-Route Physical Optimization is most effective when WNS is above -0.5ns
+
+Phase 2 Critical Path Optimization
+INFO: [Physopt 32-668] Current Timing Summary | WNS=-0.577 | TNS=-166.938 | WHS=0.044 | THS=0.000 |
+INFO: [Physopt 32-953] Path group WNS did not improve. Path group: clk_fpga_0. Processed net: gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/fill_state_gen[0].u_fill_state/prn2_config_reg[29]_0[25].
+INFO: [Physopt 32-953] Path group WNS did not improve. Path group: clk_fpga_0. Processed net: gnss_zynq_i/processing_system7_0/inst/FCLK_CLK_unbuffered[0].
+INFO: [Physopt 32-952] Improved path group WNS = -0.577. Path group: clk_fpga_0. Processed net: gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/coherent_buffer/u_ram/DOADO[25].
+INFO: [Physopt 32-953] Path group WNS did not improve. Path group: clk_fpga_0. Processed net: gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/l1c_legendre_data/u_rom/xpm_memory_base_inst/douta[0].
+INFO: [Physopt 32-952] Improved path group WNS = -0.553. Path group: clk_fpga_0. Processed net: gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[1].u_correlator/u_prn_code/weil_prn2/legendre_addr2_reg[2]_0_repN_2.
+INFO: [Physopt 32-663] Processed net gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[0].u_correlator/u_prn_code/weil_prn2/p_0_in[9].  Re-placed instance gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[0].u_correlator/u_prn_code/weil_prn2/code_index1_reg[13]
+INFO: [Physopt 32-952] Improved path group WNS = -0.553. Path group: clk_fpga_0. Processed net: gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[0].u_correlator/u_prn_code/weil_prn2/p_0_in[9].
+INFO: [Physopt 32-663] Processed net gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[2].u_correlator/u_prn_code/weil_prn1/code_index1_reg_n_0_[7].  Re-placed instance gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[2].u_correlator/u_prn_code/weil_prn1/code_index1_reg[7]
+INFO: [Physopt 32-952] Improved path group WNS = -0.552. Path group: clk_fpga_0. Processed net: gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[2].u_correlator/u_prn_code/weil_prn1/code_index1_reg_n_0_[7].
+INFO: [Physopt 32-953] Path group WNS did not improve. Path group: clk_fpga_0. Processed net: gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/dump_state_gen[2].u_dump_state/state_d4wt_reg[31]_0[0].
+INFO: [Physopt 32-953] Path group WNS did not improve. Path group: clk_fpga_0. Processed net: gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/dump_state_gen[2].u_dump_state/state_d4wt[0]_i_4_n_0.
+INFO: [Physopt 32-953] Path group WNS did not improve. Path group: clk_fpga_0. Processed net: gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[2].u_correlator/u_prn_code/weil_prn1/enable_boc_reg.
+INFO: [Physopt 32-710] Processed net gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[2].u_correlator/u_prn_code/weil_prn1/enable_boc_reg. Critical path length was reduced through logic transformation on cell gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[2].u_correlator/u_prn_code/weil_prn1/i__i_2__1_comp.
+INFO: [Physopt 32-952] Improved path group WNS = -0.544. Path group: clk_fpga_0. Processed net: gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[2].u_correlator/u_prn_code/weil_prn1/i__i_4__1_n_0.
+INFO: [Physopt 32-663] Processed net gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[1].u_correlator/u_prn_code/weil_prn1/p_0_in[9].  Re-placed instance gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[1].u_correlator/u_prn_code/weil_prn1/code_index1_reg[13]
+INFO: [Physopt 32-952] Improved path group WNS = -0.542. Path group: clk_fpga_0. Processed net: gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[1].u_correlator/u_prn_code/weil_prn1/p_0_in[9].
+INFO: [Physopt 32-953] Path group WNS did not improve. Path group: clk_fpga_0. Processed net: gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[0].u_correlator/u_prn_code/weil_prn2/code_index1_reg_n_0_[1].
+INFO: [Physopt 32-710] Processed net gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[0].u_correlator/u_prn_code/weil_prn2/code_index1[1]_i_1__0_n_0_hold_fix_1. Critical path length was reduced through logic transformation on cell gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[0].u_correlator/u_prn_code/weil_prn2/code_index1[1]_i_1__0_n_0_hold_fix_comp.
+INFO: [Physopt 32-952] Improved path group WNS = -0.541. Path group: clk_fpga_0. Processed net: gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[0].u_correlator/u_prn_code/weil_prn2/code_index1[1]_i_1__0_n_0.
+INFO: [Physopt 32-953] Path group WNS did not improve. Path group: clk_fpga_0. Processed net: gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/b1c_legendre_data/u_rom/xpm_memory_base_inst/douta[0].
+INFO: [Physopt 32-663] Processed net gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[1].u_correlator/u_prn_code/weil_prn2/legendre_addr2_reg[1]_0.  Re-placed instance gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[1].u_correlator/u_prn_code/weil_prn2/xpm_memory_base_inst_i_51
+INFO: [Physopt 32-952] Improved path group WNS = -0.533. Path group: clk_fpga_0. Processed net: gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[1].u_correlator/u_prn_code/weil_prn2/legendre_addr2_reg[1]_0.
+INFO: [Physopt 32-663] Processed net gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_ae_top/u_ae_core/u_noncoh_acc/p_1_in[0].  Re-placed instance gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_ae_top/u_ae_core/u_noncoh_acc/max_amp_r_reg[1]
+INFO: [Physopt 32-952] Improved path group WNS = -0.533. Path group: clk_fpga_0. Processed net: gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_ae_top/u_ae_core/u_noncoh_acc/p_1_in[0].
+INFO: [Physopt 32-663] Processed net gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_ae_top/u_ae_core/u_noncoh_acc/p_1_in[6].  Re-placed instance gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_ae_top/u_ae_core/u_noncoh_acc/max_amp_r_reg[7]
+INFO: [Physopt 32-952] Improved path group WNS = -0.533. Path group: clk_fpga_0. Processed net: gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_ae_top/u_ae_core/u_noncoh_acc/p_1_in[6].
+INFO: [Physopt 32-663] Processed net gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[2].u_correlator/u_prn_code/weil_prn1/p_0_in[7].  Re-placed instance gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[2].u_correlator/u_prn_code/weil_prn1/code_index1_reg[11]
+INFO: [Physopt 32-952] Improved path group WNS = -0.532. Path group: clk_fpga_0. Processed net: gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[2].u_correlator/u_prn_code/weil_prn1/p_0_in[7].
+INFO: [Physopt 32-953] Path group WNS did not improve. Path group: clk_fpga_0. Processed net: gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/memory_code_rom/u_rom/xpm_memory_base_inst/douta[4].
+INFO: [Physopt 32-953] Path group WNS did not improve. Path group: clk_fpga_0. Processed net: gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[0].u_correlator/te_memcode_addr[5].
+INFO: [Physopt 32-710] Processed net gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[0].u_correlator/te_memcode_addr[5]. Critical path length was reduced through logic transformation on cell gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[0].u_correlator/i___328__7_comp.
+INFO: [Physopt 32-952] Improved path group WNS = -0.531. Path group: clk_fpga_0. Processed net: gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[1].u_correlator/u_prn_code/memcode_prn1/memcode_addr_reg[5]_0.
+INFO: [Physopt 32-953] Path group WNS did not improve. Path group: clk_fpga_0. Processed net: gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[0].u_correlator/u_prn_code/weil_prn2/legendre_addr2_reg[0]_0.
+INFO: [Physopt 32-953] Path group WNS did not improve. Path group: clk_fpga_0. Processed net: gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[1].u_correlator/u_prn_code/weil_prn2/legendre_addr2_reg[0]_0.
+INFO: [Physopt 32-663] Processed net gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[3].u_correlator/u_prn_code/weil_prn2/cor_legendre_addr[3]_574[0].  Re-placed instance gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[3].u_correlator/u_prn_code/weil_prn2/xpm_memory_base_inst_i_82
+INFO: [Physopt 32-952] Improved path group WNS = -0.528. Path group: clk_fpga_0. Processed net: gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[3].u_correlator/u_prn_code/weil_prn2/cor_legendre_addr[3]_574[0].
+INFO: [Physopt 32-953] Path group WNS did not improve. Path group: clk_fpga_0. Processed net: gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[1].u_correlator/u_prn_code/weil_prn2/legendre_addr2_reg[5]_0.
+INFO: [Physopt 32-710] Processed net gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[1].u_correlator/u_prn_code/weil_prn2/legendre_addr2_reg[5]_0. Critical path length was reduced through logic transformation on cell gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[1].u_correlator/u_prn_code/weil_prn2/xpm_memory_base_inst_i_43_comp_2.
+INFO: [Physopt 32-952] Improved path group WNS = -0.527. Path group: clk_fpga_0. Processed net: gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[3].u_correlator/u_prn_code/weil_prn2/cor_legendre_addr[3]_574[5].
+INFO: [Physopt 32-663] Processed net gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[3].u_correlator/u_prn_code/weil_prn1/legendre_code1_r_reg[15]_0[14].  Re-placed instance gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[3].u_correlator/u_prn_code/weil_prn1/legendre_code1_r_reg[14]
+INFO: [Physopt 32-952] Improved path group WNS = -0.523. Path group: clk_fpga_0. Processed net: gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[3].u_correlator/u_prn_code/weil_prn1/legendre_code1_r_reg[15]_0[14].
+INFO: [Physopt 32-663] Processed net gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[1].u_correlator/u_prn_code/weil_prn2/legendre_addr2_reg[7]_0_repN_1.  Re-placed instance gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[1].u_correlator/u_prn_code/weil_prn2/xpm_memory_base_inst_i_39_comp_3
+INFO: [Physopt 32-952] Improved path group WNS = -0.521. Path group: clk_fpga_0. Processed net: gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[1].u_correlator/u_prn_code/weil_prn2/legendre_addr2_reg[7]_0_repN_1.
+INFO: [Physopt 32-953] Path group WNS did not improve. Path group: clk_fpga_0. Processed net: gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/memory_code_rom/u_rom/xpm_memory_base_inst/douta[18].
+INFO: [Physopt 32-953] Path group WNS did not improve. Path group: clk_fpga_0. Processed net: gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[0].u_correlator/te_memcode_addr[12].
+INFO: [Physopt 32-710] Processed net gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[0].u_correlator/te_memcode_addr[12]. Critical path length was reduced through logic transformation on cell gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[0].u_correlator/i___328__0_comp.
+INFO: [Physopt 32-952] Improved path group WNS = -0.517. Path group: clk_fpga_0. Processed net: gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[1].u_correlator/u_prn_code/memcode_prn1/memcode_addr_reg[12]_0.
+INFO: [Physopt 32-663] Processed net gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/fill_state_gen[1].u_fill_state/prn2_config_reg[29]_0[25].  Re-placed instance gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/fill_state_gen[1].u_fill_state/prn2_config_reg[25]
+INFO: [Physopt 32-952] Improved path group WNS = -0.517. Path group: clk_fpga_0. Processed net: gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/fill_state_gen[1].u_fill_state/prn2_config_reg[29]_0[25].
+INFO: [Physopt 32-953] Path group WNS did not improve. Path group: clk_fpga_0. Processed net: gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[1].u_correlator/u_prn_code/weil_prn1/code_index1_reg[3]_1[1].
+INFO: [Physopt 32-953] Path group WNS did not improve. Path group: clk_fpga_0. Processed net: gnss_zynq_i/processing_system7_0/inst/FCLK_CLK_unbuffered[0].
+INFO: [Physopt 32-953] Path group WNS did not improve. Path group: clk_fpga_0. Processed net: gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[1].u_correlator/u_prn_code/weil_prn1/code_index1[1]_i_1__1_n_0.
+INFO: [Physopt 32-953] Path group WNS did not improve. Path group: clk_fpga_0. Processed net: gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[1].u_correlator/u_prn_code/weil_prn1/code_index1[1]_i_2__1_n_0.
+INFO: [Physopt 32-953] Path group WNS did not improve. Path group: clk_fpga_0. Processed net: gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[1].u_correlator/u_prn_code/weil_prn1/O[0].
+INFO: [Physopt 32-608] Optimized 1 net.  Swapped 13 pins.
+INFO: [Physopt 32-952] Improved path group WNS = -0.505. Path group: clk_fpga_0. Processed net: gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[1].u_correlator/i___292_n_0.
+INFO: [Physopt 32-953] Path group WNS did not improve. Path group: clk_fpga_0. Processed net: gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[2].u_correlator/u_prn_code/weil_prn1/code_index1_reg_n_0_[10].
+INFO: [Physopt 32-953] Path group WNS did not improve. Path group: clk_fpga_0. Processed net: gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[2].u_correlator/u_prn_code/weil_prn1/code_index1[10]_i_1__3_n_0.
+INFO: [Physopt 32-953] Path group WNS did not improve. Path group: clk_fpga_0. Processed net: gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[2].u_correlator/u_prn_code/weil_prn1/code_index1[10]_i_2__3_n_0.
+INFO: [Physopt 32-953] Path group WNS did not improve. Path group: clk_fpga_0. Processed net: gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[2].u_correlator/u_prn_code/weil_prn1/O[0].
+INFO: [Physopt 32-608] Optimized 1 net.  Swapped 11 pins.
+INFO: [Physopt 32-952] Improved path group WNS = -0.503. Path group: clk_fpga_0. Processed net: gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[2].u_correlator/i___296_n_0.
+INFO: [Physopt 32-953] Path group WNS did not improve. Path group: clk_fpga_0. Processed net: gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[1].u_correlator/i___33_n_0.
+INFO: [Physopt 32-953] Path group WNS did not improve. Path group: clk_fpga_0. Processed net: gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[1].u_correlator/u_prn_code/weil_prn1/code_index1_reg[7]_0[1].
+INFO: [Physopt 32-953] Path group WNS did not improve. Path group: clk_fpga_0. Processed net: gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[1].u_correlator/u_prn_code/weil_prn1/i___44_i_6__0_n_0.
+INFO: [Physopt 32-953] Path group WNS did not improve. Path group: clk_fpga_0. Processed net: gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[1].u_correlator/u_prn_code/weil_prn1/code_index1[1]_i_1__1_n_0_hold_fix_1.
+INFO: [Physopt 32-953] Path group WNS did not improve. Path group: clk_fpga_0. Processed net: gnss_zynq_i/gnss_top_axi_0/inst/u_gnss_top/u_tracking_engine/correlator_gen[1].u_correlator/u_prn_code/weil_prn1/index_calc_phase[0].
+INFO: [Physopt 32-668] Current Timing Summary | WNS=-0.503 | TNS=-157.328 | WHS=0.044 | THS=0.000 |
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.010 . Memory (MB): peak = 3140.141 ; gain = 0.000
+Phase 2 Critical Path Optimization | Checksum: 1b2569904
+
+Time (s): cpu = 00:01:59 ; elapsed = 00:01:29 . Memory (MB): peak = 3140.141 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.010 . Memory (MB): peak = 3140.141 ; gain = 0.000
+INFO: [Physopt 32-669] Post Physical Optimization Timing Summary | WNS=-0.503 | TNS=-157.328 | WHS=0.044 | THS=0.000 |
+
+Summary of Physical Synthesis Optimizations
+============================================
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+|  Optimization   |  WNS Gain (ns)  |  TNS Gain (ns)  |  Added Cells  |  Removed Cells  |  Optimized Cells/Nets  |  Dont Touch  |  Iterations  |  Elapsed   |
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+|  Critical Path  |          0.075  |          9.611  |            0  |              0  |                    20  |           0  |           1  |  00:01:26  |
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.009 . Memory (MB): peak = 3140.141 ; gain = 0.000
+Ending Physical Synthesis Task | Checksum: 1b2569904
+
+Time (s): cpu = 00:02:00 ; elapsed = 00:01:29 . Memory (MB): peak = 3140.141 ; gain = 0.000
+INFO: [Common 17-83] Releasing license: Implementation
+80 Infos, 1 Warnings, 0 Critical Warnings and 0 Errors encountered.
+phys_opt_design completed successfully
+phys_opt_design: Time (s): cpu = 00:02:04 ; elapsed = 00:01:32 . Memory (MB): peak = 3140.141 ; gain = 0.000
+# report_timing_summary -file $outdir/timing_summary_try1.rpt
+INFO: [Timing 38-91] UpdateTimingParams: Speed grade: -1, Delay Type: min_max.
+INFO: [Timing 38-191] Multithreading enabled for timing update using a maximum of 2 CPUs
+report_timing_summary: Time (s): cpu = 00:00:13 ; elapsed = 00:00:07 . Memory (MB): peak = 3140.141 ; gain = 0.000
+# write_checkpoint -force $outdir/routed_try1.dcp
+INFO: [Timing 38-480] Writing timing data to binary archive.
+Wrote PlaceDB: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 3140.141 ; gain = 0.000
+Wrote PulsedLatchDB: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 3140.141 ; gain = 0.000
+Writing XDEF routing.
+Writing XDEF routing logical nets.
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.039 . Memory (MB): peak = 3140.141 ; gain = 0.000
+Writing XDEF routing special nets.
+Wrote RouteStorage: Time (s): cpu = 00:00:02 ; elapsed = 00:00:00.331 . Memory (MB): peak = 3140.141 ; gain = 0.000
+Wrote PlaceStorage: Time (s): cpu = 00:00:02 ; elapsed = 00:00:01 . Memory (MB): peak = 3140.141 ; gain = 0.000
+Wrote Netlist Cache: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.045 . Memory (MB): peak = 3140.141 ; gain = 0.000
+Wrote Device Cache: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.010 . Memory (MB): peak = 3140.141 ; gain = 0.000
+Write Physdb Complete: Time (s): cpu = 00:00:04 ; elapsed = 00:00:02 . Memory (MB): peak = 3140.141 ; gain = 0.000
+INFO: [Common 17-1381] The checkpoint 'D:/FPGA/greta-oto/vivado/try1/routed_try1.dcp' has been generated.
+# set wns [get_property SLACK [get_timing_paths -setup -max_paths 1]]
+# set whs [get_property SLACK [get_timing_paths -hold  -max_paths 1]]
+# puts "================ RESULT try1 ================"
+================ RESULT try1 ================
+# puts "WNS = $wns ns"
+WNS = -0.503 ns
+# puts "WHS = $whs ns"
+WHS = 0.044 ns
+# puts "============================================"
+============================================
+INFO: [Common 17-206] Exiting Vivado at Thu Jun 25 19:53:24 2026...

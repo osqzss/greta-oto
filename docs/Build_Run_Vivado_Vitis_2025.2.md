@@ -16,9 +16,9 @@
 |---|---|
 | §1 Vivado プロジェクト生成 | ✅ 完了（BD・SmartConnect・TTC0・アドレス 0x43C00000） |
 | §2 Run Synthesis | ✅ 完了（警告のみ。§7-9 で分類・対処済み） |
-| §2 Run Implementation | ⏳ **次回再開ポイント**。BUFG カスケード対処（§7-10）を入れて再実装する |
-| §2.1 タイミング確認 | ⏳ 実装後に WNS/WHS を確認（特に Hold） |
-| §3 ハードウェアエクスポート | 未 |
+| §2 Run Implementation | ✅ 完走（エラー解消。§7-10→§7-12 のクロック修正済み） |
+| §2.1 タイミング確認 | ✅ **クローズ**（最良 WNS=+0.022 / WHS=+0.030）。マージン薄く run 間で僅かに負になり得る（§7-12, §3-3） |
+| §3 ビットストリーム→エクスポート | ⏳ **次回再開ポイント**。軽微違反は許容して `.xsa` 出力（§3-3 の判断）|
 | §4 Vitis プラットフォーム＋アプリ | 未 |
 | §5 実機動作確認 | 未 |
 
@@ -27,13 +27,18 @@
    ここに集約されている。まずこれ。
 2. 補足が必要なら [`Session_Handoff_Vivado.md`](Session_Handoff_Vivado.md)（引継ぎ）と
    [`Design_Document.md`](Design_Document.md)（設計・レジスタマップ）を参照。
-3. プロジェクトを再生成して再実装:
+3. **タイミングはクローズ済み**（最良 WNS=+0.022 / WHS=+0.030, 構成は §7-12）。ただしマージンが薄く
+   build によって WNS が僅かに負（例 -0.030ns / 2 endpoints）になり得る。**この軽微違反は許容して
+   §3 ビットストリーム生成 → `.xsa` エクスポートへ進む判断**（根拠と手順は §3-3）。次は §4 Vitis。
+   レポートの所在は §2.2。
+4. プロジェクトを再生成して再実装する場合:
    ```tcl
    close_project -quiet
    source D:/FPGA/greta-oto/vivado/create_project.tcl
    ```
    → Run Synthesis → **Run Implementation** → §2.1 のタイミング確認。
-4. 直近の実装ログは `docs/run_implementation.txt`、合成ログは `docs/run_synthesis.txt`。
+5. 直近の実装ログは `docs/run_implementation.txt`、合成ログは `docs/run_synthesis.txt`。
+   実装が生成する各種レポート（`.rpt`）の所在は §2.1 を参照。
 
 ---
 
@@ -196,14 +201,101 @@ puts "WHS=[get_property SLACK [get_timing_paths -hold  -max_paths 1]]"
 - **Hold(WHS) 違反** → クロック緩和の副作用の可能性大。§7-10 の代替案（`BUFGCE→BUFHCE`、または
   クロックイネーブル方式）を検討。まず違反パスが gated clock 由来か `report_timing -hold` で確認。
 - **Setup(WNS) 違反** → 100MHz に対する論理段数の問題。違反パスを `report_timing -setup` で特定。
+  → **今回これに該当（WNS = -1.718ns）。原因分析と対策は §7-11。**
 - **adc_clk ↔ clk_fpga_0 のパスが違反** → §2 確認ポイントの通り `set_clock_groups` の async 除外が
   効いているか（クロック名一致）を確認（§7-8(c) / §8.2）。
 
+### 2.2 タイミングレポートの保存場所（どのファイルを見るか）
+
+**Run Implementation を実行すると、Vivado が以下のレポートを自動でディスクに書き出す。**
+GUI で開かなくても、これらをテキストで直接参照できる（手動で `report_*` を叩き直す必要はない）。
+
+保存先ディレクトリ:
+```
+vivado/gnss_zynq/gnss_zynq.runs/impl_1/
+```
+
+| ファイル | 内容 | 用途 |
+|---|---|---|
+| `gnss_zynq_wrapper_timing_summary_routed.rpt` | **タイミングサマリ（最重要）** | WNS/TNS/WHS/THS、クロック別集計、ワースト違反パスの詳細（Timing Details）まで全部入り |
+| `gnss_zynq_wrapper_route_status.rpt` | ルーティング状況 | 未配線・コンフリクトの有無 |
+| `gnss_zynq_wrapper_methodology_drc_routed.rpt` | メソドロジ DRC | タイミング例外・CDC の妥当性警告 |
+| `gnss_zynq_wrapper_drc_routed.rpt` | 配線後 DRC | 一般 DRC |
+| `gnss_zynq_wrapper_utilization_placed.rpt` | リソース使用率 | LUT/FF/BRAM/DSP 使用量 |
+| `gnss_zynq_wrapper_clock_utilization_routed.rpt` | クロックリソース | BUFG/MMCM 等の使用状況（ゲーテッドクロック確認に有用） |
+| `gnss_zynq_wrapper_power_routed.rpt` | 消費電力 | 参考 |
+| `gnss_zynq_wrapper_bus_skew_routed.rpt` | バススキュー | — |
+| `runme.log` | **実装の全コンソール出力** | `CRITICAL WARNING:` で grep すると Critical Warning を全部抽出できる |
+
+- **Critical Warning の確認:** `runme.log` 内を `CRITICAL WARNING` で検索する。今回はタイミング未達に伴う
+  `[Timing 38-282]` が記録されている（タイミング違反の通知であり、独立した別問題ではない）。
+- **違反パスの内訳:** `..._timing_summary_routed.rpt` の「Timing Details」セクション（`Slack (VIOLATED)`
+  で検索）に、始点・終点・論理段数・データ遅延（logic/route比）・クロックスキューまで載っている。
+  これを読めば原因切り分けができる（§7-11 はこの読み解き結果）。
+- 合成側の同種レポートは `gnss_zynq.runs/synth_1/`（`*_utilization_synth.rpt` 等）にある。
+
+**追加でワーストパスを詳細出力したい場合**（実装済みデザインを開いた状態で Tcl Console）:
+```tcl
+open_run impl_1
+report_timing -setup -max_paths 50 -nworst 1 -sort_by slack -input_pins \
+    -file D:/FPGA/greta-oto/docs/timing_setup_worst.txt
+```
+
 ---
 
-## 3. ハードウェアエクスポート
+## 3. ビットストリーム生成 → ハードウェアエクスポート
 
-`File → Export → Export Hardware` → **Include bitstream** を選択 → `gnss_zynq_wrapper.xsa` を出力。
+### 3-1. Generate Bitstream
+
+実装（§2, タイミング達成 or 軽微違反）の後にビットストリームを生成する。
+
+GUI: 左パネル **Generate Bitstream**（合成・実装が未完なら自動で先行実行）。
+
+Tcl:
+```tcl
+launch_runs impl_1 -to_step write_bitstream -jobs 4
+wait_on_run impl_1
+```
+
+### 3-2. Export Hardware（bitstream 込み）
+
+GUI: `File → Export → Export Hardware` → **Include bitstream** を選択 → `gnss_zynq_wrapper.xsa` を出力。
+
+Tcl:
+```tcl
+write_hw_platform -fixed -include_bit -force \
+    D:/FPGA/greta-oto/vivado/gnss_zynq_wrapper.xsa
+```
+
+> XSA はプラットフォーム定義（アドレスマップ・IP・BSP 生成情報）。`-include_bit` で PL を
+> コンフィグするビットストリームを同梱する（実機ブリングアップ／ソフト開発に必要）。
+
+### 3-3. タイミング軽微違反のまま進める判断（ブリングアップ時）
+
+**`write_bitstream` はタイミング違反では止まらない**（`CRITICAL WARNING [Route 35-39]` / DRC を出すが
+**ビットストリームは生成される**）。`[Route 35-39]` は route_design 段階で出るもので、タイミング達成 run
+でも一旦出る（その後 post-route phys_opt がクローズする）。**最終判定は §2.2 の
+`..._timing_summary_routed.rpt` の "All user specified timing constraints are met" / WNS 値で見る。**
+
+§7-12 のとおり WNS マージンは薄く（+0.02ns 級）、配置の run 間ばらつきで **WNS が僅かに負**
+（例: WNS=-0.030ns / 失敗 2 endpoints）になる build があり得る。この程度の軽微違反は
+**ブリングアップ・ソフト開発の段階では許容してそのまま XSA 生成・実機投入してよい**。理由:
+
+- **−0.030ns = 周期 10ns の 0.3%**、かつ **slow コーナー（最悪 PVT）** の値。実機の常温・標準シリコンでは
+  余裕があり顕在化しにくい。
+- 典型的に落ちるのは **AE コアのピーク検出**（`u_noncoh_acc` の `max_amp_r`/`freq_index_r`、論理段数13・
+  CARRY4 チェーン）。捕捉は統計的・反復的で、1 回のピーク値が僅かにずれても**次の試行で回復**する
+  **リトライ耐性のある内部データパス**。制御線・インタフェースではない。
+- GPS L1CA 捕捉（最初のマイルストーン）はこのパスを強くは叩かない。SPI/AXI/FIFO/I-Q 系とは無関係。
+
+> **後回しの TODO（最終運用前）:** 温度・電圧の厳しい環境での最終運用前には、この AE ピーク検出パスを
+> **パイプライン化**（`u_noncoh_acc` の `max_amp`/`freq_index` 比較を 2 サイクルに分割し論理段数を半減）して
+> 確実なマージンを確保すること。AE 捕捉ロジックのレイテンシが 1 サイクル変わるため機能検証が必要。
+> 実機で AE 捕捉が不安定なら、まずこのパスを疑う（可能性は低い）。
+>
+> **毎ビルドで WNS を確認:** マージンが薄いので、再実装のたびに §2.1 / §2.2 で WNS を確認する。
+> 僅かに負なら、同設定で再実行（配置乱数で正に振れることがある）か、§7-12 の実装レシピ強化／上記
+> パイプライン化を検討。
 
 ---
 
@@ -470,6 +562,10 @@ puts "WHS=[get_property SLACK [get_timing_paths -hold  -max_paths 1]]"
 
 ### 7-10. Run Implementation の配置エラー（BUFG→BUFGCE カスケード）
 
+> **【後日更新】** ここで入れた `CLOCK_DEDICATED_ROUTE FALSE`（全ゲーテッドクロックの一般配線化）は
+> タイミングスキューを悪化させ WNS 違反の主因になった。correlator は **BUFHCE** へ移行して根治し、
+> この緩和は AE コアの BUFGCE 1個のためだけに縮小した。詳細は **§7-12**。以下は当時の記録。
+
 - **症状:** `[Place 30-120] ... rule_cascaded_bufg ... FAILED`（`Cascaded bufg (bufg->bufg) must be
   adjacent and cyclic`）→ `[Place 30-99] IO Clock Placer failed` → `[Common 17-69] Placer could not
   place all instances` で実装が停止。
@@ -491,6 +587,132 @@ puts "WHS=[get_property SLACK [get_timing_paths -hold  -max_paths 1]]"
     カスケード扱いにならない）。ただしゲーテッド論理が単一クロックリージョンに収まる必要あり。
   - クロックゲーティングを廃し**クロックイネーブル（CE）方式**へ書き換え（FPGA 本来の手法。コア RTL の
     広範な改修が必要）。
+
+### 7-11. Run Implementation 後のタイミング違反（Setup, WNS = -1.718ns）— 原因分析
+
+§7-10 の対処で実装はエラーなく完走したが、**配線後タイミングが未達**。
+参照レポート: `gnss_zynq.runs/impl_1/gnss_zynq_wrapper_timing_summary_routed.rpt`（保存場所は §2.2）。
+
+**全体サマリ:**
+
+| 指標 | 値 | 判定 |
+|---|---|---|
+| WNS（Setup） | **-1.718 ns** | ✗ 違反 |
+| TNS | -1663.941 ns（3084 / 54261 endpoints 違反） | ✗ |
+| WHS（Hold） | +0.037 ns | ✓ |
+| THS / WPWS | 0 / +3.750 ns | ✓ |
+
+- 違反は **`clk_fpga_0`（100MHz, 周期10ns）の intra-clock setup に集中**。`adc_clk`(12MHz) 関連や
+  inter-clock の違反は無し（§8.2 の async 除外は効いている）。
+- **Hold・パルス幅は満足**。§2.1 で警戒した「緩和でスキュー増」の副作用は、Hold ではなく **Setup 側**に出た。
+
+**根本原因は2つが複合している。**
+
+**① ゲーテッドクロックのスキュー（最大要因）— 約 −3 ns**
+- ほぼ全ての違反パスで `Clock Path Skew ≈ -2.95 〜 -3.06ns`。違反量(-1.7ns)より大きく、**スキューだけで
+  setup 予算を食い潰している**。
+- ソースレジスタは `BUFG → BUFGCE`（§7-10 の `gated_clock_u1..u4` カスケード）経由で
+  **クロック挿入遅延 ≈ 5.92ns**。一方、行き先（共有 ROM 等、非ゲートの BUFG 直結）は **≈ 2.85ns**。
+  差 ≈ 3ns がそのまま負スキューとして setup を削る。
+- §7-10 で入れた `CLOCK_DEDICATED_ROUTE FALSE` がゲーテッドクロックを一般ルーティングに乗せ、挿入遅延を
+  増大させた結果。**ここを直すのが最も効く。**
+
+**② L1C/B1C Weil-Legendre 符号生成の長い経路（routing 律速）**
+- ワースト上位8本がこのパターン:
+  - 始点: `correlator_gen[3].../u_prn_code/weil_prn1(2)/code_index*_init_reg`
+  - 終点: `l1c_legendre_data` / `b1c_legendre_data` の**共有 Legendre ROM アドレス** (`ADDRARDADDR`)
+  - 論理段数 7〜8（LUT6 中心）、**データ遅延の 78〜86% が配線遅延**。
+- 経路が `correlator_gen[3]→[1]→[0]` と**複数の相関器チャネルを物理的に横断**している。Legendre ROM を
+  全チャネルで共有しているため、全チャネルからアドレス生成ロジックがファンインし、配線が長距離化する。
+- 副次クラスタ: `correlator_gen[3]/u_overflow_gen/jump_count_o_reg → u_find_channel/logic_channel_mask2`
+  （7段, スキュー -3.06ns）。
+
+**重要な含意（実機ブリングアップとの関係）:**
+- 違反パスは **L1C/B1C/Beidou の Weil/Legendre 符号生成**に集中している。§7-9(2) のとおり
+  **GPS L1CA は C/A コード（LFSR 生成）を使い、これらの Legendre ROM に依存しない**。
+- したがって **L1CA だけの初期動作確認では違反パスが機能的に励起されない可能性が高い**（＝ §5 のブリング
+  アップは進められる見込み）。ただしこれは**保証ではなく要検証事項**。タイミング未達のまま実機投入する場合は
+  L1CA 経路に違反が無いことを `report_timing -setup -through/-to` 等で個別確認すること。
+
+**対策（効果が大きい順）:**
+1. **ゲーテッドクロックのスキュー解消（最優先・最大効果）** — クロックゲーティングを
+   **クロックイネーブル(CE)方式**へ書き換える、または BUFGCE をソース BUFG に隣接配置して
+   `CLOCK_DEDICATED_ROUTE FALSE` を外す。源と行き先が同一クロック挿入を共有すれば ~3ns のスキューが消え、
+   単独で違反を解消できる可能性がある（§7-10 代替案と同じ方向）。
+2. **Legendre ROM アドレス経路の段数削減** — パイプラインレジスタ挿入、または **ROM をチャネル毎に複製**して
+   チャネル横断配線を局所化（BRAM 使用量とのトレードオフ。§2.2 の utilization レポートで余裕を確認）。
+3. **マルチサイクル制約** — 符号生成ロジックが実際には毎クロック更新を要しないなら `set_multicycle_path` で
+   緩和（要アーキ確認だが効果大。impl 用 XDC に追加）。
+4. **実装戦略の強化** — Run 設定で `Performance_ExplorePostRoutePhysOpt` 等のタイミング駆動戦略を選び、
+   `phys_opt_design`（place 後・route 後）を有効化、placer/router の effort を上げる。まず①②の構造改善を
+   入れてから併用するのが順当。
+
+> まず①（クロック構造）を直して再実装し、WNS の改善幅を見るのが定石。①で大半が解消する見込み。
+
+> **【解決済み】** 上記①②の方針で対処し、タイミングはクローズした（WNS=+0.022 / WHS=+0.030,
+> 全制約 met）。実施内容・実測値は **§7-12** を参照。
+
+### 7-12. タイミングクロージャ（WNS 違反の解消・実施記録）
+
+§7-11 の違反（WNS=-1.718ns）を、**実装ディレクティブ強化**と**クロック構造修正**の二段で解消した。
+
+**段階別の WNS 実測（clk_fpga_0 / 100MHz）:**
+
+| # | 構成 | WNS | WHS | 判定 |
+|---|---|---|---|---|
+| 0 | ベースライン（既定実装） | -1.718 | +0.037 | ✗ |
+| 1 | ＋実装ディレクティブ強化のみ（RTL 無改変） | -0.503 | +0.044 | ✗ |
+| 2 | 全ゲーテッドクロックを BUFHCE 化 | — | — | ✗ 配置エラー（下記） |
+| 3 | **ハイブリッド（correlator=BUFHCE / AE=BUFGCE）＋ディレクティブ** | **+0.022** | **+0.030** | ✅ met |
+
+**(1) 実装ディレクティブ強化（RTL 無改変, -1.718 → -0.503）**
+既定フローは `place(既定) → phys_opt(9秒) → route(既定)`、**post-route phys_opt 無し**だった。
+データ遅延の 78% が配線でリソースに余裕（LUT40%/BRAM45%）＝配置改善余地大と判断し、以下を採用:
+- `place_design -directive ExtraTimingOpt`
+- `phys_opt_design -directive AggressiveExplore`（post-place）
+- `route_design -directive Explore`
+- **`phys_opt_design`（post-route）** ← 既定では無効。これが効いて -1.32 → -0.503 まで改善。
+- → `create_project.tcl` に impl_1 の STEPS ディレクティブとして**埋め込み済み**（再生成で自動適用）。
+  ただし phys_opt は WNS が -0.5ns より負だと「改善不能」(`[Physopt 32-745]`)と打ち切る。残りは構造修正が必須。
+
+**(2) クロック構造修正（-0.503 → +0.022）— スキューの根治**
+§7-11① の -3ns スキューの正体は、§7-10 の `CLOCK_DEDICATED_ROUTE FALSE` がゲーテッドクロックを
+**一般配線**に押し出し、BUFG→BUFGCE 間に ~2.8ns の配線遅延を乗せていたこと（バッファ自体ではなく経路）。
+- **対処:** `xilinx_clk_gate.v` の `gated_clock_wrapper` を `BUFGCE` → **`BUFHCE`** に変更
+  （`parameter USE_BUFH`。CE_TYPE="SYNC" でグリッチフリーのゲーティングは維持）。
+  BUFG→BUFHCE は専用クロックスパインを使う**正規トポロジ**（カスケード扱いにならない）ため、
+  `CLOCK_DEDICATED_ROUTE FALSE` 不要で配線 penalty が消え、スキューが -2.955ns → **-0.059ns** に激減。
+- **ただし全数 BUFHCE 化は失敗（試行2）:** BUFHCE は**1クロックリージョン**しか駆動できない。
+  **AE コア**(`u_ae_top/u_ae_core/u_gated_clock`)のゲート域は大きく 1 リージョンに収まらず
+  `[Place 30-487]`（730 スライス要求に対し 495 しか空き無し）で配置失敗。
+- **最終構成＝ハイブリッド（試行3, 達成）:**
+  - **correlator 4個**（`tracking_engine` の `gated_clock_u1..u4`）= **BUFHCE**。
+    WNS クリティカルな Weil/Legendre パスはここ。小さく各リージョン(BUFHCE_X0Y0..3)に収まる。
+  - **AE コア 1個**（`ae_core`）= **BUFGCE**（`gated_clock_wrapper #(.USE_BUFH(0))`）。
+    大きいので従来どおり。**AE は setup クリティカルでない**ためスキューが乗っても無害。
+    単一 BUFGCE は FCLK BUFG(X0Y16)に隣接(X0Y17)配置でき、`CLOCK_DEDICATED_ROUTE FALSE` は
+    **この AE の BUFGCE のためだけに残す**（`constraints_zybo_z7_impl.xdc`）。
+
+**最終結果（§2.2 の `impl_1/..._timing_summary_routed.rpt`）:**
+- **All user specified timing constraints are met.** WNS=+0.022 / TNS=0 / Setup 失敗 0/54261
+  （修正前 3084）, WHS=+0.030 / Hold 失敗 0, WPWS=+3.750。
+- 新ワーストパスは AE コア `u_noncoh_acc` 内の**論理律速**パス（データ遅延9.56ns/論理45%, スキュー-0.059ns）。
+  スキュー律速から健全な論理律速に移行した。
+
+**注意 — マージンは薄い（最良 WNS=+0.022ns）:**
+- met だが余裕は僅少。**配置の run 間ばらつきで負に振れ得る**（別マシンでの再実装で
+  **WNS=-0.030ns / 失敗 2 endpoints**（AE `u_noncoh_acc` のピーク検出, 論理段数13/CARRY4）を実観測）。
+- さらに詰めるなら §7-11② の段数削減（AE 非コヒーレント積算/`max_amp`・`freq_index` 比較ロジックの
+  パイプライン化）や Legendre ROM 複製が候補。
+- **この程度の軽微違反はブリングアップ段階では許容して `.xsa` 生成・実機投入してよい**（判断根拠・
+  ビットストリーム生成手順は **§3-3**）。機能確認（§5）は L1CA 中心で進められるが、再実装で WNS を
+  毎回確認すること（§2.1 / §2.2）。
+
+**関連ファイル（この修正で変更したもの）:**
+- `BB_HW/rtl/xilinx/xilinx_clk_gate.v` … `USE_BUFH` パラメータ化（BUFHCE/BUFGCE 切替）
+- `BB_HW/rtl/acquire_engine/ae_core.v` … AE の `gated_clock_wrapper` に `#(.USE_BUFH(0))`
+- `BB_HW/rtl/xilinx/constraints_zybo_z7_impl.xdc` … `CLOCK_DEDICATED_ROUTE FALSE` は AE 用に限定
+- `vivado/create_project.tcl` … impl_1 の STEPS ディレクティブを埋め込み
 
 ---
 

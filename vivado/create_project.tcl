@@ -123,6 +123,21 @@ add_files -norecurse \
 set_property top gnss_zynq_wrapper [current_fileset]
 update_compile_order -fileset sources_1
 
+# -----------------------------------------------------------------------
+# Implementation run: timing-driven directives + post-route phys_opt.
+#   The 100 MHz clk_fpga_0 closes only with these settings. Default directives
+#   leave WNS ~ -0.5 ns even after the BUFHCE clock fix (xilinx_clk_gate.v).
+#   This recipe (place ExtraTimingOpt / route Explore / post-route phys_opt
+#   AggressiveExplore) achieves WNS > 0. See docs/Build_Run...md section 7-12.
+#   Margin is thin (~+0.02 ns); keep these directives enabled.
+# -----------------------------------------------------------------------
+set_property STEPS.PLACE_DESIGN.ARGS.DIRECTIVE ExtraTimingOpt                  [get_runs impl_1]
+set_property STEPS.PHYS_OPT_DESIGN.IS_ENABLED true                            [get_runs impl_1]
+set_property STEPS.PHYS_OPT_DESIGN.ARGS.DIRECTIVE AggressiveExplore           [get_runs impl_1]
+set_property STEPS.ROUTE_DESIGN.ARGS.DIRECTIVE Explore                        [get_runs impl_1]
+set_property STEPS.POST_ROUTE_PHYS_OPT_DESIGN.IS_ENABLED true                 [get_runs impl_1]
+set_property STEPS.POST_ROUTE_PHYS_OPT_DESIGN.ARGS.DIRECTIVE AggressiveExplore [get_runs impl_1]
+
 puts ""
 puts "Project created: $script_dir/gnss_zynq/gnss_zynq.xpr"
 puts "Next steps:"
