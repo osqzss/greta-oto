@@ -67,6 +67,10 @@ static int ConvertAlmanac(int svid, int week);
 
 extern BOOL GpsParityCheck(unsigned int word);
 
+// placement of SymbolData and FrameData
+// SymbolData to shift in input bits (two bits of previous WORD plus current WORD put in each 32bit DWORD)
+// FrameData index 0~29 to store subframe1~3 with same format of SymbolData
+
 //*************** GPS data decode initialization ****************
 // Parameters:
 //   none
@@ -100,6 +104,7 @@ int GpsNavDataProc(PFRAME_INFO pFrameInfo, PDATA_FOR_DECODE DataForDecode)
 	unsigned int Package[PACKAGE_LENGTH];
 	PSYMBOL_PACKAGE SymbolPackage = (PSYMBOL_PACKAGE)Package;
 
+	pFrameInfo->WeekNumber = -1;	// reset decoded week number to invalid
 	// if not frame sync, find word sync by checking parity
 	if (pFrameInfo->FrameStatus < 0)
 	{

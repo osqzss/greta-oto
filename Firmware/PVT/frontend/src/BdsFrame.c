@@ -30,6 +30,11 @@ static int BdsFrameDecode(void* Param);
 static int DecodeBdsEphemeris(int svid, const unsigned int data[SUBFRAME2_LENGTH]);
 static int DecodeBdsMidiAlm(const unsigned int data[SUBFRAME3_LENGTH]);
 
+// placement of SymbolData and FrameData
+// SymbolData index 0~8 to store one row of subframe2/3 symbols (8bit each symbol, totally 36 symbols each row)
+// FrameData index 0~2 to store 72bits subframe1 data
+// FrameData index 3~57 to store deinterleaved 1728bits subframe2/3 data (treated as 108 length 16bit array)
+
 //*************** BDS navigation data process ****************
 //* do BDS CNAV1 frame process
 //* meaning of FrameStatus:
@@ -47,7 +52,7 @@ int BdsNavDataProc(PFRAME_INFO pFrameInfo, PDATA_FOR_DECODE DataForDecode)
 	int data_count = 4, SymbolCount = -1;	// DataStream contais 4 8bit symbol
 	unsigned int Symbol;
 
-	pFrameInfo->TimeTag = -1;	// reset decoded week number to invalid
+	pFrameInfo->WeekNumber = -1;	// reset decoded week number to invalid
 	if (pFrameInfo->FrameStatus < 0)
 	{
 		pFrameInfo->FrameStatus = 0;
@@ -75,7 +80,7 @@ int BdsNavDataProc(PFRAME_INFO pFrameInfo, PDATA_FOR_DECODE DataForDecode)
 				pFrameInfo->SymbolNumber = 0;
 			}
 		}
-		else	// subframe2/3 data, first put in SymbolData, the deinterleave to FrameData
+		else	// subframe2/3 data, first put in SymbolData, then deinterleave to FrameData
 		{
 			if (pFrameInfo->SymbolNumber == 0)
 				memset(pFrameInfo->SymbolData, 0, sizeof(unsigned int) * 9);	// 9 DWORD x 4 = 36 symbols per column
@@ -182,7 +187,7 @@ int BdsFrameProc(PFRAME_INFO BdsFrameInfo, PDATA_FOR_DECODE DataForDecode)
 	// decode week number and HOW
 	if (SymbolPackage->PayloadLength >= SUBFRAME2_LENGTH)	// subframe2 decode OK
 	{
-		BdsFrameInfo->TimeTag = GET_UBITS(SymbolPackage->Symbols[0], 19, 13);	// set week number into TimeTag
+		BdsFrameInfo->WeekNumber = GET_UBITS(SymbolPackage->Symbols[0], 19, 13);	// set week number into TimeTag
 		how = GET_UBITS(SymbolPackage->Symbols[0], 11, 8);
 		SymbolCount = (how * 200 + soh + 1) * 1800;	// start of frame plus one whole frame length
 	}

@@ -92,17 +92,16 @@ int DoDataDecode(void* Param)
 			break;
 		case SIGNAL_B1C:
 			WeekMs = BdsNavDataProc(pFrameInfo, DataForDecode);
-			WeekNumber = pFrameInfo->TimeTag;
 			break;
 		case SIGNAL_E1:
 			WeekMs = GalNavDataProc(pFrameInfo, DataForDecode);
-//			WeekNumber = pFrameInfo->TimeTag;
 			break;
 		default:
 			WeekMs = -1;
 	}
 	if (WeekMs >= 0)
 	{
+		WeekNumber = pFrameInfo->WeekNumber;
 		if (DataForDecode->ChannelState->SyncTickCount == 0)
 			DataForDecode->ChannelState->SyncTickCount = DataForDecode->TickCount + (MS_IN_WEEK - WeekMs);	// tick count corresponding to week boundary
 		if (!ReceiverWeekMsValid())
@@ -113,6 +112,8 @@ int DoDataDecode(void* Param)
 				CurTimeMs = WeekMs + 80;
 			SetReceiverTime(ChannelState->Signal, WeekNumber, CurTimeMs, DataForDecode->TickCount);
 		}
+		else if (!ReceiverWeekNumberValid() && WeekNumber >= 0)
+			SetReceiverTime(ChannelState->Signal, WeekNumber, -1, 0);	// only set week number
 	}
 
 	return 0;

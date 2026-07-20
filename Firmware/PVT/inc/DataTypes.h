@@ -22,14 +22,14 @@
 typedef int BOOL;
 #endif
 
-typedef enum {	UnknownTime = 0,	// no time information
+enum TimeAccuracy {	UnknownTime = 0,	// no time information
 				ExtSetTime,			// time from external source (eg. RTC, network etc.)
 				CoarseTime,			// time from satellite signal transmit time minus average travel time
 				KeepTime,			// time after aligned to epoch of observation
 				AccurateTime,		// time from successful LSQ or Kalman update
-} TimeAccuracy;
+};
 
-typedef enum {	UnknownPos = 0,		// no position information
+enum PosAccuracy {	UnknownPos = 0,		// no position information
 				ExtSetPos,			// position from external source (eg. last known position, GSM/WIFI/Bluetooth positioning etc.)
 				KeepPos,			// position in keep mode after Kalman filter exceed predition threshold
 				PredictPos,			// position from Kalman predition without Kalman update
@@ -42,9 +42,9 @@ typedef enum {	UnknownPos = 0,		// no position information
 				DifferentialPos,	// position from DGNSS mode
 				FloatSolution,		// position from RTK float solution mode
 				FixedSolution,		// position from RTK fixed solution mode
-} PosAccuracy;
+};
 
-typedef enum {	PosTypeNone = 0,	// can not do PVT
+enum PositionType {	PosTypeNone = 0,	// can not do PVT
 				PosTypeFlexTime,	// can do 5 satellite positioning
 				PosType2D,			// can do 2D positioning (with given height)
 				PosTypeLSQ,			// can do LSQ positioning
@@ -52,7 +52,7 @@ typedef enum {	PosTypeNone = 0,	// can not do PVT
 				PosTypeKFPos,		// can do KF positioning
 				PosTypeEstimate,	// can do positioning using carrier phase change
 				PosTypeUseAmb,		// can do positioning with ambiguity calculated in previous epoch
-} PositionType;
+};
 
 typedef struct
 {
@@ -87,9 +87,10 @@ typedef struct tag_FRAME_INFO
 	unsigned char FrameFlag;		// bit 6: stream polarity 0 - Positive, 1 - Negative
 									// bit 7: polarity valid 0 - Invalid, 1 - Valid
 	int TimeTag;					// definition varies, time tag within week/day of start of current frame (GPS), week number decoded (BDS)
+	int WeekNumber;					// week number decoded during navigation data process, -1 means invalid
 	unsigned int TickCount;			// baseband tick count at end of last symbol
 	unsigned int SymbolData[12];	// buffer to store current symbol stream
-	unsigned int FrameData[57];		// store frame data (LNAV need 30, I/NAV need 50 and CNAV1 need 57)
+	unsigned int FrameData[58];		// store frame data (LNAV need 30, I/NAV need 58 and CNAV1 need 57)
 } FRAME_INFO, *PFRAME_INFO;
 #define NEGATIVE_STREAM		0x40
 #define POLARITY_VALID		0x80
@@ -278,11 +279,11 @@ typedef struct
 	double DopArray[8];		// HDOP, VDOP, PDOP, TDOP, SigmaEE, SigmaNN, SigmaEN, reserved
 
 	RECEIVER_TIME *ReceiverTime;
-	PosAccuracy PosQuality;
+	enum PosAccuracy PosQuality;
 	unsigned int PosFlag;	// Positioning flag
 	int SatCount;	// satellite used to do positioning
-	PositionType PrevPosType;
-	PositionType CurrentPosType;
+	enum PositionType PrevPosType;
+	enum PositionType CurrentPosType;
 //	unsigned int PosUseSat; //sats used to positioning
 //	unsigned int VelUseSat; //sats used to velocity
 	unsigned long long GpsSatInUse;
@@ -306,7 +307,7 @@ typedef struct
 	GROUND_SPEED GroundSpeed;// receiver group speed
 	double DopArray[4];		// HDOP, VDOP, PDOP, TDOP
 	SYSTEM_TIME Time;
-	PosAccuracy PosQuality;
+	enum PosAccuracy PosQuality;
 	unsigned int PosFlag;	// Positioning flag
 	int SatCount;	// satellite used to do positioning
 	unsigned long long SatInUse[PVT_MAX_SYSTEM_ID];

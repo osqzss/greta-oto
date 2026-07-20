@@ -24,7 +24,7 @@
 #include <stdio.h>
 
 static int PvtFix(int MsInterval, int ClockAdjust);
-static PositionType GetPosMethod(PCHANNEL_STATUS ObservationList[], int *Count, PositionType PrevPosType);
+static enum PositionType GetPosMethod(PCHANNEL_STATUS ObservationList[], int *Count, enum PositionType PrevPosType);
 static void UpdateSatellitesStates();
 static void AssignNmeaInfo(PNMEA_INFO NmeaInfo);
 
@@ -205,7 +205,7 @@ int PvtFix(int MsInterval, int ClockAdjust)
 	int PosUseSatCount[PVT_MAX_SYSTEM_ID];
 
 	// use position in g_ReceiverInfo as initial position/velocity
-	if (g_ReceiverInfo.PosQuality < PosTypeLSQ)
+	if (g_ReceiverInfo.PrevPosType < PosTypeLSQ)
 	{
 		STATE_X = g_ReceiverInfo.PosVel.x;
 		STATE_Y = g_ReceiverInfo.PosVel.y;
@@ -225,21 +225,21 @@ int PvtFix(int MsInterval, int ClockAdjust)
 	{
 		if ((g_ChannelStatus[i].Signal != SIGNAL_L1CA) && (g_ChannelStatus[i].Signal != SIGNAL_L1C))
 			continue;
-		if ((g_ChannelStatus[i].ChannelFlag & MEASUREMENT_VALID) && g_GpsEphemeris[g_ChannelStatus[i].svid-1].flag)
+		if ((g_ChannelStatus[i].ChannelFlag & MEASUREMENT_VALID) && (g_GpsEphemeris[g_ChannelStatus[i].svid-1].flag & 1))
 			ObservationList[SatCount++] = &g_ChannelStatus[i];
 	}
 	for (i = 0; i < TOTAL_CHANNEL_NUMBER && SatCount < DIMENSION_MAX_X; i ++)
 	{
 		if (g_ChannelStatus[i].Signal != SIGNAL_B1C)
 			continue;
-		if ((g_ChannelStatus[i].ChannelFlag & MEASUREMENT_VALID) && g_BdsEphemeris[g_ChannelStatus[i].svid-1].flag)
+		if ((g_ChannelStatus[i].ChannelFlag & MEASUREMENT_VALID) && (g_BdsEphemeris[g_ChannelStatus[i].svid-1].flag & 1))
 			ObservationList[SatCount++] = &g_ChannelStatus[i];
 	}
 	for (i = 0; i < TOTAL_CHANNEL_NUMBER && SatCount < DIMENSION_MAX_X; i ++)
 	{
 		if (g_ChannelStatus[i].Signal != SIGNAL_E1)
 			continue;
-		if ((g_ChannelStatus[i].ChannelFlag & MEASUREMENT_VALID) && g_GalileoEphemeris[g_ChannelStatus[i].svid-1].flag)
+		if ((g_ChannelStatus[i].ChannelFlag & MEASUREMENT_VALID) && (g_GalileoEphemeris[g_ChannelStatus[i].svid-1].flag & 1))
 			ObservationList[SatCount++] = &g_ChannelStatus[i];
 	}
 
@@ -351,7 +351,7 @@ int PvtFix(int MsInterval, int ClockAdjust)
 //   PrevPosType: position type in previous epoch
 // Return value:
 //   position type in current epoch
-PositionType GetPosMethod(PCHANNEL_STATUS ObservationList[], int *Count, PositionType PrevPosType)
+enum PositionType GetPosMethod(PCHANNEL_STATUS ObservationList[], int *Count, enum PositionType PrevPosType)
 {
 	int i, SatCount = *Count, SystemMask = 0, RedundantSat;
 
