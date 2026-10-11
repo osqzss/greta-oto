@@ -4,12 +4,32 @@ This study replaces the MAX2769 (I-only, 16.368 Msps, 4.092 MHz IF; see `max2769
 
 | Item | Value |
 |---|---|
-| RF band | L1 / E1 / B1C (1575.42 MHz) |
+| RF band | GPS/QZSS L1 C/A and L1C, SBAS L1, Galileo E1, BDS B1C (1575.42 MHz) |
 | Front-end output | **Complex I/Q, 2 bits each** (sign + magnitude) |
 | Sampling frequency | **4.113 MHz** (same as `SAMPLE_FREQ` in `Firmware/common/CommonDefines.h`) |
 | IF | **+141 kHz** (same as `IF_FREQ`) |
 | LO | **1575.279 MHz** (= 383 × 4.113 MHz, low-side) |
 | Recommended reference (TCXO) | **16.452 MHz** (= 4 × 4.113 MHz) |
+
+**Signals covered.** All L1-band signals the repository supports share the 1575.42 MHz carrier, so one front-end setting serves all of them. Nothing in this study is specific to GPS L1 C/A; C/A is only the first step of the bring-up (§10).
+
+| Signal | Modulation (transmitted) | Received component | Notes |
+|---|---|---|---|
+| GPS / QZSS L1 C/A | BPSK(1) | Full | QZSS L1 C/A is identical in structure to GPS L1 C/A (Gold codes, same AE/TE path) |
+| SBAS L1 | BPSK(1) | Full | Same code family and path as L1 C/A |
+| Galileo E1 B/C | CBOC(6,1,1/11) | BOC(1,1) part only | Needs the E1 memory-code ROM (§6.2) |
+| BDS B1C data / pilot | BOC(1,1) / QMBOC(6,1,4/33) | BOC(1,1) part only | Uses the B1C Legendre ROM |
+| GPS / QZSS L1C data / pilot | BOC(1,1) / TMBOC(6,1,4/33) | BOC(1,1) part only | Uses the L1C Legendre ROM |
+
+The BOC(6,1) components of the MBOC signals (lobes near ±6.1 MHz) are outside the ±2.05 MHz band of this front end. The correlator also generates only a BOC(1,1) replica (`HWModel/src/Correlator.cpp`, `EnableBOC & CodeSubPhase`). So these signals are received through their BOC(1,1) part, with a small fixed loss in correlation power:
+
+| Component | BOC(1,1) power fraction | Loss |
+|---|---|---|
+| Galileo E1-B and E1-C | 10/11 | ≈ 0.4 dB |
+| B1C pilot, L1C pilot | 29/33 | ≈ 0.6 dB |
+| B1C data, L1C data | 1 | 0 dB |
+
+These figures do not include the extra band-limiting loss on the BOC(1,1) main lobes from the ±2.05 MHz filter, which BOC signals suffer more than BPSK. The loss comes from the original 4.113 Msps design, not from the MAX2771. Recovering it would need about ±7 MHz of bandwidth and a much higher sample rate, which the baseband was not designed for.
 
 > **Caveats.** MAX2771 register names, divider ranges and filter options below are from general knowledge of the MAX2769/MAX2771 family. **Check every register value against the MAX2771 datasheet before use.** No FPGA tool was run: memory figures come straight from the RTL and are exact, while LUT/FF figures are hand estimates (±30%).
 
@@ -140,7 +160,7 @@ Its drawbacks:
 | Band / LNA | L1 band input, active antenna via the antenna bias/LNA path | |
 | Synthesizer | Integer-N, RDIV = 4, NDIV = 383 (with a 16.452 MHz reference) | LO = 1575.279 MHz; check the allowed comparison frequency and loop filter for 4.113 MHz |
 | Mixer / IF mode | **IQ (complex) mode**, low IF | Both I and Q ADCs enabled |
-| IF filter | Low-pass (or complex) setting whose passband covers about **±2.05 MHz** (BOC(1,1) main lobes) and rolls off by the complex Nyquist edge **±2.056 MHz**. For GPS L1 C/A only, use a narrower setting (about ±1.2 MHz) | Noise between ±2.056 MHz and the filter stopband folds back in. Pick the setting from the datasheet response curves. |
+| IF filter | Low-pass (or complex) setting whose passband covers about **±2.05 MHz** (BOC(1,1) main lobes) and rolls off by the complex Nyquist edge **±2.056 MHz**. For BPSK(1) signals only (GPS/QZSS L1 C/A, SBAS), use a narrower setting (about ±1.2 MHz). Do not narrow it if any BOC signal (E1, B1C, L1C) is to be received | Noise between ±2.056 MHz and the filter stopband folds back in. Pick the setting from the datasheet response curves. |
 | ADC | **2 bits per channel (I1, I0, Q1, Q0), sign/magnitude format** | Sign/magnitude matches the baseband's nibble format, so the mapping is pure wiring. |
 | ADC clock | 4.113 MHz = reference ÷ 4, also driven on CLKOUT | CLKOUT clocks the PL capture |
 | AGC | On; target about 33% magnitude-bit occupancy | Standard optimum for 2-bit quantization (levels ±1, ±3, threshold near 1σ) |
@@ -345,7 +365,7 @@ TE timing at 4.113 Msps: 8 channel groups × (4113 + a few hundred cycles) ≈ 3
    1. Register access and `GLB_BB_VERSION`.
    2. MAX2771 PLL lock; I/Q histograms and magnitude-bit occupancy via ILA. Check the CLKOUT edge and I/Q orientation.
    3. Record a few ms and post-process with `PostProc`/`HWModel`; confirm IF ≈ 141 kHz minus the TCXO offset.
-   4. L1 C/A acquisition on live sky.
+   4. L1 C/A acquisition on live sky (GPS, then QZSS and SBAS on the same path).
    5. Tracking, bit sync, ephemeris, PVT/NMEA.
    6. BOC signals (E1, B1C, L1C).
    7. PPS against a reference receiver.
@@ -377,5 +397,6 @@ TE timing at 4.113 Msps: 8 channel groups × (4113 + a few hundred cycles) ≈ 3
 | CLKOUT edge vs data timing in `sync_data` | Capture in the CLKOUT domain + async FIFO (§5.1), verify with ILA |
 | Complex spectrum orientation | Swap I/Q or invert Q in wiring if Doppler signs come out wrong |
 | Aliasing of noise beyond ±2.056 MHz (complex Nyquist) | Pick the MAX2771 filter setting whose rejection is high at 2–3 MHz from the IF. Use a narrower setting for C/A-only use |
+| MBOC signals (E1, B1C pilot, L1C pilot) lose their BOC(6,1) component in the ±2.05 MHz band (≈ 0.4–0.6 dB, see the signal table at the top) | Inherent in the 4.113 Msps design; accept it. Check the margin with SignalSim data in `HWModel` at 2-bit quantization (§10 step 4) |
 | Amplitude-dependent firmware thresholds tuned on 4-bit simulated data | Retune using 2-bit simulated data and live recordings (§10 step 4) |
 | Resource figures are estimates | OOC synthesis before choosing the board |
